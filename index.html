@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C1own的个人博客</title><meta name="author" content="C1own"><meta name="copyright" content="C1own"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="我的博客系统，记录我的笔记和项目">
+<meta property="og:type" content="website">
+<meta property="og:title" content="C1own的个人博客">
+<meta property="og:url" content="https://example.com/index.html">
+<meta property="og:site_name" content="C1own的个人博客">
+<meta property="og:description" content="我的博客系统，记录我的笔记和项目">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://example.com/img/iu.jpg">
+<meta property="article:author" content="C1own">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/img/iu.jpg"><link rel="shortcut icon" href="/img/blog.png"><link rel="canonical" href="https://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C1own的个人博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-02-25 21:22:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/iu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/backgroud.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="C1own的个人博客"><span class="site-name">C1own的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">C1own的个人博客</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/dnwwdwd?tab=repositories" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="/1765393959@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/25/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ一死信队列介绍和应用">RabbitMQ一死信队列介绍和应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-25T11:55:58.000Z" title="Created 2024-02-25 19:55:58">2024-02-25</time></span></div><div class="content">死信和死信队列的概念什么是死信？简单来说就是无法被消费和处理的消息。一般生产者将消息投递到broker或者queue，消费者直接从中取出消息进行消费。但有时因为某些原因导致消息不能被消费，导致消息积压在队列中，这样的消息如果没有后续的处理就会变成死信，那么专门存放死信的队列就是死信队列。
+
+注意：如果一个消息队列设置了过期时间，在队列过期后其中的消息并不会自动转发到死信队列中，而是会被系统丢弃或执行其他的操作。
+
+什么是死信交换机？那么什么是死信交换机呢？死信交换机是指专门将死信路由到死信队列的交换机。
+
+注意：死信交换机和普通交换机无任何区别，只是路由的消息类别不同。同理，死信队列和普通队列也无任何区别，仅仅是一个专门存放死信的队列而已。无论是死信交换机还是队列，它们的创建方法都和普通的交换机和队列一致，无非是名称和routingKey不同。
+
+产生死信的原因根据官方文档，我们发现一般有三种场景会产生死信。
+
+
+消息超过TTL，即消息过期
+消息被nack或reject，且不予重新入队
+队列达到最大长度
+
+死信队列实战和应用死信队列的应用并不难，无非就是多定义了一个交换机、routin ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-25T11:35:59.000Z" title="Created 2024-02-25 19:35:59">2024-02-25</time></span></div><div class="content">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！
+服务器安装宝塔不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是
+1yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh
+
+
+详情请看这篇博客：http://t.csdnimg.cn/NlPXj 注意安装宝塔面板时，服务器不要部署任何项目，最好是纯净状态。
+部署项目前的宝塔前置配置安装tomcat再卸载tomcat安装tomcat是为了安装jdk1.8，卸载是因为Spring Boot内置了tomcat，所以它是一个安装jdk的跳板。如果你的项目不是jdk1.8可以点击Java环境管理选择你想要的jdk版本。
+
+ 进入软件商店 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8DAxios-AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截">homie匹配Axios+AOP实现全局登录拦截</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-25T11:31:17.000Z" title="Created 2024-02-25 19:31:17">2024-02-25</time></span></div><div class="content">思路思路并不复杂，就是在执行每个Controller方法前执行getLoginUser方法判断登录用户是否是否为空，如果为空返回40100状态码，前端axios根据状态码跳转至登录页。因为在执行每个方法前都要执行getLoginUser方法（登录和注册接口除外），那么通过AOP实现是再方便不过了，并且强制用户在使用每个功能前要先登录。
+代码实现LoginInterceptor（登录拦截器）:
+123456789101112131415161718192021/** * 登录拦截 AOP */@Aspect@Componentpublic class LoginInterceptor &#123;    @Resource    private UserService userService;    @Before(&quot;execution(* com.hjj.homieMatching.controller.*.*(..)) &amp;&amp; &quot; +            &quot;!execution(* com.hjj.homieMatching.contro ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="四种限流算法详细介绍及Java代码实现">四种限流算法详细介绍及Java代码实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-25T11:27:51.000Z" title="Created 2024-02-25 19:27:51">2024-02-25</time></span></div><div class="content">前言在BI项目中接触和了解限流算法，目的是为了限制用户疯狂调用AI生成接口，但是当时学习时并不够系统和深入，基本都是跟着教程敲代码，于是有了这篇文章和大家介绍一下四种限流算法。
+固定窗口限流将单位时间内作为一个时间窗口，同时维护一个计数器，记录次时间窗口内接收的请求次数。
+
+当次数小于等于限流阈值，允许请求通过，并且计数器 +1
+当次数大于限流阈值，不允许请求通过，计数器不变
+当系统时间（当前时间）超过时间窗口，计数器重置为0并且开始记录新的窗口内接收的请求次数
+
+缺陷：定义时间窗口为1s，允许请求数量为3（请求阈值），说明1s内只能接收并处理3个请求。然而如果0.80.9s来了三个请求，1.11.2s来了三个请求。虽然这6个请求都没超过各自窗口的请求阈值，但是已经违背了1s内接收并处理3个请求了，因为在不到1s内其接收了6个请求，存在临界问题。
+优点：简单易实现
+缺点：
+
+有临界问题（流量突刺）
+不适用于分布式系统
+
+Java代码实现
+1234567891011121314151617181920212223242526272829303132333435public class F ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5Redis-GEO%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie匹配引入Redis GEO实现搜索附近用户">homie匹配引入Redis GEO实现搜索附近用户</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-25T11:18:54.000Z" title="Created 2024-02-25 19:18:54">2024-02-25</time></span></div><div class="content">前言鱼皮哥在直播中提出可以通过Redis GEO实现编辑距离和搜索附近用户功能，也算是是一个拓展点。这个项目我做完有一个多月了，最近在做其拓展功能顺便也把这个功能实现一波，整体的实现并不困难，学完 Redis 再看会更轻松（未学过也没事）。话不多说直接开始撸代码吧。
+设计思路和流程
+在 User（用户）表中添加两个字段 longitude（经度）和 dimension（维度），用以存储用户的经纬度坐标。因为Redis GEO 通过每个用户的经纬度坐标计算用户间的距离，同时其 Redis 数据类型为ZSET，ZSET 是一个有序的 List 类似 Java 的 SortedSet。在此场景 value 就是用户id，score 是经纬度信息（ ZSET 根据 score值升序排序）。
+
+
+1234567891011121314151617181920212223create table hjj.user(    username     varchar(256)                       null comment &#x27;用户昵称&#x27;,    id      ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/07/Java%E4%BA%8C%E7%BA%A7/" title="Java二级">Java二级</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-07T10:59:56.000Z" title="Created 2024-01-07 18:59:56">2024-01-07</time></span></div><div class="content">冒泡排序、快速排序，直接插入排序在最坏的情况下，比较次数为n（n-1）&#x2F;2次。
+堆排序在最坏的情况下的比较次数为nlog2n次。
+在长度为n的有序线性表中进行二分查找，最坏情况下需要比较的次数是O(log2n)
+在任意一个二叉树中，叶子节点数总比度为二的节点数多一个。
+算法一般由顺序，选择和循环三种控制结构组合而成。
+不属于软件设计原则的是自下而上。
+ 面向对象方法中最基本的概念是对象，它的基本特点有：标识唯一性、分类性、多态性、封装性和模块独立性好。
+结构化程序设计可使程序结构良好、易读、易理解、易维护。
+数据库技术的根本目标是要解决数据共享的问题。
+内模式能够给出数据库物理存储结构与物理存取方法。
+数据库设计包括概念设计和逻辑设计两个方面的设计内容。
+关系数据库管理系统能实现的专门关系运算，包括选择运算、投影运算、连接运算。
+索引属于内模式。
+选择运算是一个一元运算，关系R通过选择运算（并由该运算给出所选择的逻辑条件）后仍为一个关系。这个关系是由R中那些满足逻辑条件的元组所组成。如果关系的逻辑条件为f，则R满足f的选择运算可以写成：бf(R)。
+SQL语言又称为结构化查询 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/iu.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">C1own</div><div class="author-info__description">我的博客系统，记录我的笔记和项目</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dnwwdwd?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dnwwdwd?tab=repositories" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="/1765393959@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">你好呀！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ一死信队列介绍和应用">RabbitMQ一死信队列介绍和应用</a><time datetime="2024-02-25T11:55:58.000Z" title="Created 2024-02-25 19:55:58">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</a><time datetime="2024-02-25T11:35:59.000Z" title="Created 2024-02-25 19:35:59">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8DAxios-AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截">homie匹配Axios+AOP实现全局登录拦截</a><time datetime="2024-02-25T11:31:17.000Z" title="Created 2024-02-25 19:31:17">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="四种限流算法详细介绍及Java代码实现">四种限流算法详细介绍及Java代码实现</a><time datetime="2024-02-25T11:27:51.000Z" title="Created 2024-02-25 19:27:51">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5Redis-GEO%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie匹配引入Redis GEO实现搜索附近用户">homie匹配引入Redis GEO实现搜索附近用户</a><time datetime="2024-02-25T11:18:54.000Z" title="Created 2024-02-25 19:18:54">2024-02-25</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">February 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">January 2024</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-02-25T13:22:23.125Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024-1-2 - 2024 By C1own</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["分享Java，分享生活","记点儿笔记，记录人生"])
+  } else {
+    document.getElementById("subtitle").textContent = "分享Java，分享生活"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

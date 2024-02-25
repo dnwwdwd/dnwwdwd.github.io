@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程 | C1own的个人博客</title><meta name="author" content="C1own"><meta name="copyright" content="C1own"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！ 服务器安装宝塔不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是 1yum install -y wget &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程">
+<meta property="og:url" content="https://example.com/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="C1own的个人博客">
+<meta property="og:description" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！ 服务器安装宝塔不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是 1yum install -y wget &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://example.com/img/97b97ee1173042d5ba667df7ecbe43f6.jpg">
+<meta property="article:published_time" content="2024-02-25T11:35:59.000Z">
+<meta property="article:modified_time" content="2024-02-25T11:50:11.892Z">
+<meta property="article:author" content="C1own">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/img/97b97ee1173042d5ba667df7ecbe43f6.jpg"><link rel="shortcut icon" href="/img/blog.png"><link rel="canonical" href="https://example.com/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-25 19:50:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/iu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/97b97ee1173042d5ba667df7ecbe43f6.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="C1own的个人博客"><span class="site-name">C1own的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-02-25T11:35:59.000Z" title="Created 2024-02-25 19:35:59">2024-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-02-25T11:50:11.892Z" title="Updated 2024-02-25 19:50:11">2024-02-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="宝塔部署-Vue-Spring-Boot-MySQL-Redis-项目保姆级教程"><a href="#宝塔部署-Vue-Spring-Boot-MySQL-Redis-项目保姆级教程" class="headerlink" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程"></a>宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</h1><p>最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！</p>
+<h2 id="服务器安装宝塔"><a href="#服务器安装宝塔" class="headerlink" title="服务器安装宝塔"></a>服务器安装宝塔</h2><p>不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>详情请看这篇博客：<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/NlPXj">http://t.csdnimg.cn/NlPXj</a> 注意安装宝塔面板时，服务器不要部署任何项目，最好是纯净状态。</p>
+<h2 id="部署项目前的宝塔前置配置"><a href="#部署项目前的宝塔前置配置" class="headerlink" title="部署项目前的宝塔前置配置"></a>部署项目前的宝塔前置配置</h2><h3 id="安装tomcat再卸载tomcat"><a href="#安装tomcat再卸载tomcat" class="headerlink" title="安装tomcat再卸载tomcat"></a>安装tomcat再卸载tomcat</h3><p>安装tomcat是为了安装jdk1.8，卸载是因为Spring Boot内置了tomcat，所以它是一个安装jdk的跳板。如果你的项目不是jdk1.8可以点击Java环境管理选择你想要的jdk版本。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/fa9f59a42b9147d9b0db9bb640f1b566.png" alt="img"></p>
+<p> 进入软件商店搜索tomcat，版本选择9.x，直接极速安装。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/6484db674c51487097513d0365205702.png" alt="img"></p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/edf949d6f2614e9d878223623fd2b942.png" alt="img"></p>
+<h3 id="安装和配置MySQL"><a href="#安装和配置MySQL" class="headerlink" title="安装和配置MySQL"></a>安装和配置MySQL</h3><p>还是一样在软件商店搜索MySQL，点击安装。选择你需要的版本，我选的是8.x，再点击极速安装。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/3beec339d7664f65b3f11f2839ef37af.png" alt="img"></p>
+<p> 安装完成后，点击侧边栏中的数据库，再点击添加数据库。选一个数据库名字要和yml文件中连接MySQL数据库的库名一致，用户名和密码也对应yml中的MySQL用户名和密码。访问权限，暂时选择所有人，方便后续使用navicat或者IDEA往线上数据库添加数据，当然后续可以在设置中修改。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/3dfa0ee11b564d64a4c9bebf46929d88.png" alt="img"></p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/b7f7ea38f62e4757b19e6b9ff3acbd04.png" alt="img"></p>
+<p> 想连接服务器上的MySQL把localhost改为服务器IP地址，端口是3306，库名、账号和密码就上面的。（前提访问权限改为所有人，或者只指定你的电脑的IP地址）。这样就可以往线上数据库添加数据了。</p>
+<h3 id="安装和配置Redis"><a href="#安装和配置Redis" class="headerlink" title="安装和配置Redis"></a>安装和配置Redis</h3><p>安装Redis也是一样，在软件商店里面搜索，点击安装。我安装的是6.x版本，因为我自己电脑安装的是5.x版本，安装过高害怕有问题。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/535f14482cb34c8b8eabc892198bf74a.png" alt="img"></p>
+<p>点击设置，再点击性能调整，这里可以设置Redis数据库数量，密码和端口啥的。（建议设个密码，要和yml文件Redis的密码一致。）</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/45a8ce3198eb4444be90d6da9dd95a16.png" alt="img"></p>
+<p>对了如果Redis设置了密码，那么后端RedissonConfig配置类一定要改，改为这样子。多一个password变量和setPassword。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;spring.redis&quot;)</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedissonConfig</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String host;</span><br><span class="line">    <span class="keyword">private</span> String port;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedissonClient <span class="title function_">redissonClient</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">// 1. 创建配置</span></span><br><span class="line">        <span class="type">Config</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Config</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisAddress</span> <span class="operator">=</span> String.format(<span class="string">&quot;redis://%s:%s&quot;</span>, host, port);</span><br><span class="line">        config.useSingleServer().setAddress(redisAddress).setDatabase(<span class="number">3</span>).setPassword(password);<span class="comment">//设置单个服务器，设置地址，选择数据库</span></span><br><span class="line">        <span class="comment">// 2. 创建实例</span></span><br><span class="line">        <span class="type">RedissonClient</span> <span class="variable">redisson</span> <span class="operator">=</span> Redisson.create(config);</span><br><span class="line">        <span class="keyword">return</span> redisson;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>在软件商店里面搜索并安装nginx</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/0658f9fa4f7f4bdebfb72bb11d88fd48.png" alt="img"></p>
+<p> 对了为了防止项目部署后登录出现nginx 404的问题，我们可以在nginx的配置文件中，添加以下配置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">try_files $uri $uri/ <span class="meta">@router</span>;#需要指向下面的<span class="meta">@router</span>否则会出现vue的路由在</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">location <span class="meta">@router</span> &#123;</span><br><span class="line">  rewrite ^.*$ /index.html last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/af4c2d415fd441feafc1e45f958a33ad.png" alt="img"></p>
+<h3 id="安装Java项目一键部署"><a href="#安装Java项目一键部署" class="headerlink" title="安装Java项目一键部署"></a>安装Java项目一键部署</h3><p>在软件商店里面搜索并安装Java项目一键部署</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/f9595bdcf32d4a4384544fdae614f927.png" alt="img"></p>
+<h3 id="在服务器和宝塔面板中放行对应端口"><a href="#在服务器和宝塔面板中放行对应端口" class="headerlink" title="在服务器和宝塔面板中放行对应端口"></a>在服务器和宝塔面板中放行对应端口</h3><p> 最后，在服务器中添加安全组，放行对应的端口。（6379：Redis端口，3306：MySQL，80：前端，8080：后端，21528：宝塔面板端口）</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/6f3082edc42a4aa39c946a71be3da9f3.png" alt="img"></p>
+<p>宝塔亦是如此点击侧边栏的安全，再点击添加端口规则就可以放行了。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/445c48fc42294d0c828a2dcfad15058e.png" alt="img"></p>
+<h3 id="后端配置跨域"><a href="#后端配置跨域" class="headerlink" title="后端配置跨域"></a>后端配置跨域</h3><p>如果前端和后端的协议、域名和端口有一个不同就会涉及跨域问题，所以我们可以在前端或者后端配置跨域策略，以防止请求跨域。本次，我们在后端配置跨域，在config目录下添加跨域配置类就好了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CorsConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">//是否发送Cookie</span></span><br><span class="line">                .allowCredentials(<span class="literal">true</span>)</span><br><span class="line">                <span class="comment">//放行哪些原始域</span></span><br><span class="line">                .allowedOriginPatterns(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                .allowedMethods(<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;DELETE&quot;</span>&#125;)</span><br><span class="line">                .allowedHeaders(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                .exposedHeaders(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>到这里部署项目的前置配置就结束了。接下来，就正式开始打包前端和后端项目了，并将打包文件上传到宝塔面板中，它会帮我们把文件部署在服务器中。</p>
+<h2 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h2><h3 id="配置生产和开发环境"><a href="#配置生产和开发环境" class="headerlink" title="配置生产和开发环境"></a>配置生产和开发环境</h3><p>在项目打包之前，先配置myAxios.ts文件（这个文件就是你自定义axios的文件，并且在里面区分开发环境和生产环境）的线上环境和生产环境。（注意生产环境的url后面要加上后端端口号，但有时又不要加，视情况而定。）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;development&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myAxios = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: isDev ? <span class="string">&#x27;http://localhost:8080/api&#x27;</span> : <span class="string">&#x27;http://你的服务器IP地址或者域名/api&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">myAxios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>; <span class="comment">//设置为true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a request interceptor</span></span><br><span class="line">myAxios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我要发请求啦&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myAxios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我收到你的响应啦&#x27;</span>)</span><br><span class="line">    <span class="comment">// 未登录则跳转登录页</span></span><br><span class="line">    <span class="keyword">if</span> (response?.<span class="property">data</span>?.<span class="property">code</span> === <span class="number">40100</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> redirectUrl = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">`/user/login?=redirect=<span class="subst">$&#123;redirectUrl&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="property">data</span>;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> myAxios;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="前端项目打包"><a href="#前端项目打包" class="headerlink" title="前端项目打包"></a>前端项目打包</h3><p>在宝塔部署前端项目之前，先将前端项目打包好。在package.json文件中执行buid命令。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/da1e55e75c204a99acb1c01403d6e226.png" alt="img"></p>
+<p>打包后会多出一个dist目录，点击右键打开于终端，在终端中执行serve命令，判断打包好的项目是否能够运行成功。（注意一定要切换至dist目录下执行serve命令，不然点击链接显示不出来项目）</p>
+<p> <img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/60d3700594484f79b9bc4fa60a320299.png" alt="img"></p>
+<p> <img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/385421e706964a3d95e6fb8511792c8b.png" alt="img"></p>
+<p> 点击Local后面的地址，看看项目打包是否有问题。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/70249fb554d14449a392b3b20fc31423.png" alt="img"></p>
+<p> 如果是这样子的话就没啥问题。（我这个显示了当前登录用户“ikun”，是因为我已经上线了，你们是不会显示的）</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/198d6d254bb247ac9747431ea9b239c4.png" alt="img"></p>
+<h3 id="前端打包后的项目拖到宝塔"><a href="#前端打包后的项目拖到宝塔" class="headerlink" title="前端打包后的项目拖到宝塔"></a>前端打包后的项目拖到宝塔</h3><p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/d49e420c90234806bac68230a2ca616f.png" alt="img"></p>
+<p>连接Linux宝塔面板后点击PHP项目，点击添加站点。域名最好就填你的服务器IP地址，或者你自己想一个域名（前提域名是你买的，不是随便起的）吧。随后直接提交。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/623a7dcb6aaf400597d0bb84cd57519b.png" alt="img"></p>
+<p>接着点击根目录下面的绿色链接。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/8eb6e476deb54c7c8d8bdcfddd9b7dfc.png" alt="img"></p>
+<p>把打包后的dist目录下的东西全部拖进去。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/2c463295462141aaad84995e9f1de6be.png" alt="img"></p>
+<p>至此前端部署已经结束，开始后端部署。</p>
+<h2 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h2><h3 id="配置生产和开发环境-1"><a href="#配置生产和开发环境-1" class="headerlink" title="配置生产和开发环境"></a>配置生产和开发环境</h3><p>在后端打成jar包之前，先把后端的application-prod.yml文件给配置好。这里直接放我的哪个文件了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring</span>:</span><br><span class="line">  <span class="attr">mvc</span>:</span><br><span class="line">    <span class="attr">pathmatch</span>:</span><br><span class="line">      matching-<span class="attr">strategy</span>: ant_path_matcher</span><br><span class="line">  <span class="attr">application</span>:</span><br><span class="line">    <span class="attr">name</span>: homieMatching</span><br><span class="line">  <span class="attr">datasource</span>:</span><br><span class="line">    driver-<span class="keyword">class</span>-<span class="attr">name</span>: com.<span class="property">mysql</span>.<span class="property">cj</span>.<span class="property">jdbc</span>.<span class="property">Driver</span></span><br><span class="line">    <span class="attr">url</span>: <span class="attr">jdbc</span>:<span class="attr">mysql</span>:<span class="comment">//服务器IP地址:3306/MySQL库名?characterEncoding=UTF-8</span></span><br><span class="line">    <span class="attr">username</span>: 服务器<span class="title class_">MySQL</span>账号</span><br><span class="line">    <span class="attr">password</span>: 服务器<span class="title class_">MySQL</span>密码</span><br><span class="line">  <span class="attr">session</span>:</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">86400</span></span><br><span class="line">    store-<span class="attr">type</span>: redis</span><br><span class="line">  <span class="attr">redis</span>:</span><br><span class="line">    <span class="attr">port</span>: <span class="number">6379</span></span><br><span class="line">    <span class="attr">host</span>: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="attr">database</span>: <span class="number">0</span></span><br><span class="line">    <span class="attr">password</span>: 服务器redis密码</span><br><span class="line"><span class="attr">server</span>:</span><br><span class="line">  <span class="attr">port</span>: <span class="number">8080</span></span><br><span class="line">  <span class="attr">servlet</span>:</span><br><span class="line">    context-<span class="attr">path</span>: /api</span><br><span class="line">    <span class="attr">session</span>:</span><br><span class="line">      <span class="attr">cookie</span>:</span><br><span class="line">        <span class="attr">domain</span>: 服务器<span class="variable constant_">IP</span>地址或者域名（其实就是前端添加站点时的网站名，我这里还是建议全部设为服务器<span class="variable constant_">IP</span>地址吧，但注意别把<span class="variable constant_">IP</span>地址告诉任何人）</span><br><span class="line">        same-<span class="attr">site</span>: lax</span><br><span class="line">        <span class="attr">secure</span>: <span class="literal">false</span></span><br><span class="line">mybatis-<span class="attr">plus</span>:</span><br><span class="line">  <span class="attr">configuration</span>:</span><br><span class="line">    map-underscore-to-camel-<span class="attr">case</span>: <span class="literal">false</span></span><br><span class="line">    log-<span class="attr">impl</span>: org.<span class="property">apache</span>.<span class="property">ibatis</span>.<span class="property">logging</span>.<span class="property">stdout</span>.<span class="property">StdOutImpl</span></span><br><span class="line">  <span class="variable language_">global</span>-<span class="attr">config</span>:</span><br><span class="line">    db-<span class="attr">config</span>:</span><br><span class="line">      logic-<span class="keyword">delete</span>-<span class="attr">field</span>: isDelete</span><br><span class="line">      logic-<span class="keyword">delete</span>-<span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">      logic-not-<span class="keyword">delete</span>-<span class="attr">value</span>: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="后端项目打包"><a href="#后端项目打包" class="headerlink" title="后端项目打包"></a>后端项目打包</h3><p>点击Maven，点击禁止标志（这是为了跳过Test测试用例的打包，如果某些Test类有问题就会打包失败），再点击package准备打包，等待打包完成。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/3bf8f13802b7464a8d17b065eae77265.png" alt="img"></p>
+<p> 打包完成之后，target目录下就会出现一个homieMatching-0.0.1-SNAPSHOT.jar文件，这个就是后端打包后的jar包。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/d52d21efbf2f4946a5e212ef471bfc5f.png" alt="img"></p>
+<h3 id="后端项目拖到宝塔"><a href="#后端项目拖到宝塔" class="headerlink" title="后端项目拖到宝塔"></a>后端项目拖到宝塔</h3><p>点击侧边栏中的文件在&#x2F;www&#x2F;wwwroot目录下新建一个文件，将打包后的jar放进新建的目录下。我新建的目录名是homieMatching-backend。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/6d6c103fb9b343668de4f1c509e2bcf0.png" alt="img"></p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/875f6a332dd44512819f1e8b521714a2.png" alt="img"></p>
+<p> 随后进入你新建的目录下面，把后端打包好的jar包拖进去。此时复制一下路径名，为后面做准备。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/7d727c7793a742b1bb239dfa81114618.png" alt="img"></p>
+<p>复制路径名。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/0b73fdac10c84c2d942781bf08ab8430.png" alt="img"></p>
+<p> 随后点击侧边栏的网站，再点击Java项目，再点击添加Java项目。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/b10180e5aeea4c14b945de48a2b8d437.png" alt="img"></p>
+<p> 点击项目jar路径后的文件夹标志，选择刚才拖进目录的jar包。项目端后就是yml文件中的port，即你后端的端口，同时勾选放行该端口。如果你是8081你就放行8081端口，同时项目执行命令中的–server.port的端口也要修改，得与上面项目端口一致。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/0b29d03335b74d5aafee3f0f89dd1dd1.png" alt="img"></p>
+<p>点击保存项目配置，Spring Boot项目就会开始运行了。（如果项目启动失败，请看看左侧边栏的项目日志，看看项目启动时抛了什么异常或者有什么问题，随后逐一排查）</p>
+<p>这时候你就可以输入网站名，看看项目前后端联调存不存在问题了。</p>
+<p><img src="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/db5de77a22414f249401029b7a0c9ea6.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://example.com">C1own</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://example.com/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">https://example.com/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/97b97ee1173042d5ba667df7ecbe43f6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/25/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ一死信队列介绍和应用"><img class="cover" src="/img/97b97ee1173042d5ba667df7ecbe43f6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">RabbitMQ一死信队列介绍和应用</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/25/homie%E5%8C%B9%E9%85%8DAxios-AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截"><img class="cover" src="/img/97b97ee1173042d5ba667df7ecbe43f6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">homie匹配Axios+AOP实现全局登录拦截</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/iu.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">C1own</div><div class="author-info__description">我的博客系统，记录我的笔记和项目</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dnwwdwd?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dnwwdwd?tab=repositories" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="/1765393959@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">你好呀！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2-Vue-Spring-Boot-MySQL-Redis-%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94"><span class="toc-number">1.1.</span> <span class="toc-text">服务器安装宝塔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%89%8D%E7%9A%84%E5%AE%9D%E5%A1%94%E5%89%8D%E7%BD%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">部署项目前的宝塔前置配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85tomcat%E5%86%8D%E5%8D%B8%E8%BD%BDtomcat"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装tomcat再卸载tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEMySQL"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装和配置MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AERedis"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装和配置Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-number">1.2.4.</span> <span class="toc-text">安装nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Java%E9%A1%B9%E7%9B%AE%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.5.</span> <span class="toc-text">安装Java项目一键部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E4%B8%AD%E6%94%BE%E8%A1%8C%E5%AF%B9%E5%BA%94%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.2.6.</span> <span class="toc-text">在服务器和宝塔面板中放行对应端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE%E8%B7%A8%E5%9F%9F"><span class="toc-number">1.2.7.</span> <span class="toc-text">后端配置跨域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="toc-number">1.3.</span> <span class="toc-text">前端部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%9F%E4%BA%A7%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.1.</span> <span class="toc-text">配置生产和开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">1.3.2.</span> <span class="toc-text">前端项目打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%8B%96%E5%88%B0%E5%AE%9D%E5%A1%94"><span class="toc-number">1.3.3.</span> <span class="toc-text">前端打包后的项目拖到宝塔</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="toc-number">1.4.</span> <span class="toc-text">后端部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%9F%E4%BA%A7%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">配置生产和开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">后端项目打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%8B%96%E5%88%B0%E5%AE%9D%E5%A1%94"><span class="toc-number">1.4.3.</span> <span class="toc-text">后端项目拖到宝塔</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ一死信队列介绍和应用">RabbitMQ一死信队列介绍和应用</a><time datetime="2024-02-25T11:55:58.000Z" title="Created 2024-02-25 19:55:58">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/Redis%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</a><time datetime="2024-02-25T11:35:59.000Z" title="Created 2024-02-25 19:35:59">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8DAxios-AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截">homie匹配Axios+AOP实现全局登录拦截</a><time datetime="2024-02-25T11:31:17.000Z" title="Created 2024-02-25 19:31:17">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="四种限流算法详细介绍及Java代码实现">四种限流算法详细介绍及Java代码实现</a><time datetime="2024-02-25T11:27:51.000Z" title="Created 2024-02-25 19:27:51">2024-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/25/homie%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5Redis-GEO%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie匹配引入Redis GEO实现搜索附近用户">homie匹配引入Redis GEO实现搜索附近用户</a><time datetime="2024-02-25T11:18:54.000Z" title="Created 2024-02-25 19:18:54">2024-02-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024-1-2 - 2024 By C1own</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
