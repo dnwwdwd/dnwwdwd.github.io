@@ -3343,7 +3343,7 @@ h1.page-title + .tag-cloud-list {
   content: '';
 }
 #page-header.full_page {
-  height: 400px;
+  height: 300px;
   background-attachment: fixed;
 }
 #page-header.full_page #site-info {
@@ -4777,6 +4777,12 @@ h1.page-title + .tag-cloud-list {
 }
 #waline-wrap .wl-comment-actions > button:not(last-child) {
   padding-right: 4px;
+}
+#vcomment textarea {
+  background: url("/img/c53c811f880411ebb6edd017c2d2eca2.jpg") 100% 100% no-repeat;
+}
+#vcomment textarea:focus {
+  background-image: none;
 }
 .fireworks {
   position: fixed;
