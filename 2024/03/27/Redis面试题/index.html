@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Redis面试题 | C1own的个人博客</title><meta name="author" content="C1own"><meta name="copyright" content="C1own"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Redis 面试题基础什么是 Redis？Redis 一款基于内存的 k&#x2F;v （键值对）的非关系型数据库（nosql）。 Redis 能干什么？ 缓存 计数器 排行榜 消息队列 限流器 分布式锁 社交网络（点赞、关注、共同关注列表、推送、下拉刷新）  Redis 有哪些数据结构？ 字符串（String）：缓存功能、计数、共享 Session、限速 哈希（Hash）：缓存用户信息、对象 列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis面试题">
+<meta property="og:url" content="https://blog.hejiajun.icu/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="C1own的个人博客">
+<meta property="og:description" content="Redis 面试题基础什么是 Redis？Redis 一款基于内存的 k&#x2F;v （键值对）的非关系型数据库（nosql）。 Redis 能干什么？ 缓存 计数器 排行榜 消息队列 限流器 分布式锁 社交网络（点赞、关注、共同关注列表、推送、下拉刷新）  Redis 有哪些数据结构？ 字符串（String）：缓存功能、计数、共享 Session、限速 哈希（Hash）：缓存用户信息、对象 列">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.hejiajun.icu/img/c53c811f880411ebb6edd017c2d2eca2.jpg">
+<meta property="article:published_time" content="2024-03-27T14:07:39.000Z">
+<meta property="article:modified_time" content="2024-03-27T14:45:22.418Z">
+<meta property="article:author" content="C1own">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.hejiajun.icu/img/c53c811f880411ebb6edd017c2d2eca2.jpg"><link rel="shortcut icon" href="/img/blog.png"><link rel="canonical" href="https://blog.hejiajun.icu/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis面试题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-27 22:45:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/iu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/c53c811f880411ebb6edd017c2d2eca2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="C1own的个人博客"><span class="site-name">C1own的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-03-27T14:07:39.000Z" title="Created 2024-03-27 22:07:39">2024-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-03-27T14:45:22.418Z" title="Updated 2024-03-27 22:45:22">2024-03-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/" data-flag-title="Redis面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Redis-面试题"><a href="#Redis-面试题" class="headerlink" title="Redis 面试题"></a>Redis 面试题</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="什么是-Redis？"><a href="#什么是-Redis？" class="headerlink" title="什么是 Redis？"></a>什么是 Redis？</h3><p>Redis 一款基于内存的 k&#x2F;v （键值对）的非关系型数据库（nosql）。</p>
+<h3 id="Redis-能干什么？"><a href="#Redis-能干什么？" class="headerlink" title="Redis 能干什么？"></a>Redis 能干什么？</h3><ol>
+<li>缓存</li>
+<li>计数器</li>
+<li>排行榜</li>
+<li>消息队列</li>
+<li>限流器</li>
+<li>分布式锁</li>
+<li>社交网络（点赞、关注、共同关注列表、推送、下拉刷新）</li>
+</ol>
+<h3 id="Redis-有哪些数据结构？"><a href="#Redis-有哪些数据结构？" class="headerlink" title="Redis 有哪些数据结构？"></a>Redis 有哪些数据结构？</h3><ol>
+<li>字符串（String）：缓存功能、计数、共享 Session、限速</li>
+<li>哈希（Hash）：缓存用户信息、对象</li>
+<li>列表（List）：消息队列、文章列表</li>
+<li>集合（Set）：标签、共同关注</li>
+<li>有序集合（ZSet）：排行榜</li>
+<li>HyperLogLog（基数统计）</li>
+<li>BitMap：签到</li>
+<li>GEO：地理位置信息</li>
+</ol>
+<h3 id="Redis-为什么快？"><a href="#Redis-为什么快？" class="headerlink" title="Redis 为什么快？"></a>Redis 为什么快？</h3><ol>
+<li>基于内存，内存的读取速度是磁盘的上千倍，这是 Redis 读写速度快的根本原因</li>
+<li>单线程模型：Redis 的命令执行是单线程的，因此在任何时候只有一个命令在执行，避免线程的切换和锁竞争带来的消耗</li>
+<li>IO 多路复用：一个线程可以同时监听多个 IO 操作，当有 IO 事件发生时，会通知线程并处理这个事件，从而实现同时处理多个 IO 操作的能力</li>
+<li>高效的数据结构：如 String、List、Set、ZSet 等结构经过高度优化，能够支持快速的数据操作</li>
+</ol>
+<h3 id="什么是-IO-多路复用？"><a href="#什么是-IO-多路复用？" class="headerlink" title="什么是 IO 多路复用？"></a>什么是 IO 多路复用？</h3><blockquote>
+<ul>
+<li>第一种选择：按顺序逐个检查，先检查 A，然后是 B，之后是 C、D。。。这中间如果有一个学生卡住，全班都会被耽误。这种模式就好比，你用循环挨个处理 socket，根本不具有并发能力。</li>
+<li>第二种选择：你创建 30 个分身，每个分身检查一个学生的答案是否正确。 这种类似于为每一个用户创建一个进程或者- 线程处理连接。</li>
+<li>第三种选择，你站在讲台上等，谁解答完谁举手。这时 C、D 举手，表示他们解答问题完毕，你下去依次检查 C、D 的答案，然后继续回到讲台上等。此时 E、A 又举手，然后去处理 E 和 A。</li>
+</ul>
+</blockquote>
+<ul>
+<li>在传统的阻塞 IO 模型中，每个 IO 操作都会阻塞当前线程，直到 IO 操作完成</li>
+<li>但是在 IO 多路复用模型中，通过一个线程同时监听多个 IO 操作，当有 IO 事件发生时会通知这个线程并去处理这个事件，从而实现同时处理多个 IO 操作的能力</li>
+<li>Linux 实现 IO 多路复用的三种方式：select、poll 和 epoll。例如 epoll 方式是将用户 socket 对应的 fd 注册进 epoll，通过 epoll 监听哪些 socket 上有消息到达。此时的 socket 应该采用非阻塞模型</li>
+</ul>
+<h3 id="Redis-6-0-的多线程是怎么回事？"><a href="#Redis-6-0-的多线程是怎么回事？" class="headerlink" title="Redis 6.0 的多线程是怎么回事？"></a>Redis 6.0 的多线程是怎么回事？</h3><p>Redis 6.0 的多线程用于处理数据的读写和协议的解析，而 Redis 命令的执行依旧是单线程。Redis 的性能瓶颈在于网络 IO 和内存大小而不是 CPU。</p>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="Redis-有哪些持久化方式？"><a href="#Redis-有哪些持久化方式？" class="headerlink" title="Redis 有哪些持久化方式？"></a>Redis 有哪些持久化方式？</h3><h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><p>RDB 持久化通过创建数据的数据集（快照）来工作，在指定的时间间隔内将 Redis 某一时刻的数据状态保存到磁盘的一个 RDB 文件中。</p>
+<ul>
+<li><p>可以通过 save（同步执行） 命令和 bgsave（异步执行） 命令手动触发 RDB 持久化操作。</p>
+</li>
+<li><p>以下场景会自动触发 RDB 持久化：</p>
+<ol>
+<li><p>在 redis.conf 文件中通过<code>save &lt;seconds&gt; &lt;changes&gt;</code>指令配置自动触发 RDB 持久化的条件</p>
+<blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure>
+
+<p>如果至少有 1 个键被修改，900 秒后自动触发一次 RDB 持久化。</p>
+<p>如果至少有 10 个键被修改，300 秒后自动触发一次 RDB 持久化。</p>
+<p>如果至少有 10000 个键被修改，60 秒后自动触发一次 RDB 持久化。</p>
+</blockquote>
+</li>
+<li><p>Redis 服务器没有禁用 RDB 持久化并通过 SHUTDOWN 命令正常关闭服务器，Redis 会自动执行一次 RDB 持久化</p>
+</li>
+<li><p>在 Redis 复制场景中，当一个 Redis 实例被配置为从节点并且与主节点建立连接时，它可能会根据配置接收主节点的 RDB 文件来初始化数据集。这个过程中，主节点会在后台自动触发 RDB 持久化，然后将生成的 RDB 文件发送给从节点。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>AOF 持久化通过记录 Redis 的写命令并将其追加到 AOF 文件中来工作，在要进行数据恢复时只需重新执行一遍这些命令就行。（主流的 Redis 持久化方式）</p>
+<p><strong>AOF 执行流程：</strong></p>
+<p>流程如下：</p>
+<p>1）当 AOF 持久化功能被启用时，Redis 服务器会将接收到的所有写命令（比如 SET, LPUSH, SADD 等修改数据的命令）追加到 AOF 缓冲区（buffer）的末尾。</p>
+<p>2）为了将缓冲区中的命令持久化到磁盘中的 AOF 文件，Redis 提供了几种不同的同步策略：</p>
+<ul>
+<li>always：每次写命令都会同步到 AOF 文件，这提供了最高的数据安全性，但可能因为磁盘 I&#x2F;O 的延迟而影响性能。</li>
+<li>everysec（默认）：每秒同步一次，这是一种折衷方案，提供了较好的性能和数据安全性。</li>
+<li>no：不主动进行同步，交由操作系统决定何时将缓冲区数据写入磁盘，这种方式性能最好，但在系统崩溃时可能会丢失最近一秒的数据。</li>
+</ul>
+<p>3）随着操作的不断执行，AOF 文件会不断增长，为了减小 AOF 文件大小，Redis 可以重写 AOF 文件：</p>
+<ul>
+<li>重写过程不会解析原始的 AOF 文件，而是将当前内存中的数据库状态转换为一系列写命令，然后保存到一个新的 AOF 文件中。</li>
+<li>AOF 重写操作由 BGREWRITEAOF 命令触发，它会创建一个子进程来执行重写操作，因此不会阻塞主进程。</li>
+<li>重写过程中，新的写命令会继续追加到旧的 AOF 文件中，同时也会被记录到一个缓冲区中。一旦重写完成，Redis 会将这个缓冲区中的命令追加到新的 AOF 文件中，然后切换到新的 AOF 文件上，以确保数据的完整性。</li>
+</ul>
+<p>4）当 Redis 服务器启动时，如果配置为使用 AOF 持久化方式，它会读取 AOF 文件中的所有命令并重新执行它们，以恢复数据库的状态。</p>
+<h3 id="RDB-和-AOF-的优缺点？"><a href="#RDB-和-AOF-的优缺点？" class="headerlink" title="RDB 和 AOF 的优缺点？"></a>RDB 和 AOF 的优缺点？</h3><h4 id="RDB-优点"><a href="#RDB-优点" class="headerlink" title="RDB 优点"></a>RDB 优点</h4><ol>
+<li>只有一个紧凑的二进制文件（<code>dump.rdb</code>），非常适合备份和全量复制</li>
+<li>容灾性好，可把 RDB 文件拷贝至远程机器或者文件系统中，用于容灾恢复</li>
+<li>恢复速度快，回复速度远快于 AOF</li>
+</ol>
+<h4 id="RDB-缺点"><a href="#RDB-缺点" class="headerlink" title="RDB 缺点"></a>RDB 缺点</h4><ol>
+<li>实时性低，由于 RDB 是一个段时间进行数据持久化，无法做到实时持久化</li>
+<li>存在兼容性问题：Redis 演进过程中存在多个格式的 RDB 版本，存在新老不兼容问题</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://blog.hejiajun.icu">C1own</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://blog.hejiajun.icu/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/">https://blog.hejiajun.icu/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Redis/">Redis</a></div><div class="post_share"><div class="social-share" data-image="/img/c53c811f880411ebb6edd017c2d2eca2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/04/Docker%E7%AC%94%E8%AE%B0/" title="Docker笔记"><img class="cover" src="/img/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">Docker笔记</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/iu.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">C1own</div><div class="author-info__description">我的博客系统，记录我的笔记和项目</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dnwwdwd?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dnwwdwd?tab=repositories" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="/1765393959@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">你好呀！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">Redis 面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Redis%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是 Redis？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">Redis 能干什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">Redis 有哪些数据结构？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB%EF%BC%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">Redis 为什么快？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-IO-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%EF%BC%9F"><span class="toc-number">1.1.5.</span> <span class="toc-text">什么是 IO 多路复用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-6-0-%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%98%AF%E6%80%8E%E4%B9%88%E5%9B%9E%E4%BA%8B%EF%BC%9F"><span class="toc-number">1.1.6.</span> <span class="toc-text">Redis 6.0 的多线程是怎么回事？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">Redis 有哪些持久化方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">RDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOF"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">AOF</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">RDB 和 AOF 的优缺点？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB-%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">RDB 优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB-%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">RDB 缺点</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis面试题"><img src="/img/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis面试题"/></a><div class="content"><a class="title" href="/2024/03/27/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis面试题">Redis面试题</a><time datetime="2024-03-27T14:07:39.000Z" title="Created 2024-03-27 22:07:39">2024-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/04/Docker%E7%AC%94%E8%AE%B0/" title="Docker笔记"><img src="/img/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker笔记"/></a><div class="content"><a class="title" href="/2024/03/04/Docker%E7%AC%94%E8%AE%B0/" title="Docker笔记">Docker笔记</a><time datetime="2024-03-04T09:51:35.000Z" title="Created 2024-03-04 17:51:35">2024-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/03/RabbitMQb%E7%AC%94%E8%AE%B0/" title="RabbitMQ笔记"><img src="/img/247402b1880511ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ笔记"/></a><div class="content"><a class="title" href="/2024/03/03/RabbitMQb%E7%AC%94%E8%AE%B0/" title="RabbitMQ笔记">RabbitMQ笔记</a><time datetime="2024-03-03T14:38:27.000Z" title="Created 2024-03-03 22:38:27">2024-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/27/Java%E5%9F%BA%E7%A1%80-%E5%85%AB%E8%82%A1%E6%96%87/" title="Java基础-八股文"><img src="/img/a6fec42e882111ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java基础-八股文"/></a><div class="content"><a class="title" href="/2024/02/27/Java%E5%9F%BA%E7%A1%80-%E5%85%AB%E8%82%A1%E6%96%87/" title="Java基础-八股文">Java基础-八股文</a><time datetime="2024-02-27T02:44:08.000Z" title="Created 2024-02-27 10:44:08">2024-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/27/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" title="算法笔记"><img src="/img/247402b1880511ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法笔记"/></a><div class="content"><a class="title" href="/2024/02/27/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" title="算法笔记">算法笔记</a><time datetime="2024-02-27T01:58:12.000Z" title="Created 2024-02-27 09:58:12">2024-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024-1-2 - 2024 By C1own</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'robohash',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
