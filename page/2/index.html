@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="热爱生活，热爱编程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="雪荷的博客">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="热爱生活，热爱编程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/ava.png">
+<meta property="article:author" content="雪荷">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/ava.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '雪荷的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-12-13 21:49:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">雪荷的博客</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/RabbitMQ-%E5%85%AB%E8%82%A1%E6%96%87/" title="RabbitMQ 八股文"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ 八股文"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/RabbitMQ-%E5%85%AB%E8%82%A1%E6%96%87/" title="RabbitMQ 八股文">RabbitMQ 八股文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:11:35.000Z" title="发表于 2024-07-07 11:11:35">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="content">什么是 RabbitMQ？其有什么特点？RabbitMQ 是一款开源的消息中间件，由 Erlang 语言开发，天生就适合分布式场景并能在分布式应用中传递消息。RabbitMQ 的显著特点如下：
+
+消息传递模式：RabbitMQ 支持多种消息传递模式，如发布/订阅、点对点和工作队列等，使其更灵活适用于各种消息通信场景。
+消息路由和交换机：RabbitMQ 引入交换机的概念，允许将消息根据内容、路由键等路由到一个或多个队列。
+消息确认机制：RabbitMQ 支持消息确认机制，消费者可确认已成功处理的消息，确保消息在传递后不会被重复消费。
+可扩展性：RabbitMQ 可通过添加节点和集群增加吞吐量和可用性。
+多种编程语言支持：RabbitMQ 支持多种客户端库和插件，支持多种编程语言，如 Java、Python、Ruby、Node.js 等。
+消息持久化：RabbitMQ 支持消息和队列持久化，确保消息在 RabbitMQ 重启后不会丢失。
+灵活的插件系统：RabbitMQ 具有丰富的插件系统以便可以拓展功能，包括管理插件、数据复制插件、分布式部署插件等。
+出色的 WEB 管理界面 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5-GEO-%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie 匹配引入 GEO 实现搜索附近用户"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="homie 匹配引入 GEO 实现搜索附近用户"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5-GEO-%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie 匹配引入 GEO 实现搜索附近用户">homie 匹配引入 GEO 实现搜索附近用户</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:09:56.000Z" title="发表于 2024-07-07 11:09:56">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">前言鱼皮哥在直播中提出可以通过Redis GEO实现编辑距离和搜索附近用户功能，也算是是一个拓展点。这个项目我做完有一个多月了，最近在做其拓展功能顺便也把这个功能实现一波，整体的实现并不困难，学完 Redis 再看会更轻松（未学过也没事）。话不多说直接开始撸代码吧。
+设计思路和流程
+在 User（用户）表中添加两个字段 longitude（经度）和 dimension（维度），用以存储用户的经纬度坐标。因为Redis GEO 通过每个用户的经纬度坐标计算用户间的距离，同时其 Redis 数据类型为ZSET，ZSET 是一个有序的 List 类似 Java 的 SortedSet。在此场景 value 就是用户id，score 是经纬度信息（ ZSET 根据 score值升序排序）。
+
+
+1234567891011121314151617181920212223create table hjj.user(    username     varchar(256)                       null comment '用户昵称',    id      ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="homie 匹配项目笔记"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="homie 匹配项目笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="homie 匹配项目笔记">homie 匹配项目笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:06:53.000Z" title="发表于 2024-07-07 11:06:53">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">homie 匹配系统笔记前端项目初始化
+使用vite初始化项目，根据你的需求选择相应地选项
+
+1npm create vite
+
+
+安装依赖
+
+1npm install
+
+
+按需整合vant组件库 
+
+
+1npm i vite-plugin-style-import@1.4.1 -D
+
+
+关闭vite语法检查（前提使用build启动项目），在package.json文件中，将原始的build改为build”: “vite build” 
+添加axios库
+
+123npm install axios或者yarn add axios
+
+
+引入vue-router组件，使用yarn add vue-router@4，如果报错请先删除node_modules和yarn.lock文件，再去执行命令
+
+1yarn add vue-router@4
+
+
+main.ts: 
+123456789101112131415161718192021222324252627282930313233import { createApp } from 'vue'import  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/%E8%81%9A%E5%90%88%E6%90%9C%E6%90%9C%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="聚合搜搜项目笔记"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="聚合搜搜项目笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/%E8%81%9A%E5%90%88%E6%90%9C%E6%90%9C%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="聚合搜搜项目笔记">聚合搜搜项目笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:05:52.000Z" title="发表于 2024-07-07 11:05:52">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">聚合搜索平台项目笔记项目介绍一个聚合搜索平台，可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容用户：提升用户的检索效率、提升用户体验。企业：无需针对每一个项目都去开发一个搜索功能，当你有新的内容、新的网站时，可以复用同一套搜索系统，提升开发效率
+技术栈前端
+Vue
+Ant Design Vue
+Lodash
+
+后端
+Spring Boot
+
+MySQL
+
+ElasticSearch（Elastic Stack）搜索引擎
+
+数据抓取
+
+数据同步
+
+4种
+
+logstash
+
+Canal
+
+Guava Retrying
+
+怎么保证API稳定性
+
+
+业务流程
+先得到各种不同分类的数据
+提供一个搜索页面（单一搜索 + 聚合搜索），支持搜索
+（可以做一些优化，比如关键词高亮，防抖节流）
+
+直播安排第一期
+前端、后端项目初始化
+前端搜索页面开发完成
+后端基本搜索接口开发完成
+
+第二期
+数据抓取
+聚合搜索接口的开发
+Elasticsearch 搭建及入门
+
+第三期
+Elasticsearch的使用（建表、读写数据、调 API、和 Java 整合）
+数据同步（四种同步方式）
+
+第 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%E7%81%B5%E7%8A%80-BI/" title="宝塔部署灵犀 BI"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="宝塔部署灵犀 BI"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%E7%81%B5%E7%8A%80-BI/" title="宝塔部署灵犀 BI">宝塔部署灵犀 BI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:03:33.000Z" title="发表于 2024-07-07 11:03:33">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">安装宝塔、MySQL、Redis、nginx等可以看我之前写的 homie 配的安装步骤：https://www.yuque.com/yuqueyonghujneqfl/mdllyi/oorztzenfglow99q?singleDoc# 
+安装 RabbitMQ和安装 Redis 类似，进入宝塔的软件商店搜索 RabbiMQ，点击管理权限设置 MQ 的用户名和密码，同时 prod.yml 的 RabbitMQ 的用户名和密码和这个是一样的，另外别忘了在服务器和宝塔面板开放15672端口和5672端口
+
+在浏览器访问 服务IP地址:15672 点击Admin的 Tab 栏，点击 Admin，点击 set permission，保证admin 角色有权限
+
+
+注意：在服务器和宝塔面板开放MySQL（3306）、Redis（6379）、nginx（80）、RabbitMQ（15672、5672）等端口
+前端部署修改 app.tsx 文件，添加线上地址
+1234567891011121314151617181920212223242526272829303132333435363738394 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/BI-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="BI 项目笔记"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BI 项目笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/BI-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="BI 项目笔记">BI 项目笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:02:32.000Z" title="发表于 2024-07-07 11:02:32">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">智能BI笔记使用后端万用模板时的注意事项
+更改pom文件的项目名name，包名com.hjj、工件名lingxibi和Spring Boot版本（包名要全局更改）
+检查和更改项目的JDK版本
+更改swagger接口文档的包扫描范围
+更改yml文件的端口，项目名spring.application.name和数据库的信息，如url、username、password
+更改Spring Boot启动类@MapperScan的包扫描路径
+修改banner.txt文件
+
+项目后端初始化注意事项
+使用MyBatisX插件生成代码时，将生成的代码转移到对应的包中（原来包中已存在UserService、User等类根据需求去取舍user表中的字段和User类的变量）
+将自增ID改为IdType.AUTO
+
+12@TableId(value = "id", type = IdType.AUTO)    private Long id;
+
+
+后端启动项目端口冲突问题原因：Windows Hyper-V虚拟化平台占用了端口先使用：netsh interface ipv4 show ex ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/API-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="API 项目笔记"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="API 项目笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/API-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="API 项目笔记">API 项目笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T03:00:25.000Z" title="发表于 2024-07-07 11:00:25">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">API笔记调用接口的几种方式
+HttpClient
+RestTemplate
+第三方库（OKHTTP，hutool）
+
+Hutool：https://loolly_admin.oschina.io/hutool-site/docs/#/
+API签名认证电影院看电影，不可能所有人都可以看电影，只允许有电影票的人看电影。
+本质:
+
+签发签名
+使用签名（校验签名）
+
+为什么需要API签名认证？
+保证安全性，不能随便任何一个人调用
+
+怎么实现？参数1：accessKey：调用的标识userA，userB（复杂、无序、无规律）
+参数2：secretKey：密钥（复杂、无序、无规律 【该参数不放在请求头中】）
+（类似用户名和密码，区别：ak、sk是无状态）
+千万不能把密钥直接放在服务端或者服务器之间传递，有可能会被拦截
+加密方式：对称加密、非对称加密、md5加密（不可解密）
+参数3：用户参数 + 密钥 + =&gt; 签名生成算法（MD5，HMac、Sha1） =&gt; 不可解密的值
+参数4：sign
+abc + abcdefg =&gt; dnjwkdhnwji
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/" title="高频面试题"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高频面试题"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/" title="高频面试题">高频面试题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T02:58:20.000Z" title="发表于 2024-07-07 10:58:20">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="content">spring bean 的生命周期spring bean 的生命周期主要有5个过程。
+
+实例化：Spring IOC 容器根据 bean 定义或 xml 文件创建 bean 实例，可以通过构造方法或者工厂方法实例化 bean。
+属性赋值：spring ioc 容器将配置的属性值或者依赖注入到 bean 实例中，这个阶段也称为依赖注入。
+初始化：在此阶段，bean 可以执行一些初始化操作，比如调用自定义的初始化方法。可以通过配置 init-method 属性或者实现 InitializingBean 接口来定义初始化方法。
+使用：bean 被应用程序使用，执行业务逻辑
+销毁：当容器关闭时，或者根据配置销毁 Bean 实例时，容器会调用 Bean 的销毁方法。可以通过配置 destroy-method 属性或者实现 DisposableBean 接口来定义销毁方法。
+
+Spring IOC 的实现原理spring ioc 的实现原理依靠两个核心概念：BeanFactory 和 ApplicationContext。
+
+BeanFactory：BeanFactory 是 Spring 框架的 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/07/%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%8A%A0%E8%BD%BD/" title="引入第三方组件实现滑动加载"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="引入第三方组件实现滑动加载"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/07/%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%8A%A0%E8%BD%BD/" title="引入第三方组件实现滑动加载">引入第三方组件实现滑动加载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-07T02:54:57.000Z" title="发表于 2024-07-07 10:54:57">2024-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">项目背景在我的开源项目 homie 匹配（http://hm.hejiajun.icu/）的首页中就是利用的 vue-infinite-loading 组件实现的滑动加载，整体的引入和使用还是比较简单的，下面由我带大家快速上手吧。
+
+快速上手官网：Configure Load Messages | Vue-infinite-loading
+1.安装依赖：
+1npm install v3-infinite-loading
+
+2.在 main.ts 或者要用到的文件中全局引入，我是在用到的
+1import InfiniteLoading from "v3-infinite-loading";
+
+3.引入组件：
+123&lt;div style="display: flex; justify-content: center;"&gt;  &lt;infinite-loading :identifier="infiniteId" @infinite="loadMore" v-if="!isMatchMod ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/06/React-%E7%AC%94%E8%AE%B0/" title="React 笔记"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/06/React-%E7%AC%94%E8%AE%B0/" title="React 笔记">React 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-06T06:16:22.000Z" title="发表于 2024-07-06 14:16:22">2024-07-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">一、React 基础1. 创建一个 react 项目1.利用 create-react-app 工具创建一个 react 项目
+12npx create-react-app project-namenpm start # 启动项目
+
+2.src 目录只保留 App.js 和 index.js 文件
+3.精简 App.js 和 index.js 文件
+1.1 src 目录下文件的作用index.js 是项目的入口，从这里开始运行，App 是根组件被 Index.js 导入，最后渲染到 index.html 中 root 节点上
+index.js：
+1234567891011121314// 项目的核心入口 从这里开始运行// React 必要的两个核心包import React from 'react';import ReactDOM from 'react-dom/client';// 导入项目的根组件import App from './App';// 把 App 根组件渲染到 id 为 root 的 dom 节点上cons ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java-%E9%AB%98%E9%98%B6/"><span class="card-category-list-name">Java 高阶</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"><span class="card-category-list-name">中间件</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95%E9%A2%98/"><span class="card-category-list-name">面试题</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">2</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/MyBatis/" style="font-size: 1.1em; color: #999">MyBatis</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/ElasticSearch/" style="font-size: 1.1em; color: #999">ElasticSearch</a> <a href="/tags/Redis/" style="font-size: 1.16em; color: #999b9e">Redis</a> <a href="/tags/Java/" style="font-size: 1.44em; color: #99a7ba">Java</a> <a href="/tags/%E9%97%B2%E6%B7%98/" style="font-size: 1.1em; color: #999">闲淘</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E7%8B%97/" style="font-size: 1.1em; color: #999">面试狗</a> <a href="/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/tags/Next-js/" style="font-size: 1.1em; color: #999">Next.js</a> <a href="/tags/MySQL/" style="font-size: 1.27em; color: #99a0a9">MySQL</a> <a href="/tags/%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86/" style="font-size: 1.44em; color: #99a7ba">拓展知识</a> <a href="/tags/API-%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">API 平台</a> <a href="/tags/%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2/" style="font-size: 1.1em; color: #999">聚合搜索</a> <a href="/tags/EasyExcel/" style="font-size: 1.21em; color: #999ea4">EasyExcel</a> <a href="/tags/JUC/" style="font-size: 1.1em; color: #999">JUC</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 1.1em; color: #999">分布式</a> <a href="/tags/Oracle/" style="font-size: 1.16em; color: #999b9e">Oracle</a> <a href="/tags/homie-%E5%8C%B9%E9%85%8D/" style="font-size: 1.33em; color: #99a2af">homie 匹配</a> <a href="/tags/RabbitMQ/" style="font-size: 1.21em; color: #999ea4">RabbitMQ</a> <a href="/tags/React/" style="font-size: 1.16em; color: #999b9e">React</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 1.39em; color: #99a4b4">面试题</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 1.16em; color: #999b9e">面经</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">项目笔记</a> <a href="/tags/%E7%81%B5%E7%8A%80-BI/" style="font-size: 1.16em; color: #999b9e">灵犀 BI</a> <a href="/tags/OJ/" style="font-size: 1.1em; color: #999">OJ</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">36</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">40</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2024-12-13T13:49:21.634Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

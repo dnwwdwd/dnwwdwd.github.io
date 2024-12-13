@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Oracle 与 MySQL 主要差异 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="导航： &nbsp;【Java笔记+踩坑汇总】Java基础+进阶+JavaWeb+SSM+SpringBoot+瑞吉外卖+SpringCloud+黑马旅游+谷粒商城+学成在线+MySQL高级篇+设计模式+面试题汇总+源码_vincewm的博客-CSDN博客  目录 一、基本区别 1.1 基本特性 1.2 Oracle和MySQL如何做技术选型？ 1.3 RDBMS和ORDBMS的区别 1.4 默认端口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 与 MySQL 主要差异">
+<meta property="og:url" content="http://example.com/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="导航： &nbsp;【Java笔记+踩坑汇总】Java基础+进阶+JavaWeb+SSM+SpringBoot+瑞吉外卖+SpringCloud+黑马旅游+谷粒商城+学成在线+MySQL高级篇+设计模式+面试题汇总+源码_vincewm的博客-CSDN博客  目录 一、基本区别 1.1 基本特性 1.2 Oracle和MySQL如何做技术选型？ 1.3 RDBMS和ORDBMS的区别 1.4 默认端口">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_2.png">
+<meta property="article:published_time" content="2024-07-05T02:29:09.000Z">
+<meta property="article:modified_time" content="2024-07-08T14:07:18.372Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle 与 MySQL 主要差异',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-08 22:07:18'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle 与 MySQL 主要差异</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-05T02:29:09.000Z" title="发表于 2024-07-05 10:29:09">2024-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T14:07:18.372Z" title="更新于 2024-07-08 22:07:18">2024-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle 与 MySQL 主要差异"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_2.png');"></div><article class="post-content" id="article-container"><blockquote>
+<p>&nbsp;&nbsp;<strong>导航：</strong></p>
+<p>&nbsp;<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40991313/article/details/126646289" title="【Java笔记+踩坑汇总】Java基础+进阶+JavaWeb+SSM+SpringBoot+瑞吉外卖+SpringCloud+黑马旅游+谷粒商城+学成在线+MySQL高级篇+设计模式+面试题汇总+源码_vincewm的博客-CSDN博客">【Java笔记+踩坑汇总】Java基础+进阶+JavaWeb+SSM+SpringBoot+瑞吉外卖+SpringCloud+黑马旅游+谷粒商城+学成在线+MySQL高级篇+设计模式+面试题汇总+源码_vincewm的博客-CSDN博客</a></p>
+</blockquote>
+<p><strong>目录</strong></p>
+<p><a href="#%E5%9F%BA%E6%9C%AC">一、基本区别</a></p>
+<p><a href="#t0">1.1 基本特性</a></p>
+<p><a href="#t1">1.2 Oracle和MySQL如何做技术选型？</a></p>
+<p><a href="#t2">1.3 RDBMS和ORDBMS的区别</a></p>
+<p><a href="#t3">1.4 默认端口号和用户名</a></p>
+<p><a href="#t4">1.5 基本操作</a></p>
+<p><a href="#t5">1.5.1 登录方式</a></p>
+<p><a href="#t6">1.5.2 修改用户名密码</a>&nbsp;</p>
+<p><a href="#t7">1.5.3 Oracle解锁账号</a></p>
+<p><a href="#t8">1.5.4 Oracle内存优化</a></p>
+<p><a href="#sql-%E8%AF%AD%E5%8F%A5">1.6 大小写是否敏感</a></p>
+<p><a href="#t9">1.6.1 Oracle：双引号下大小写敏感</a></p>
+<p><a href="#t10">1.6.2 MySQL：大小写不敏感</a></p>
+<p><a href="#%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B">二、常用字段类型</a></p>
+<p><a href="#t11">2.1 Oracle常用字段类型</a></p>
+<p><a href="#t12">2.2 MySQL常用字段类型</a></p>
+<p><a href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F">三、时间日期</a></p>
+<p><a href="#t13">3.1 Oracle</a></p>
+<p><a href="#t14">3.2 MySQL</a></p>
+<p><a href="#t15">四、创建表空间/数据库</a></p>
+<p><a href="#t16">4.1 Oracle创建表空间</a></p>
+<p><a href="#t17">4.2 MySQL创建数据库</a></p>
+<p><a href="#t18">五、创建临时表</a></p>
+<p><a href="#t19">5.1 Oracle创建临时表</a></p>
+<p><a href="#t20">5.2 MySQL创建临时表</a></p>
+<p><a href="#t21">六、删除表空间/数据库</a></p>
+<p><a href="#t22">6.1 Oracle删除表空间</a></p>
+<p><a href="#t23">6.2 MySQL删除数据库</a></p>
+<p><a href="#t24">七、数据备份恢复</a></p>
+<p><a href="#t25">7.1 Oracle导入dmp文件</a></p>
+<p><a href="#t26">7.2 MySQL备份迁移</a></p>
+<p><a href="#t27">八、创建表和插入记录</a></p>
+<p><a href="#t28">8.1 Oracle创建表和插入记录</a></p>
+<p><a href="#t29">8.2 MySQL创建表和插入记录</a></p>
+<p><a href="#t30">九、事务提交方式</a></p>
+<p><a href="#t31">9.1 Oracle：完全支持事务，默认不自动提交</a></p>
+<p><a href="#t32">9.2 MySQL：仅innoDB支持事务，默认自动提交</a></p>
+<p><a href="#%E5%88%86%E9%A1%B5">十、分页</a></p>
+<p><a href="#t33">10.1 Oracle：利用rownum分类</a></p>
+<p><a href="#t34">10.2 MySQL：通过limit关键字分页</a></p>
+<hr>
+<h2 id="一、基本区别"><a href="#一、基本区别" class="headerlink" title="一、基本区别"></a>一、基本区别</h2><h3 id="1-1-基本特性"><a href="#1-1-基本特性" class="headerlink" title="1.1 基本特性"></a>1.1 基本特性</h3><ul>
+<li><strong>数据库类型：</strong>Oracle数据库是一个对象关系数据库管理系统（ORDBMS），MySQL是一个开源的关系数据库管理系统（RDBMS）。<ul>
+<li><strong>对象关系 数据库管理系统：</strong>基于对象模型，存储数据及其方法，数据存储在对象中。拥有对象类、对象标识、多态、封装和继承等特性。用于存储复杂的数据。</li>
+<li><strong>关系 数据库管理系统：</strong>基于关系模型，&nbsp;只存储数据，数据存储在实体里面，以包含特定信息的表格的形式存在。用于处理比较简单的数据</li>
+</ul>
+</li>
+<li><strong>客户规模：</strong>Oracle主要面向大企业级级别的用户，而MySQL则更适合中小型企业和个人。根据Gartner的数据，截至2020年，Oracle占据了全球关系型数据库管理系统市场的超过40%的份额，而MySQL仅占5%。</li>
+<li><strong>成本：</strong>Oracle是一种专业的数据库管理系统，需要付费购买许可证。MySQL（社区版，支持基本功能）是一种免费的数据库管理系统，如果需要使用它的高级功能（如多线程复制、查询性能优化、物理备份和增量备份、安全和加密功能、管理和监控工具、官方服务等），可能需要购买许可证或商业版本（企业版）。</li>
+<li><strong>可移植性和兼容性：</strong>MySQL可以很容易地在各种平台上运行，并与其他许多开源软件集成。Oracle虽然也有跨平台支持，但更偏向于使用自己的技术堆栈和产品集成。&nbsp;</li>
+<li><strong>安全性：</strong>Oracle使用了许多安全功能，如用户名，密码，配置文件，本地身份验证，外部身份验证，高级安全增强功能等。MySQL只使用三个参数来验证用户，即用户名，密码和位置。</li>
+<li><strong>内存：</strong>Oracle占有内存空间大（因为面对对象，并且还存储数据的方法）；MySQL占有内存空间比较小</li>
+<li><strong>性能和扩展性：</strong>由于MySQL的精简设计和管理方式，所以其性能通常比Oracle更高，尤其在读取和写入方面。MySQL的扩展性也相对较好，因为其社区活跃，有许多插件和工具可供选择和使用。</li>
+<li><strong>支持并发量：</strong>Oracle支持大并发访问量，是OLTP（联机事务处理）最好的工具；MySQL并发小，面对大访问量可以做分表分库优化。<ul>
+<li><strong>OLTP（联机事务处理）：</strong>表示事务性非常高的系统，一般都是高可用的在线系统，以小的事务以及小的查询为主，评估其系统的时候，一般看其每秒执行的Transaction以及Execute SQL的数量。典型的OLTP系统有电子商务系统、银行、证券等。</li>
+</ul>
+<p>&nbsp;</p>
+</li>
+<li><strong>存储内容：</strong>与Oracle相比，MySQL没有表空间，角色管理，快照，同义词和包以及自动存储管理。</li>
+<li><strong>可移植性和兼容性：</strong>MySQL可以很容易地在各种平台上运行，并与其他许多开源软件集成。Oracle虽然也有跨平台支持，但更偏向于使用自己的技术堆栈和产品集成。</li>
+<li><strong>临时表特点：</strong>Oracle临时表默认所有会话内可见，一旦创建就会存在，直到显式删除。可以设置临时表仅在当前会话内或事务内可见。MySQL临时表只在当前会话可见，一旦会话关闭，临时表会自动删除。</li>
+</ul>
+<h3 id="1-2-Oracle和MySQL如何做技术选型？"><a href="#1-2-Oracle和MySQL如何做技术选型？" class="headerlink" title="1.2 Oracle和MySQL如何做技术选型？"></a>1.2 Oracle和MySQL如何做技术选型？</h3><p>下面场景下适用于选择Oracle：</p>
+<ul>
+<li><strong>对数据库有高级需求：</strong>如果企业对数据库的高级需求较高，如存储复杂数据及其方法，要求高可用性、灾备恢复、安全性等，可以考虑用Oracle。</li>
+<li><strong>大型企业应用：</strong>Oracle在处理大规模、复杂的企业级应用方面表现出色。它能够处理海量的数据和高并发的访问请求，同时支持复杂的数据模型和关系。</li>
+<li><strong>项目并发量高：</strong>使用Oracle，它是是OLTP（联机事务处理）最好的工具。</li>
+<li><strong>安全性要求高：</strong>Oracle使用了许多安全功能，如用户名，密码，配置文件，本地身份验证，外部身份验证，高级安全增强功能等。像金融、银行等对安全性要求高的项目一般都选用Oracle作为数据库。</li>
+<li><strong>高可用性和容灾需求：</strong>Oracle提供了强大的高可用性和容灾解决方案，例如集群配置、数据复制和自动故障转移等，能够确保系统的连续性和数据的可靠性。MySQL付费版也支持，但可靠性不如Oracle。</li>
+</ul>
+<h3 id="1-3-RDBMS和ORDBMS的区别"><a href="#1-3-RDBMS和ORDBMS的区别" class="headerlink" title="1.3 RDBMS和ORDBMS的区别"></a>1.3 RDBMS和ORDBMS的区别</h3><table>
+<thead>
+<tr>
+<th>标准</th>
+<th>RDBMS</th>
+<th>OODBMS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缩写含义</td>
+<td>关系数据库管理系统</td>
+<td>面型对象数据库管理系统</td>
+</tr>
+<tr>
+<td>数据存储方式</td>
+<td>数据存储在实体里面，以包含特定信息的表格的形式存在</td>
+<td>数据存储在对象中</td>
+</tr>
+<tr>
+<td>数据复杂性</td>
+<td>处理比较简单的数据</td>
+<td>比 RDBMS 处理更大且更复杂的数据</td>
+</tr>
+<tr>
+<td>分组</td>
+<td>拥有公共定义的实体集合的不同实体类型</td>
+<td>用类描述拥有公共的关系、行为和相似的属性的一组对象</td>
+</tr>
+<tr>
+<td>数据处理</td>
+<td>RDBMS 只存储数据</td>
+<td>存储数据以及方法</td>
+</tr>
+<tr>
+<td>主要目标</td>
+<td>数据独立于应用程序</td>
+<td>数据封装</td>
+</tr>
+<tr>
+<td>主键</td>
+<td>主键可以明显的标识表中的对象</td>
+<td>对象标识符 (object identifier, OID) 对于任何一个对象和实体都是明确且持久的</td>
+</tr>
+</tbody></table>
+<h3 id="1-4-默认端口号和用户名"><a href="#1-4-默认端口号和用户名" class="headerlink" title="1.4 默认端口号和用户名"></a>1.4 默认端口号和用户名</h3><p>Oracle默认端口：1521 默认用户：system<br>MySQL默认端口：3306 默认用户：root</p>
+<h3 id="1-5-基本操作"><a href="#1-5-基本操作" class="headerlink" title="1.5 基本操作"></a>1.5 基本操作</h3><h4 id="1-5-1-登录方式"><a href="#1-5-1-登录方式" class="headerlink" title="1.5.1 登录方式"></a>1.5.1 登录方式</h4><p>连接MySQL：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>u root <span class="operator">-</span>p<span class="comment">-- 输入密码 -- 查询所有数据库show databases;-- 切换到 "test" 这个数据库use test;-- 查询该数据库所有表show tables;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>连接Oracle：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus<span class="comment">-- 输入用户名-- 输入密码 -- 查询该用户的表select TABLE_NAME from user_tables;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>注意：Oracle 登录需要授予登录用户 session权限，建表需要分配限额</p>
+<h4 id="1-5-2-修改用户名密码"><a href="#1-5-2-修改用户名密码" class="headerlink" title="1.5.2 修改用户名密码"></a>1.5.2 修改用户名密码</h4><p><strong>MySQL修改密码：</strong></p>
+<p>1. win+r快捷键，输入cmd进入命令行：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/7baedf9a8186459a99c331779f9cdece.png"></p>
+<p>2.登录MySQL</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名 -p密码</span><br></pre></td></tr></tbody></table></figure>
+
+<p>3.修改MySQL的root用户密码</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> password <span class="keyword">for</span> 用户名@localhost = password(<span class="string">'新密码'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>示例：&nbsp;</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将用户root的密码更改为hello； set password for&nbsp;root@localhost&nbsp;= password('hello');</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>Oracle修改密码：</strong></p>
+<p>1.win+r快捷键，输入cmd进入命令行：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/7baedf9a8186459a99c331779f9cdece.png"></p>
+<p>2.sqlplus进入Oracle命令行：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus</span><br></pre></td></tr></tbody></table></figure>
+
+<p>3.输入用户名密码登录；</p>
+<p>4.修改密码：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER&nbsp;USER&nbsp;用户名 IDENTIFIED&nbsp;BY&nbsp;新密码;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>示例：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/6126cad8ed744014a24384e552195916.png"></p>
+<h4 id="1-5-3-Oracle解锁账号"><a href="#1-5-3-Oracle解锁账号" class="headerlink" title="1.5.3 Oracle解锁账号"></a>1.5.3 Oracle解锁账号</h4><p>Oracle 在多次输错密码的情况下，会锁定该账户，导致无法登录数据库。</p>
+<p>查看被锁定的账号：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username, account_statusFROM dba_usersWHERE account_status <span class="keyword">LIKE</span> <span class="string">'%LOCKED%'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解锁账号：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> 用户名 ACCOUNT UNLOCK;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&nbsp;恢复密码：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> 用户名 IDENTIFIED <span class="keyword">BY</span> 新密码 ACCOUNT UNLOCK;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>示例：</strong>解锁system用户：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 解锁。用户名不用引号ALTER USER SYSTEM ACCOUNT UNLOCK;-- 设置密码ALTER USER SYSTEM IDENTIFIED BY SYSTEM ACCOUNT UNLOCK;</span></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<h4 id="1-5-4-Oracle内存优化"><a href="#1-5-4-Oracle内存优化" class="headerlink" title="1.5.4 Oracle内存优化"></a>1.5.4 Oracle内存优化</h4><p><strong>1.开启自动内存管理</strong>Automatic Memory Management（AMM）</p>
+<p>Oracle开启AMM后，会根据当前系统的内存情况动态地分配内存，直到达到指定的最大值。当系统需要更多内存时，AMM会自动减少内存使用量。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> MEMORY_TARGET<span class="operator">=</span><span class="number">2</span>GB,<span class="keyword">SCOPE</span><span class="operator">=</span>SPFILE; </span><br></pre></td></tr></tbody></table></figure>
+
+<p>AMM还可以设置max_memory_target参数，以控制最大内存使用：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> MEMORY_MAX_TARGET<span class="operator">=</span><span class="number">3</span>GB,<span class="keyword">SCOPE</span><span class="operator">=</span>SPFILE;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>2.开启自动共享内存管理</strong>Automatic Shared Memory Management（ASMM）</p>
+<p>ASMM会自动检测当前系统的内存使用情况，并根据需求分配和释放共享内存区域。</p>
+<p>与AMM不同，ASMM只处理共享池、缓冲区高速缓存、Java池和辅助预留区的共享内存。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> SGA_TARGET<span class="operator">=</span><span class="number">1024</span>M; <span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> SGA_MAX_SIZE<span class="operator">=</span><span class="number">2048</span>M;</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-6-大小写是否敏感"><a href="#1-6-大小写是否敏感" class="headerlink" title="1.6 大小写是否敏感"></a>1.6 大小写是否敏感</h3><h4 id="1-6-1-Oracle：双引号下大小写敏感"><a href="#1-6-1-Oracle：双引号下大小写敏感" class="headerlink" title="1.6.1 Oracle：双引号下大小写敏感"></a>1.6.1 Oracle：双引号下大小写敏感</h4><p>是Oracle大小写不敏感的前提条件是在<strong>没有使用双引号 “” 的前提下</strong>（表名、字段名）</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> "TableName"("id" number); <span class="operator">/</span><span class="operator">/</span> 如果创建表的时候是这样写的，那么就必须严格区分大小写 <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> "TableName"; <span class="operator">/</span><span class="operator">/</span> 不仅要区分大小写而且要加双引号，以便和上面的第三种查询方式区分开</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>Oracle默认是大写，对字段的具体值是敏感的</p>
+<h4 id="1-6-2-MySQL：大小写不敏感"><a href="#1-6-2-MySQL：大小写不敏感" class="headerlink" title="1.6.2 MySQL：大小写不敏感"></a>1.6.2 MySQL：大小写不敏感</h4><p>大小写不敏感(关键字和字段名都不区分)</p>
+<p>阿里巴巴Java开发手册，在MySQL建表规约里有：<br>【强制】表名、字段名必须使用小写字母或数字 ， 禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑</p>
+<p><strong>Windows 大小写不敏感，文件名同名大小写不同会覆盖</strong></p>
+<p>MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写。因此，数据库名、 表名、字段名，都不允许出现任何大写字母，避免节外生枝<br>MySQL 的字段 大小写都可以查到</p>
+<h2 id="二、常用字段类型"><a href="#二、常用字段类型" class="headerlink" title="二、常用字段类型"></a>二、常用字段类型</h2><h3 id="2-1-Oracle常用字段类型"><a href="#2-1-Oracle常用字段类型" class="headerlink" title="2.1 Oracle常用字段类型"></a>2.1 Oracle常用字段类型</h3><ul>
+<li><strong>数值：</strong>number number(10) number(10,2)</li>
+<li><strong>字符串：</strong>CHAR，NCHAR，VARCHAR2和NVARCHAR2。四种字符类型都需要至少1个字节长; CHAR和NCHAR最大可以是2000个字节，NVARCHAR2和VARCHAR2的最大限制是4000个字节。</li>
+<li><strong>日期：</strong>date</li>
+</ul>
+<h3 id="2-2-MySQL常用字段类型"><a href="#2-2-MySQL常用字段类型" class="headerlink" title="2.2 MySQL常用字段类型"></a>2.2 MySQL常用字段类型</h3><ul>
+<li><strong>数值：</strong>tinyint smallint mediumint int bigint decimal</li>
+<li><strong>字符串：</strong>char、varchar(10) 。最大长度允许为65,535字节（CHAR最多可以为255字节，VARCHAR为65.535字节）。</li>
+<li><strong>日期：</strong>date time datetime timestamp year</li>
+</ul>
+<h2 id="三、时间日期"><a href="#三、时间日期" class="headerlink" title="三、时间日期"></a>三、时间日期</h2><h3 id="3-1-Oracle"><a href="#3-1-Oracle" class="headerlink" title="3.1 Oracle"></a>3.1 Oracle</h3><p>对于常见的时间格式： “2021-02-03 16:25:48”</p>
+<ul>
+<li><p><strong>Java中的表示方式：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"yyyy-MM-dd HH:mm;ss"</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><strong>Oracle 中的表示方式：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'yyyy-mm-dd hh24:mi:ss'</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<blockquote>
+<p><strong>示例-Java：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义日期格式        String inputPattern = "yyyy-MM-dd HH:mm:ss";        String outputPattern = "yyyy-MM-dd HH:mm:ss";         // 待格式化的日期字符串        String inputDateStr = "2021-02-03 16:25:48";         try {            // 将待格式化的日期字符串解析为 Date 对象            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);            Date date = inputFormat.parse(inputDateStr);             // 创建目标日期格式            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);             // 格式化日期            String outputDateStr = outputFormat.format(date);             // 打印格式化后的日期            System.out.println("Formatted Date: " + outputDateStr);        } catch (Exception e) {            e.printStackTrace();        }</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/direct/8a4c7a803aed41dbb7a2ff47b24b2b82.png"></p>
+</blockquote>
+<blockquote>
+<p>示例-Oracle：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(<span class="type">date</span>, <span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) <span class="keyword">AS</span> formatted_dateFROM your_table;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<h3 id="3-2-MySQL"><a href="#3-2-MySQL" class="headerlink" title="3.2 MySQL"></a>3.2 MySQL</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取当前时间戳 select unix_timestamp(); -- 1612340981 -- 获取当前日期时间select now();2021-02-03 16:30:22 -- 获取当前日期select date(now());-- 2021-02-03 -- timestamp -&gt; datetimeselect FROM_UNIXTIME(1612340981);-- 2021-02-03 16:29:41 -- datetime -&gt; varchar  (time与之类似：time_format(time,format))select  DATE_FORMAT('2008-08-08 22:23:01','%Y %m %d %H %i %s');-- 2008 08 08 22 23 01 -- varchar -&gt; date   str_to_date(str, format)select str_to_date('08.09.2008 08:09:30', '%m.%d.%Y %h:%i:%s'); -- 2008-08-09 08:09:30</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、创建表空间-数据库"><a href="#四、创建表空间-数据库" class="headerlink" title="四、创建表空间/数据库"></a>四、创建表空间/数据库</h2><h3 id="4-1-Oracle创建表空间"><a href="#4-1-Oracle创建表空间" class="headerlink" title="4.1 Oracle创建表空间"></a>4.1 Oracle创建表空间</h3><p>sqlplus：</p>
+<p>创建表空间</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="keyword">create</span>&nbsp;tablespace&nbsp;表空间名称&nbsp;logging&nbsp;datafile&nbsp;<span class="string">'路径\名称.dbf'</span>&nbsp;size&nbsp;<span class="number">2000</span>m&nbsp;autoextend&nbsp;<span class="keyword">on</span>&nbsp;next&nbsp;<span class="number">500</span>m&nbsp;maxsize&nbsp;<span class="number">30720</span>m&nbsp;extent&nbsp;management&nbsp;<span class="keyword">local</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>示例：&nbsp;</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span>&nbsp;tablespace&nbsp;NWZC&nbsp;logging&nbsp;datafile&nbsp;<span class="string">'D:\javautils\oracle1\oradata\ORCL\zuigaofa.dbf'</span>&nbsp;size&nbsp;<span class="number">2000</span>m&nbsp;autoextend&nbsp;<span class="keyword">on</span>&nbsp;next&nbsp;<span class="number">500</span>m&nbsp;maxsize&nbsp;<span class="number">30720</span>m&nbsp;extent&nbsp;management&nbsp;<span class="keyword">local</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/6c1650acb3094c24a83ab6447b218157.png"></p>
+</blockquote>
+<p>创建用户</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;&nbsp;&nbsp;<span class="keyword">create</span>&nbsp;<span class="keyword">user</span>&nbsp;用户名&nbsp;identified&nbsp;<span class="keyword">by</span>&nbsp;密码&nbsp;<span class="keyword">default</span>&nbsp;tablespace&nbsp;表空间名;</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>修改用户默认表空间：  </p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> 用户名 <span class="keyword">default</span> tablespace 表空间名</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>示例：&nbsp;</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span>&nbsp;database&nbsp;&nbsp;<span class="keyword">default</span>&nbsp;tablespace&nbsp;NWZC;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<p>授权&nbsp;</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span>&nbsp;exp_full_database&nbsp;<span class="keyword">to</span>&nbsp;用户名&nbsp;;<span class="keyword">grant</span>&nbsp;imp_full_database&nbsp;<span class="keyword">to</span>&nbsp;用户名&nbsp;;<span class="keyword">grant</span>&nbsp;resource&nbsp;<span class="keyword">to</span>&nbsp;用户名&nbsp;;<span class="keyword">grant</span>&nbsp;<span class="keyword">connect</span>&nbsp;<span class="keyword">to</span>&nbsp;用户名&nbsp;;<span class="keyword">grant</span>&nbsp;dba&nbsp;<span class="keyword">to</span>&nbsp;用户名&nbsp;;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>示例：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span>&nbsp;exp_full_database&nbsp;<span class="keyword">to</span>&nbsp;NWZC;<span class="keyword">grant</span>&nbsp;imp_full_database&nbsp;<span class="keyword">to</span>&nbsp;NWZC;<span class="keyword">grant</span>&nbsp;resource&nbsp;<span class="keyword">to</span>&nbsp;NWZC;<span class="keyword">grant</span>&nbsp;<span class="keyword">connect</span>&nbsp;<span class="keyword">to</span>&nbsp;NWZC;<span class="keyword">grant</span>&nbsp;dba&nbsp;<span class="keyword">to</span>&nbsp;NWZC;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/65691c818e304135abce41a2e2f49683.png"></p>
+</blockquote>
+<h3 id="4-2-MySQL创建数据库"><a href="#4-2-MySQL创建数据库" class="headerlink" title="4.2 MySQL创建数据库"></a>4.2 MySQL创建数据库</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询数据库SHOW DATABASES;-- 创建数据库CREATE DATABASE 数据库名称;-- 创建数据库(判断，如果不存在则创建)CREATE DATABASE IF NOT EXISTS 数据库名称; -- 查看当前使用的数据库SELECT DATABASE();-- 使用数据库USE 数据库名称;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、创建临时表"><a href="#五、创建临时表" class="headerlink" title="五、创建临时表"></a>五、创建临时表</h2><h3 id="5-1-Oracle创建临时表"><a href="#5-1-Oracle创建临时表" class="headerlink" title="5.1 Oracle创建临时表"></a>5.1 Oracle创建临时表</h3><p>Oracle临时表默认所有会话内可见，一旦创建就会存在，直到显式删除。可以设置临时表仅在当前会话内或事务内可见。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">GLOBAL</span> TEMPORARY <span class="keyword">TABLE</span> temp_table (    id NUMBER,    name VARCHAR2(<span class="number">50</span>)) <span class="keyword">ON</span> <span class="keyword">COMMIT</span> <span class="keyword">DELETE</span> <span class="keyword">ROWS</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>ON COMMIT DELETE ROWS指定了当事务提交时，临时表中的所有行都会被删除。这保证了当会话结束时，所有临时数据都会被清除。&nbsp;</p>
+<p><strong>设置临时表消失的时机：</strong></p>
+<ul>
+<li>ON COMMIT DELETE ROWS ：数据行只有在当前事务中可见，也是默认值,事务提交后数据行将消失</li>
+<li>ON COMMIT PRESERVE ROWS ：数据行仅在当前会话中可见</li>
+</ul>
+<p><strong>临时表中数据的增删改查，跟普通表一致：</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Insert</span> <span class="keyword">into</span> tmp_gttable (id,name) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'test'</span>);<span class="keyword">Update</span> tmp_gttable <span class="keyword">set</span> name <span class="operator">=</span> <span class="string">'test_update'</span> <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>；<span class="keyword">Delete</span> <span class="keyword">from</span> tmp_gttable <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-2-MySQL创建临时表"><a href="#5-2-MySQL创建临时表" class="headerlink" title="5.2 MySQL创建临时表"></a>5.2 MySQL创建临时表</h3><p>MySQL临时表只在当前会话可见，一旦会话关闭，临时表会自动删除。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> 表名 (字段列表);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>示例如下：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> tmp_table ( id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT, name <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>, <span class="keyword">PRIMARY</span> KEY (id) ) ENGINE<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>临时表创建成功后，可以使用SELECT、INSERT、UPDATE、DELETE等语句对其进行操作，与普通表的语法相同。&nbsp;</p>
+<h2 id="六、删除表空间-数据库"><a href="#六、删除表空间-数据库" class="headerlink" title="六、删除表空间/数据库"></a>六、删除表空间/数据库</h2><h3 id="6-1-Oracle删除表空间"><a href="#6-1-Oracle删除表空间" class="headerlink" title="6.1 Oracle删除表空间"></a>6.1 Oracle删除表空间</h3><p>1、删除无任何数据对象的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%A1%A8%E7%A9%BA%E9%97%B4&amp;spm=1001.2101.3001.7020" title="表空间">表空间</a>：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> tablespace xxx</span><br></pre></td></tr></tbody></table></figure>
+
+<p>2、删除有任何数据对象的表空间</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> tablespace xxx including contents <span class="keyword">and</span> datafiles;</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-2-MySQL删除数据库"><a href="#6-2-MySQL删除数据库" class="headerlink" title="6.2 MySQL删除数据库"></a>6.2 MySQL删除数据库</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除数据库DROP DATABASE 数据库名称;-- 删除数据库(判断，如果存在则删除)DROP DATABASE IF EXISTS 数据库名称;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、数据备份恢复"><a href="#七、数据备份恢复" class="headerlink" title="七、数据备份恢复"></a>七、数据备份恢复</h2><h3 id="7-1-Oracle导入dmp文件"><a href="#7-1-Oracle导入dmp文件" class="headerlink" title="7.1 Oracle导入dmp文件"></a>7.1 Oracle导入dmp文件</h3><p>1.首先确保dmp版本和本地oracle版本一致</p>
+<p>2.将需要导入的dmp文件放在oracle11g的安装目录里面的<code>./admin/orcl/dpdump</code>目录下面</p>
+<p><img src="https://img-blog.csdnimg.cn/4c2317300bff4e608c855a7b003b875d.png"></p>
+<p>3.右键dmp用notepad++打开，在第二行找到版本号，改成自己的oracle版本，例如我的版本是19c：</p>
+<p><img src="https://img-blog.csdnimg.cn/ce47e64bc4c2494582c0ba646707d089.png"></p>
+<p>3.sqlplus：用system账号创建用户并授权</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> ZHANGSAN identified <span class="keyword">by</span> <span class="number">1234</span>;<span class="keyword">grant</span> <span class="keyword">connect</span> , dba <span class="keyword">to</span> ZHANGSAN ;<span class="keyword">grant</span> resource <span class="keyword">to</span> ZHANGSAN ;<span class="keyword">grant</span> imp_full_database <span class="keyword">to</span> ZHANGSAN ;<span class="keyword">grant</span> exp_full_database <span class="keyword">to</span> ZHANGSAN ;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>4.cmd命令行：迁移</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impdp ZHANGSAN<span class="operator">/</span><span class="number">1234</span> dumpfile <span class="operator">=</span> XXX.dmp</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/897f1199e9ed4dfaacf0584ddef21f59.png"></p>
+<h3 id="7-2-MySQL备份迁移"><a href="#7-2-MySQL备份迁移" class="headerlink" title="7.2 MySQL备份迁移"></a>7.2 MySQL备份迁移</h3><p>直接用navicat转储和运行SQL文件即可：</p>
+<p><img src="https://img-blog.csdnimg.cn/635a4c23a11b4d0e98cfef266f2dc883.png"></p>
+<h2 id="八、创建表和插入记录"><a href="#八、创建表和插入记录" class="headerlink" title="八、创建表和插入记录"></a>八、创建表和插入记录</h2><h3 id="8-1-Oracle创建表和插入记录"><a href="#8-1-Oracle创建表和插入记录" class="headerlink" title="8.1 Oracle创建表和插入记录"></a>8.1 Oracle创建表和插入记录</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_student(    sid <span class="type">int</span> <span class="keyword">primary</span> key ,    sname varchar2(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span> ,    enterdate <span class="type">date</span>,    gender <span class="type">char</span>(<span class="number">2</span>),    mail <span class="keyword">unique</span>,    age number <span class="keyword">check</span> (age<span class="operator">&gt;</span><span class="number">19</span> <span class="keyword">and</span> age<span class="operator">&lt;</span><span class="number">30</span>))<span class="keyword">insert</span> <span class="keyword">into</span> t_student <span class="keyword">values</span>(stuseq.nextval,<span class="string">'Test'</span>,to_date(<span class="string">'1990-3-4'</span>,<span class="string">'YYYY-MM-DD'</span>),<span class="string">'男'</span>,<span class="string">'1@outlook.com'</span>,<span class="number">20</span>);<span class="keyword">commit</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="8-2-MySQL创建表和插入记录"><a href="#8-2-MySQL创建表和插入记录" class="headerlink" title="8.2 MySQL创建表和插入记录"></a>8.2 MySQL创建表和插入记录</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_student(    sid <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,    sname <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">not</span> <span class="keyword">null</span> ,    enterdate <span class="type">date</span>,    gender <span class="type">char</span>(<span class="number">1</span>),    age <span class="type">int</span>,    mail <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">UNIQUE</span>) <span class="keyword">insert</span> <span class="keyword">into</span> t_student <span class="keyword">values</span>(<span class="keyword">null</span>,<span class="string">'Test'</span>,<span class="string">'1990-3-4'</span>,<span class="string">'男'</span>,<span class="number">30</span>,<span class="string">'2@outlook.com'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>MySQL插入日期使用now() 或 sysdate()，可以插入多条，使用逗号隔开<br>删表数据：Oracle可以省略from：delete from t_student; (删除所有数据)</p>
+<p><strong>外键约束：</strong>Oracle是constraints,MySQL是constraint</p>
+<p>级联操作：</p>
+<ul>
+<li>Oracle：on delete set null 或者on delete cascade</li>
+<li>MySQL: on delete set null on update CASCADE</li>
+</ul>
+<h2 id="九、事务提交方式"><a href="#九、事务提交方式" class="headerlink" title="九、事务提交方式"></a>九、事务提交方式</h2><h3 id="9-1-Oracle：完全支持事务，默认不自动提交"><a href="#9-1-Oracle：完全支持事务，默认不自动提交" class="headerlink" title="9.1 Oracle：完全支持事务，默认不自动提交"></a>9.1 Oracle：<strong>完全支持事务</strong>，默认不自动提交</h3><p>oracle默认不自动提交，需要用户手动提交，提交可以通过以下几个命令实现：</p>
+<ul>
+<li><strong>BEGIN：</strong>事务块开始的标志。事务块里的SQL语句要么全部执行成功，要么全部失败回滚。</li>
+<li>COMMIT：提交事务。执行成功时，事务将被提交，并且对数据库的修改是可见的。</li>
+<li>ROLLBACK：ROLLBACK用于取消尚未提交的事务，并将数据库恢复到事务开始之前的状态。当ROLLBACK语句执行成功时，事务中的所有修改都将被撤销。</li>
+<li>SAVEPOINT：SAVEPOINT用于在事务中创建一个保存点，以便在事务执行过程中可以回滚到该保存点。它可以在事务中设置一个中间点，以便在需要时回滚到该点。</li>
+<li>SET TRANSACTION：SET TRANSACTION用于设置事务的属性。通过该命令，可以设置事务的隔离级别、读写权限等属性。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span>    <span class="keyword">SAVEPOINT</span> sp;        <span class="comment">-- 向学生表插入数据    INSERT INTO student_table (student_name, student_age) VALUES ('John', 18);    INSERT INTO student_table (student_name, student_age) VALUES ('Emma', 19);        -- 向班级表插入数据    INSERT INTO class_table (class_name, class_size) VALUES ('Class A', 30);    INSERT INTO class_table (class_name, class_size) VALUES ('Class B', 28);        COMMIT;EXCEPTION    WHEN OTHERS THEN        ROLLBACK TO sp;        RAISE;END;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="9-2-MySQL：仅innoDB支持事务，默认自动提交"><a href="#9-2-MySQL：仅innoDB支持事务，默认自动提交" class="headerlink" title="9.2 MySQL：仅innoDB支持事务，默认自动提交"></a>9.2 MySQL：仅innoDB支持事务，默认自动提交</h3><p>查看事务提交状态</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> STATUS <span class="keyword">LIKE</span> <span class="string">'Innodb_trx_id'</span> </span><br></pre></td></tr></tbody></table></figure>
+
+<p>关闭事务提交：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> AutoCommit <span class="operator">=</span> <span class="number">0</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>手动提交事务：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">START</span> TRANSACTION;        <span class="comment">-- 开始事务INSERT INTO student (name,age) VALUES ('Tom',18); -- 执行一些数据操作INSERT INTO score (student_id,score) VALUES (1,90);COMMIT;       -- 手动提交事务</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="十、分页"><a href="#十、分页" class="headerlink" title="十、分页"></a>十、分页</h2><h3 id="10-1-Oracle：利用rownum分类"><a href="#10-1-Oracle：利用rownum分类" class="headerlink" title="10.1 Oracle：利用rownum分类"></a>10.1 Oracle：利用rownum分类</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 利用rownum。rownum从0开始select * from(select rownum rr,stu.* from (select * from t_student order by sid desc) stu )where rr&gt;=1 and rr&lt;=5;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="10-2-MySQL：通过limit关键字分页"><a href="#10-2-MySQL：通过limit关键字分页" class="headerlink" title="10.2 MySQL：通过limit关键字分页"></a>10.2 MySQL：通过limit关键字分页</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 记录从0开始-- 从第0条开始，取5条数据select * from test2 order by sid desc  limit 0,5</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>文章知识点与官方知识档案匹配，可进一步学习相关知识</p>
+<p><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/mysql/mysql-a00dadd0e1e945e597adcd2b71452e07?utm_source=csdn_ai_skill_tree_blog">MySQL入门技能树</a><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/mysql/mysql-a00dadd0e1e945e597adcd2b71452e07?utm_source=csdn_ai_skill_tree_blog">SQL高级技巧</a><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/mysql/mysql-a00dadd0e1e945e597adcd2b71452e07?utm_source=csdn_ai_skill_tree_blog">事务</a>89071 人正在系统学习中</p>
+<p>本文转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40991313/article/details/132077467">https://blog.csdn.net/qq_40991313/article/details/132077467</a>，如有侵权，请联系删除。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/">http://example.com/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/Oracle/">Oracle</a></div><div class="post_share"><div class="social-share" data-image="/img/post_2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/06/React-%E7%AC%94%E8%AE%B0/" title="React 笔记"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">React 笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/02/2024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E9%9D%A2%E7%BB%8F/" title="2024上半年面经"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024上半年面经</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/02/MySQL%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="2024上半年面经"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">2024上半年面经</div></div></a></div><div><a href="/2024/07/02/SQL%20%E5%88%B7%E9%A2%98/" title="SQL 刷题"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">SQL 刷题</div></div></a></div><div><a href="/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/" title="高频面试题"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">高频面试题</div></div></a></div><div><a href="/2024/07/08/Oracle-%E7%AC%94%E8%AE%B0/" title="Oracle 笔记"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-08</div><div class="title">Oracle 笔记</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">一、基本区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 基本特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Oracle%E5%92%8CMySQL%E5%A6%82%E4%BD%95%E5%81%9A%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Oracle和MySQL如何做技术选型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-RDBMS%E5%92%8CORDBMS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 RDBMS和ORDBMS的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%92%8C%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 默认端口号和用户名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.5.1 登录方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.5.2 修改用户名密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-Oracle%E8%A7%A3%E9%94%81%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.5.3.</span> <span class="toc-text">1.5.3 Oracle解锁账号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-4-Oracle%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="toc-number">1.5.4.</span> <span class="toc-text">1.5.4 Oracle内存优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%A4%A7%E5%B0%8F%E5%86%99%E6%98%AF%E5%90%A6%E6%95%8F%E6%84%9F"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 大小写是否敏感</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-1-Oracle%EF%BC%9A%E5%8F%8C%E5%BC%95%E5%8F%B7%E4%B8%8B%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.6.1 Oracle：双引号下大小写敏感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-2-MySQL%EF%BC%9A%E5%A4%A7%E5%B0%8F%E5%86%99%E4%B8%8D%E6%95%8F%E6%84%9F"><span class="toc-number">1.6.2.</span> <span class="toc-text">1.6.2 MySQL：大小写不敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">二、常用字段类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Oracle%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Oracle常用字段类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-MySQL%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 MySQL常用字段类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F"><span class="toc-number">3.</span> <span class="toc-text">三、时间日期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Oracle"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Oracle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-MySQL"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 MySQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">四、创建表空间/数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Oracle%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Oracle创建表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-MySQL%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 MySQL创建数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">五、创建临时表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Oracle%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E8%A1%A8"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 Oracle创建临时表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-MySQL%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 MySQL创建临时表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8%E7%A9%BA%E9%97%B4-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.</span> <span class="toc-text">六、删除表空间/数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Oracle%E5%88%A0%E9%99%A4%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 Oracle删除表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-MySQL%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 MySQL删除数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D"><span class="toc-number">7.</span> <span class="toc-text">七、数据备份恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Oracle%E5%AF%BC%E5%85%A5dmp%E6%96%87%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 Oracle导入dmp文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-MySQL%E5%A4%87%E4%BB%BD%E8%BF%81%E7%A7%BB"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 MySQL备份迁移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%88%9B%E5%BB%BA%E8%A1%A8%E5%92%8C%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text">八、创建表和插入记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Oracle%E5%88%9B%E5%BB%BA%E8%A1%A8%E5%92%8C%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 Oracle创建表和插入记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-MySQL%E5%88%9B%E5%BB%BA%E8%A1%A8%E5%92%8C%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 MySQL创建表和插入记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">九、事务提交方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-Oracle%EF%BC%9A%E5%AE%8C%E5%85%A8%E6%94%AF%E6%8C%81%E4%BA%8B%E5%8A%A1%EF%BC%8C%E9%BB%98%E8%AE%A4%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4"><span class="toc-number">9.1.</span> <span class="toc-text">9.1 Oracle：完全支持事务，默认不自动提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-MySQL%EF%BC%9A%E4%BB%85innoDB%E6%94%AF%E6%8C%81%E4%BA%8B%E5%8A%A1%EF%BC%8C%E9%BB%98%E8%AE%A4%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4"><span class="toc-number">9.2.</span> <span class="toc-text">9.2 MySQL：仅innoDB支持事务，默认自动提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%88%86%E9%A1%B5"><span class="toc-number">10.</span> <span class="toc-text">十、分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-Oracle%EF%BC%9A%E5%88%A9%E7%94%A8rownum%E5%88%86%E7%B1%BB"><span class="toc-number">10.1.</span> <span class="toc-text">10.1 Oracle：利用rownum分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-MySQL%EF%BC%9A%E9%80%9A%E8%BF%87limit%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%86%E9%A1%B5"><span class="toc-number">10.2.</span> <span class="toc-text">10.2 MySQL：通过limit关键字分页</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

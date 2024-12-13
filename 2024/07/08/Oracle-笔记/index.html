@@ -1,0 +1,2243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Oracle 笔记 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目录  第一章 数据库概述  1.1、数据库的好处 1.2、数据库的常见概念 1.3、数据库的存储特点 1.4、数据库的常见分类 1.5、SQL语言的分类   第二章 Oracle概述  2.1、Oracle的概述 2.2、Oracle的下载 2.3、Oracle的安装 2.4、Oracle的目录 2.5、Oracle的配置 2.6、Oracle的命令行连接 2.7、Oracle的窗口化连接 2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 笔记">
+<meta property="og:url" content="http://example.com/2024/07/08/Oracle-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="目录  第一章 数据库概述  1.1、数据库的好处 1.2、数据库的常见概念 1.3、数据库的存储特点 1.4、数据库的常见分类 1.5、SQL语言的分类   第二章 Oracle概述  2.1、Oracle的概述 2.2、Oracle的下载 2.3、Oracle的安装 2.4、Oracle的目录 2.5、Oracle的配置 2.6、Oracle的命令行连接 2.7、Oracle的窗口化连接 2.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_1.png">
+<meta property="article:published_time" content="2024-07-08T14:04:46.000Z">
+<meta property="article:modified_time" content="2024-07-08T14:07:56.239Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/08/Oracle-%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle 笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-08 22:07:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle 笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-08T14:04:46.000Z" title="发表于 2024-07-08 22:04:46">2024-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T14:07:56.239Z" title="更新于 2024-07-08 22:07:56">2024-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle 笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_1.png');"></div><article class="post-content" id="article-container"><h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><ul>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#__7">第一章 数据库概述</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#11_9">1.1、数据库的好处</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#12_14">1.2、数据库的常见概念</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#13_21">1.3、数据库的存储特点</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#14_28">1.4、数据库的常见分类</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#15SQL_37">1.5、SQL语言的分类</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_Oracle_45">第二章 Oracle概述</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#21Oracle_47">2.1、Oracle的概述</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#22Oracle_51">2.2、Oracle的下载</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#23Oracle_63">2.3、Oracle的安装</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#24Oracle_93">2.4、Oracle的目录</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#25Oracle_134">2.5、Oracle的配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#26Oracle_172">2.6、Oracle的命令行连接</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#27Oracle_184">2.7、Oracle的窗口化连接</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#28Oracle_218">2.8、Oracle的体系结构</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#29Oracle_227">2.9、Oracle的测试用户</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_DQL_237">第三章 DQL语言</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#31_239">3.1、完整语法</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#32_263">3.2、简单查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#33_270">3.3、别名查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#34_277">3.4、去重查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#35_284">3.5、条件查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#36_305">3.6、分组查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#37_312">3.7、分组过滤</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#38_322">3.8、排序查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#39_329">3.9、分页查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#310_339">3.10、多表查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#311_356">3.11、联合查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#312_401">3.12、子查询</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#__448">第四章 函数大全</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#41_452">4.1、数值型函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#42_456">4.2、字符型函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#43_460">4.3、日期函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#44_464">4.4、转换函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#45_468">4.5、聚组函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#46_472">4.6、分析函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#47_476">4.7、其它函数</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_DCL_480">第五章 DCL语言</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#51_482">5.1、创建表空间</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#52_504">5.2、删除表空间</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#53_518">5.3、创建用户</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#54_536">5.4、删除用户</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#55_538">5.5、授权用户</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#56_572">5.6、取消授权</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#57_600">5.7、修改密码</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_DDL_614">第六章 DDL语言</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#61_616">6.1、数据类型</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#62_635">6.2、创建表</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#63_656">6.3、复制表</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#64_672">6.4、删除表</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#65_688">6.5、修改表</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#66_725">6.6、表约束</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_DML_810">第七章 DML语言</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#71_812">7.1、插入语句</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#72_820">7.2、修改语句</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#73_828">7.3、删除语句</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_TCL_836">第八章 TCL语言</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#81_838">8.1、事务</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#82_869">8.2、事务并发（读问题）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#83_889">8.3、丢失更新（写问题）</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#__906">第九章 高级部分</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#91_908">9.1、序列</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#92PLSQL_943">9.2、PLSQL编程</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#921_945">9.2.1、格式</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#922_957">9.2.2、变量</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#923if_989">9.2.3、if判断</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#924while_1021">9.2.4、while循环</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#925for_1045">9.2.5、for循环</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#926loop_1068">9.2.6、loop循环</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#927_1095">9.2.7、意外</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#93_1219">9.3、索引</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#94_1285">9.4、视图</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#95_1337">9.5、同义词</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#96_1389">9.6、游标</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#97_1479">9.7、存储过程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#98_1587">9.8、函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#99_1695">9.9、触发器</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#__1819">第十章 数据备份与恢复</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#101_1821">10.1、全部导出</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#102_1828">10.2、全部导入</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#103_1835">10.3、按用户导出</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#104_1842">10.4、按用户导入</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#_Oracle_1849">第十一章 安装Oracle单实例</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#111_1851">11.1、环境准备</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#112_1863">11.2、下载程序</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#113_1879">11.3、解压程序</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#114_1895">11.4、移动软件</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#115_1902">11.5、域名映射</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#116selinux_1932">11.6、关闭selinux</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#117_1948">11.7、关闭防火墙</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#118_1955">11.8、安装依赖包</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#119_1961">11.9、添加新用户</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1110_1970">11.10、修改内核文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1111_1998">11.11、修改用户限制</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1112_2019">11.12、创建安装目录</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1113_2029">11.13、设置环境变量</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1114_2054">11.14、安装应用程序</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38490457/article/details/107976731?utm_medium=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;depth_1-utm_source=distribute.pc_feed.none-task-blog-personrec_tag-5.nonecase&amp;request_id=5f4d914bad40e5707a463b1a#1115sqlplus_2152">11.15、使用sqlplus连接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>配套资料，免费下载</strong></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/biwangsheng/mxq">https://gitee.com/biwangsheng/mxq</a></p>
+<h3 id="第一章-数据库概述"><a href="#第一章-数据库概述" class="headerlink" title="第一章 数据库概述"></a>第一章 数据库概述</h3><h4 id="1-1、数据库的好处"><a href="#1-1、数据库的好处" class="headerlink" title="1.1、数据库的好处"></a>1.1、数据库的好处</h4><ol>
+<li>将数据持久化到本地</li>
+<li>提供结构化查询功能</li>
+</ol>
+<h4 id="1-2、数据库的常见概念"><a href="#1-2、数据库的常见概念" class="headerlink" title="1.2、数据库的常见概念"></a>1.2、数据库的常见概念</h4><ol>
+<li>DB：数据库，存储数据的仓库</li>
+<li>DBMS：数据库管理系统，又称为数据库软件或者数据库产品，用于创建和管理数据库，常见的有MySQL、Oracle、SQL Server</li>
+<li>DBS：数据库系统，数据库系统是一个通称，包括数据库、数据库管理系统、数据库管理人员等，是最大的范畴</li>
+<li>SQL：结构化查询语言，用于和数据库通信的语言，不是某个数据库软件特有的，而是几乎所有的主流数据库软件通用的语言</li>
+</ol>
+<h4 id="1-3、数据库的存储特点"><a href="#1-3、数据库的存储特点" class="headerlink" title="1.3、数据库的存储特点"></a>1.3、数据库的存储特点</h4><ol>
+<li>数据存放到表中，然后表再放到库中</li>
+<li>一个库中可以有多张表，每张表具有唯一的表名用来标识自己</li>
+<li>表中有一个或多个列，列又称为“字段”，相当于Java中“属性”</li>
+<li>表中的每一行数据，相当于Java中“对象”</li>
+</ol>
+<h4 id="1-4、数据库的常见分类"><a href="#1-4、数据库的常见分类" class="headerlink" title="1.4、数据库的常见分类"></a>1.4、数据库的常见分类</h4><ol>
+<li>关系型数据库：MySQL、Oracle、DB2、SQL Server</li>
+<li>非关系型数据库：<ul>
+<li>键值存储数据库：Redis、Memcached、MemcacheDB</li>
+<li>列存储数据库：HBase、Cassandra</li>
+<li>面向文档的数据库：MongDB、CouchDB</li>
+<li>图形数据库：Neo4J</li>
+</ul>
+</li>
+</ol>
+<h4 id="1-5、SQL语言的分类"><a href="#1-5、SQL语言的分类" class="headerlink" title="1.5、SQL语言的分类"></a>1.5、SQL语言的分类</h4><ol>
+<li>DQL：数据查询语言：select、from、where</li>
+<li>DCL：数据控制语言：grant、revoke</li>
+<li>DDL：数据定义语言：create、alter、drop、truncate</li>
+<li>DML：数据操作语言：insert、update、delete</li>
+<li>TCL：事务控制语言：commit、rollback</li>
+</ol>
+<h3 id="第二章-Oracle概述"><a href="#第二章-Oracle概述" class="headerlink" title="第二章 Oracle概述"></a>第二章 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Oracle&amp;spm=1001.2101.3001.7020">Oracle</a>概述</h3><h4 id="2-1、Oracle的概述"><a href="#2-1、Oracle的概述" class="headerlink" title="2.1、Oracle的概述"></a>2.1、Oracle的概述</h4><p>Oracle Database，又名Oracle RDBMS，或简称Oracle。是甲骨文公司的一款关系数据库管理系统。它是在数据库领域一直处于领先地位的产品。可以说Oracle数据库系统是目前世界上流行的关系数据库管理系统，系统可移植性好、使用方便、功能强，适用于各类大、中、小、微机环境。它是一种高效率、可靠性好的、适应高吞吐量的数据库方案</p>
+<h4 id="2-2、Oracle的下载"><a href="#2-2、Oracle的下载" class="headerlink" title="2.2、Oracle的下载"></a>2.2、Oracle的下载</h4><p>课程使用：Windows 10</p>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/cn/database/technologies/oracle-database-software-downloads.html--11g">Oracle 11gR2</a></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMTQ1MTUucG5n?x-oss-process=image/format,png" alt="image-20200809214513718"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMTUyMjMucG5n?x-oss-process=image/format,png" alt="image-20200809215221852"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjA0MjcucG5n?x-oss-process=image/format,png" alt="image-20200809220127569"></p>
+<h4 id="2-3、Oracle的安装"><a href="#2-3、Oracle的安装" class="headerlink" title="2.3、Oracle的安装"></a>2.3、Oracle的安装</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjAzMzYucG5n?x-oss-process=image/format,png" alt="image-20200809220334062"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjA0MTQucG5n?x-oss-process=image/format,png" alt="image-20200809220412425"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjA1MDIucG5n?x-oss-process=image/format,png" alt="image-20200809220458814"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjA1MjMucG5n?x-oss-process=image/format,png" alt="image-20200809220521133"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjExMDUucG5n?x-oss-process=image/format,png" alt="image-20200809221103758"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjExNDUucG5n?x-oss-process=image/format,png" alt="image-20200809221143688"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjEyMTQucG5n?x-oss-process=image/format,png" alt="image-20200809221212205"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjE4MTAucG5n?x-oss-process=image/format,png" alt="image-20200809221808935"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjI5NDgucG5n?x-oss-process=image/format,png" alt="image-20200809222944086"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjMxMTUucG5n?x-oss-process=image/format,png" alt="image-20200809223113121"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjM1MTcucG5n?x-oss-process=image/format,png" alt="image-20200809223516529"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjM2MTQucG5n?x-oss-process=image/format,png" alt="image-20200809223612406"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjM2MzEucG5n?x-oss-process=image/format,png" alt="image-20200809223629903"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMjM2NTcucG5n?x-oss-process=image/format,png" alt="image-20200809223655389"></p>
+<h4 id="2-4、Oracle的目录"><a href="#2-4、Oracle的目录" class="headerlink" title="2.4、Oracle的目录"></a>2.4、Oracle的目录</h4><ol>
+<li><p>admin目录<br>描述：记录Oracle实例的配置，运行日志等文件，每一个实例一个目录，SID：SystemIDentifier的缩写，是Oracle实例的唯一标记，在Oracle中一个实例只能操作一个数据库，如果安装多个库那么就会有多个实例，我们可以通过实例SID来区分。</p>
+</li>
+<li><p>cfgtoollogs目录<br>描述：下面子目录分别存放当运行dbca，emca，netca等图形化配置程序时的log。</p>
+</li>
+<li><p>checkpoints目录<br>描述：存放检查点文件。</p>
+</li>
+<li><p>diag目录<br>描述：Oracle11g添加的一个重组目录，其中的子目录，基本上Oracle每个组件都有了自己的单独目录，在Oracle10g中我们诟病的log文件散放在四处的问题终于得到解决，无论是asm还是crs还是rdbms，所有组件需要被用来诊断的log文件都存放在这个新的目录下。</p>
+</li>
+<li><p>flash_recovery_area(闪回区)目录<br>描述：分配一个特定的目录位置来存放一些特定的恢复文件，用于集中和简化管理数据库恢复工作。闪回区可存储完全的数据文件备份，增量备份、数据文件副本、当前控制文件、备份的控制文件、spfile文件、快照控制文件、联机日志文件、归档日志、块跟踪文件、闪回日志。</p>
+</li>
+<li><p>oradata目录</p>
+<p>描述：存放数据文件。</p>
+<ul>
+<li>CONTROL01.CTL<br>描述：Oracle数据库的控制文件</li>
+<li>EXAMPLE01.DBF<br>描述：Oracle数据库表空间文件</li>
+<li>REDO01.LOG<br>描述：Oracle数据库的重做日志文件，此文件有三个</li>
+<li>SYSAUX01.DBF<br>描述：11g新增加的表空间，主要存储除数据字典以外的其他数据对象，由系统内部自动维护</li>
+<li>SYSTEM01.DBF<br>描述：用于存放Oracle系统内部表和数据字典的数据。比如：表名、列名、用户名等</li>
+<li>TEMP01.DBF<br>描述：临时表空间文件</li>
+<li>UNDOTBS01.DBF<br>描述：撤销表空间文件，用来保存回滚数据</li>
+<li>USERS01.DBF<br>描述：用户表空间</li>
+</ul>
+</li>
+<li><p>product目录<br>描述：数据库实例存放文件。</p>
+</li>
+</ol>
+<h4 id="2-5、Oracle的配置"><a href="#2-5、Oracle的配置" class="headerlink" title="2.5、Oracle的配置"></a>2.5、Oracle的配置</h4><p>前方高能：如果你是把Oracle 11gR2直接安装到本地电脑上的，这一章，你就直接跳过吧！</p>
+<p>注意事项：如果你是把Oracle 11gR2安装到了服务器中，那么你要想客户端远程访问，接下来的这些步骤，请你仔细阅读！</p>
+<p>客户端为了和服务器连接，必须先和服务器上的监听进程联络。ORACLE通过tnsnames.ora文件中的连接描述符来说明连接信息。一般tnsnames.ora 是建立在客户端上的。如果是客户端/服务器结构，整个网络上只有一台机器安装了ORACLE数据库服务器，那么只需在每个要访问ORACLE服务器的客户端上定义该文件，在服务器上无需定义。也就是说，如果客户端想连接到服务器上的Oracle数据库实例，客户端就必须有tnsnames.ora这个文件。一般在Oracle数据库安装的时候，它就会生成一个listener.ora（监听器配置文件）、tnsnames.ora（网络服务名配置文件），因为我们现在已经将Oracle安装到本地了，并没有安装到服务器上，为了能够测试连接服务器是否需要tnsnames.ora文件，我们假设D:\Oracle是服务器上的一个目录，D:\Oracle以外都是客户端的目录。</p>
+<p>第一步：打开文件夹（假设当前电脑是服务器）：D:\Oracle\product\11.2.0\dbhome_1\NETWORK\ADMIN</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzEyMTAucG5n?x-oss-process=image/format,png" alt="image-20200809231208313"></p>
+<p>第二步：获取服务器IP地址（假设当前电脑是服务器）：192.168.1.3</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzE1MjYucG5n?x-oss-process=image/format,png" alt="image-20200809231525406"></p>
+<p>第三步：修改listener.ora文件（假设当前电脑是服务器）：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzE3NTkucG5n?x-oss-process=image/format,png" alt="image-20200809231758605"></p>
+<p>第四步：修改tnsnames.ora文件（假设当前电脑是服务器）：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzIzMzAucG5n?x-oss-process=image/format,png" alt="image-20200809232329025"></p>
+<p>第五步：重启服务器Oracle的服务（假设当前电脑是服务器）：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzI3NDgucG5n?x-oss-process=image/format,png" alt="image-20200809232747049"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzI4NTMucG5n?x-oss-process=image/format,png" alt="image-20200809232851380"></p>
+<p>第六步：复制tnsnames.ora文件到客户端（假设当前电脑是客户端）：D:\Config</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzMzMTkucG5n?x-oss-process=image/format,png" alt="image-20200809233318424"></p>
+<p>第七步：配置tnsnames.ora文件到环境变量（假设当前电脑是客户端）：TNS_ADMIN = D:\Config</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzM2MzAucG5n?x-oss-process=image/format,png" alt="image-20200809233629528"></p>
+<h4 id="2-6、Oracle的命令行连接"><a href="#2-6、Oracle的命令行连接" class="headerlink" title="2.6、Oracle的命令行连接"></a>2.6、Oracle的命令行连接</h4><p>Oracle数据库的连接不像MySQL那样可以直接使用CMD窗口就能连接，它需要一些辅助软件，也就是下边的sqlplus。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzQzMTAucG5n?x-oss-process=image/format,png" alt="image-20200809234309060"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzQ0MjQucG5n?x-oss-process=image/format,png" alt="image-20200809234422705"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzQ1NDkucG5n?x-oss-process=image/format,png" alt="image-20200809234547756"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzUwNTEucG5n?x-oss-process=image/format,png" alt="image-20200809235049935"></p>
+<h4 id="2-7、Oracle的窗口化连接"><a href="#2-7、Oracle的窗口化连接" class="headerlink" title="2.7、Oracle的窗口化连接"></a>2.7、Oracle的窗口化连接</h4><p>既然是使用窗口化连接，那我们就需要一个窗口化连接的工具，这里我们使用的是代码补全提示比较好的PLSQL Developer。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzUzMzAucG5n?x-oss-process=image/format,png" alt="image-20200809235327253"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU0MDMucG5n?x-oss-process=image/format,png" alt="image-20200809235401907"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU0MjQucG5n?x-oss-process=image/format,png" alt="image-20200809235421415"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU1MTkucG5n?x-oss-process=image/format,png" alt="image-20200809235518112"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU1MzUucG5n?x-oss-process=image/format,png" alt="image-20200809235533992"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU1NDkucG5n?x-oss-process=image/format,png" alt="image-20200809235548207"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU2MTQucG5n?x-oss-process=image/format,png" alt="image-20200809235613392"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MDkyMzU5MTAucG5n?x-oss-process=image/format,png" alt="image-20200809235908684"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAwMDAxMjMucG5n?x-oss-process=image/format,png" alt="image-20200810000121782"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAwMDExMDIucG5n?x-oss-process=image/format,png" alt="image-20200810001100498"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAwMDE0MTUucG5n?x-oss-process=image/format,png" alt="image-20200810001413905"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAwMDE1NDEucG5n?x-oss-process=image/format,png" alt="image-20200810001540158"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAwMDE5NDQucG5n?x-oss-process=image/format,png" alt="image-20200810001941910"></p>
+<p>但是，如果你使用带有中文的别名查询会乱码，这是因为PLSQL Developer的字符集编码和Oracle不一样，那如何设置呢？首先查询Oracle数据库的字符集编码：select userenv(‘language’) from dual;</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAxNDAyNDkucG5n?x-oss-process=image/format,png" alt="image-20200810140246508"></p>
+<h4 id="2-8、Oracle的体系结构"><a href="#2-8、Oracle的体系结构" class="headerlink" title="2.8、Oracle的体系结构"></a>2.8、Oracle的体系结构</h4><ul>
+<li>数据库：Oracle是一种关系型的数据库管理系统</li>
+<li>数据库实例：数据库实例其实就是用来访问和使用数据库的一块进程，它只存在于内存中，就像Java中new出来的实例对象一样</li>
+<li>表空间：Oracle数据库是通过表空间来存储物理表的，一个数据库实例可以有N个表空间，一个表空间下可以有N张表</li>
+<li>用户：Oracle数据库建好后，要想在数据库里建表，必须先为数据库建立用户，并为用户指定表空间</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAxMTMxMjIucG5n?x-oss-process=image/format,png" alt="image-20200810113120498"></p>
+<h4 id="2-9、Oracle的测试用户"><a href="#2-9、Oracle的测试用户" class="headerlink" title="2.9、Oracle的测试用户"></a>2.9、Oracle的测试用户</h4><p>scott测试用户下的表：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAxMTMzNTUucG5n?x-oss-process=image/format,png" alt="image-20200810113354715"></p>
+<p>hr测试用户下的表：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTAxMTQ3MjQucG5n?x-oss-process=image/format,png" alt="image-20200810114722686"></p>
+<h3 id="第三章-DQL语言"><a href="#第三章-DQL语言" class="headerlink" title="第三章 DQL语言"></a>第三章 DQL语言</h3><h4 id="3-1、完整语法"><a href="#3-1、完整语法" class="headerlink" title="3.1、完整语法"></a>3.1、完整语法</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [TOP<span class="operator">|</span><span class="keyword">DISTINCT</span>] [选择列表]<span class="operator">|</span>[<span class="operator">*</span>]<span class="keyword">from</span> 数据源[<span class="keyword">where</span> 查询条件][<span class="keyword">group</span> <span class="keyword">by</span> 分组条件][<span class="keyword">having</span> 过滤条件][<span class="keyword">order</span> <span class="keyword">by</span> 排序条件 <span class="keyword">asc</span><span class="operator">|</span><span class="keyword">desc</span> nulls <span class="keyword">first</span><span class="operator">|</span><span class="keyword">last</span>];</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p><strong>二、执行顺序</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（5）select [（5-3）TOP|（5-2）DISTINCT] （5-1）[选择列表]|[*]（1）from 数据源（2）[where 查询条件]（3）[group by 分组条件]（4）[having 过滤条件]（6）[order by asc|desc nulls first|last];</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<h4 id="3-2、简单查询"><a href="#3-2、简单查询" class="headerlink" title="3.2、简单查询"></a>3.2、简单查询</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询所有员工的信息select * from emp;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-3、别名查询"><a href="#3-3、别名查询" class="headerlink" title="3.3、别名查询"></a>3.3、别名查询</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询所有员工的姓名select e.ename from emp e;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-4、去重查询"><a href="#3-4、去重查询" class="headerlink" title="3.4、去重查询"></a>3.4、去重查询</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询所有部门的编号select distinct e.deptno from emp e;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-5、条件查询"><a href="#3-5、条件查询" class="headerlink" title="3.5、条件查询"></a>3.5、条件查询</h4><p><strong>一、运算符</strong></p>
+<ol>
+<li>条件运算符：&gt;、&gt;=、&lt;、&lt;=、=、&lt;=&gt;、!=、&lt;&gt;</li>
+<li>逻辑运算符：and、or、not</li>
+<li>模糊运算符：<ul>
+<li>like：%任意多个字符、_任意单个字符、如果有特殊字符，需要使用escape转义</li>
+<li>between and</li>
+<li>not between and</li>
+<li>in</li>
+<li>is null</li>
+<li>is not null</li>
+</ul>
+</li>
+</ol>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询工资&gt;3000的员工信息select * from emp where sal &gt; 3000;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-6、分组查询"><a href="#3-6、分组查询" class="headerlink" title="3.6、分组查询"></a>3.6、分组查询</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--统计每个部门有多少个人select deptno as "部门",count(*) as "人数" from emp group by deptno;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-7、分组过滤"><a href="#3-7、分组过滤" class="headerlink" title="3.7、分组过滤"></a>3.7、分组过滤</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--统计部门人数&gt;5人的部门的编号select deptno as "部门", count(*) as "人数"from empgroup by deptnohaving count(*) &gt; 5;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<h4 id="3-8、排序查询"><a href="#3-8、排序查询" class="headerlink" title="3.8、排序查询"></a>3.8、排序查询</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--按照员工主管编号由高到低进行排序，NULL值放到最后边select * from emp order by mgr desc nulls last;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="3-9、分页查询"><a href="#3-9、分页查询" class="headerlink" title="3.9、分页查询"></a>3.9、分页查询</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询前10条员工的信息--注意：Oracle中不支持limit，需要在原始表加上一列：行号，然后使用子查询来实现分页select * from (select rownum hanghao,e.* from emp e) twhere t.hanghao &gt;=1 and t.hanghao &lt;= 10;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<h4 id="3-10、多表查询"><a href="#3-10、多表查询" class="headerlink" title="3.10、多表查询"></a>3.10、多表查询</h4><ul>
+<li><strong>内连接</strong><ul>
+<li>隐式内连接：select * from emp e1, dept d1 where e1.deptno = d1.deptno;</li>
+<li>显示内连接：select * from emp e1 inner join dept d1 on e1.deptno = d1.deptno;</li>
+</ul>
+</li>
+<li><strong>外连接</strong><ul>
+<li>左外连接<ul>
+<li>隐式左外连接：select * from emp e1,dept d1 where e1.deptno = d1.deptno(+);</li>
+<li>显示左外连接：select * from emp e1 left outer join dept d1 on e1.deptno = d1.deptno;</li>
+</ul>
+</li>
+<li>右外连接<ul>
+<li>隐式右外连接：select * from emp e1,dept d1 where e1.deptno(+) = d1.deptno;</li>
+<li>显示右外连接：select * from emp e1 right outer join dept d1 on e1.deptno = d1.deptno;</li>
+</ul>
+</li>
+<li>全外连接：select * from emp e1 full outer join dept d1 on e1.deptno = d1.deptno;</li>
+</ul>
+</li>
+<li><strong>交叉连接</strong><ul>
+<li>隐式交叉连接：select * from emp, dept;</li>
+<li>显示交叉连接：select * from emp e1 cross join dept d1;</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-11、联合查询"><a href="#3-11、联合查询" class="headerlink" title="3.11、联合查询"></a>3.11、联合查询</h4><ul>
+<li>并集运算：将两个查询结果进行合并</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/*	union 		: 它会去除重复的，并且排序	union all 	: 不会去除重复的，不会排序*/ --工资大于1500或者20号部门下的员工select * from emp where sal &gt; 1500unionselect * from emp where deptno = 20; --工资大于1500或者20号部门下的员工select * from emp where sal &gt; 1500union allselect * from emp where deptno = 20;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>1</p>
+</li>
+<li><p>2</p>
+</li>
+<li><p>3</p>
+</li>
+<li><p>4</p>
+</li>
+<li><p>5</p>
+</li>
+<li><p>6</p>
+</li>
+<li><p>7</p>
+</li>
+<li><p>8</p>
+</li>
+<li><p>9</p>
+</li>
+<li><p>10</p>
+</li>
+<li><p>11</p>
+</li>
+<li><p>12</p>
+</li>
+<li><p>13</p>
+</li>
+<li><p>14</p>
+</li>
+<li><p>交集运算：找两个查询结果的交集</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--工资大于1500并且20号部门下的员工select * from emp where sal &gt; 1500intersectselect * from emp where deptno = 20;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>1</p>
+</li>
+<li><p>2</p>
+</li>
+<li><p>3</p>
+</li>
+<li><p>4</p>
+</li>
+<li><p>差集运算：找两个查询结果的差集</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--1981年入职员工(不包括总裁和经理)select * from emp where to_char(hiredate,'yyyy') = '1981'minusselect * from emp where job = 'PRESIDENT' or job = 'MANAGER';</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>1</p>
+</li>
+<li><p>2</p>
+</li>
+<li><p>3</p>
+</li>
+<li><p>4</p>
+</li>
+<li><p>注意事项：</p>
+</li>
+</ul>
+<ol>
+<li>列的类型要一致</li>
+<li>列的顺序要一致</li>
+<li>列的数量要一致，如果不够，可以使用null填充</li>
+</ol>
+<h4 id="3-12、子查询"><a href="#3-12、子查询" class="headerlink" title="3.12、子查询"></a>3.12、子查询</h4><ul>
+<li>单行子查询：&gt;、&gt;=、&lt;、&lt;=、!=、&lt;&gt;、=、&lt;=&gt;</li>
+<li>多行子查询：in、not in、any、some、all、exits</li>
+</ul>
+<p>1、in的使用</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询所有经理的信息<span class="keyword">select</span> * <span class="function"><span class="keyword">from</span> emp <span class="keyword">where</span> empno <span class="title">in</span> (<span class="params"><span class="keyword">select</span> mgr <span class="keyword">from</span> emp <span class="keyword">where</span> mgr <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>2、not in的使用</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询不是经理的信息<span class="keyword">select</span> * <span class="function"><span class="keyword">from</span> emp <span class="keyword">where</span> empno <span class="keyword">not</span> <span class="title">in</span> (<span class="params"><span class="keyword">select</span> mgr <span class="keyword">from</span> emp <span class="keyword">where</span> mgr <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>3、any的使用</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询出比10号部门任意一个员工薪资高的员工信息select * from emp where sal &gt; any (select sal from emp where deptno = 10);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>4、some的使用</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询出比10号部门任意一个员工薪资高的员工信息select * from emp where sal &gt; some (select sal from emp where deptno = 10);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>5、all的使用</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询出比20号部门所有员工薪资高的员工信息select * from emp where sal &gt; all (select sal from emp where deptno = 20);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>6、exits的使用</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询有员工的部门的信息select * from dept d1 where exists (select * from emp e1 where e1.deptno = d1.deptno);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h3 id="第四章-函数大全"><a href="#第四章-函数大全" class="headerlink" title="第四章 函数大全"></a>第四章 函数大全</h3><p>具体用法，请参考资料中的Oracle函数大全.chm</p>
+<h4 id="4-1、数值型函数"><a href="#4-1、数值型函数" class="headerlink" title="4.1、数值型函数"></a>4.1、数值型函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTUwMDYucG5n?x-oss-process=image/format,png" alt="image-20200811215005261"></p>
+<h4 id="4-2、字符型函数"><a href="#4-2、字符型函数" class="headerlink" title="4.2、字符型函数"></a>4.2、字符型函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQzNDcucG5n?x-oss-process=image/format,png" alt="image-20200811214346432"></p>
+<h4 id="4-3、日期函数"><a href="#4-3、日期函数" class="headerlink" title="4.3、日期函数"></a>4.3、日期函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQ1MjYucG5n?x-oss-process=image/format,png" alt="image-20200811214525182"></p>
+<h4 id="4-4、转换函数"><a href="#4-4、转换函数" class="headerlink" title="4.4、转换函数"></a>4.4、转换函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQ2MTUucG5n?x-oss-process=image/format,png" alt="image-20200811214613660"></p>
+<h4 id="4-5、聚组函数"><a href="#4-5、聚组函数" class="headerlink" title="4.5、聚组函数"></a>4.5、聚组函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQ2NTgucG5n?x-oss-process=image/format,png" alt="image-20200811214657196"></p>
+<h4 id="4-6、分析函数"><a href="#4-6、分析函数" class="headerlink" title="4.6、分析函数"></a>4.6、分析函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQ3NDcucG5n?x-oss-process=image/format,png" alt="image-20200811214745948"></p>
+<h4 id="4-7、其它函数"><a href="#4-7、其它函数" class="headerlink" title="4.7、其它函数"></a>4.7、其它函数</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MTEyMTQ5MDUucG5n?x-oss-process=image/format,png" alt="image-20200811214904301"></p>
+<h3 id="第五章-DCL语言"><a href="#第五章-DCL语言" class="headerlink" title="第五章 DCL语言"></a>第五章 DCL语言</h3><h4 id="5-1、创建表空间"><a href="#5-1、创建表空间" class="headerlink" title="5.1、创建表空间"></a>5.1、创建表空间</h4><p><strong>一、语法</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create tablespace 表空间的名称datafile '文件的路径'size 初始化大小autoextend onnext 每次扩展的大小;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create tablespace mytestdatafile 'd:/mytest.dbf'size 100mautoextend onnext 10m;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<h4 id="5-2、删除表空间"><a href="#5-2、删除表空间" class="headerlink" title="5.2、删除表空间"></a>5.2、删除表空间</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> tablespace 表空间的名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> tablespace mytest;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="5-3、创建用户"><a href="#5-3、创建用户" class="headerlink" title="5.3、创建用户"></a>5.3、创建用户</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> 用户名identified <span class="keyword">by</span> 密码<span class="keyword">default</span> tablespace 表空间的名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> zhangsanidentified <span class="keyword">by</span> <span class="number">123456</span><span class="keyword">default</span> tablespace mytest;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h4 id="5-4、删除用户"><a href="#5-4、删除用户" class="headerlink" title="5.4、删除用户"></a>5.4、删除用户</h4><h4 id="5-5、授权用户"><a href="#5-5、授权用户" class="headerlink" title="5.5、授权用户"></a>5.5、授权用户</h4><p><strong>一、语法</strong></p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant 系统权限列表 <span class="keyword">to</span> 用户名;或者grant 实体权限列表 <span class="keyword">on</span> 表名称 <span class="keyword">to</span> 用户名;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><strong>二、权限列表</strong></p>
+<p>系统权限分类：（系统权限只能由DBA用户授出）</p>
+<ul>
+<li>DBA：拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。</li>
+<li>RESOURCE：拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。</li>
+<li>CONNECT：拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。</li>
+</ul>
+<p>实体权限分类：select、update、insert、alter、index、delete、all</p>
+<p><strong>三、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">CONNECT</span> <span class="keyword">to</span> zhangsan;或者<span class="keyword">grant</span> <span class="keyword">CONNECT</span>,RESOURCE <span class="keyword">to</span> zhangsan;或者<span class="keyword">grant</span> <span class="keyword">CONNECT</span>,RESOURCE,DBA <span class="keyword">to</span> zhangsan;或者<span class="keyword">grant</span> DBA <span class="keyword">to</span> zhangsan;或者<span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> emp <span class="keyword">to</span> zhangsan;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<h4 id="5-6、取消授权"><a href="#5-6、取消授权" class="headerlink" title="5.6、取消授权"></a>5.6、取消授权</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span> 系统权限列表 <span class="keyword">from</span> 用户名;或者<span class="keyword">revoke</span> 实体权限列表 <span class="keyword">on</span> 表名称 <span class="keyword">from</span> 用户名;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><strong>二、注意事项</strong></p>
+<p>系统权限只能由DBA用户回收</p>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span> <span class="keyword">CONNECT</span> <span class="keyword">from</span> zhangsan;或者<span class="keyword">revoke</span> <span class="keyword">CONNECT</span>,RESOURCE <span class="keyword">from</span> zhangsan;或者<span class="keyword">revoke</span> <span class="keyword">CONNECT</span>,RESOURCE,DBA <span class="keyword">from</span> zhangsan;或者<span class="keyword">revoke</span> DBA <span class="keyword">from</span> zhangsan;或者<span class="keyword">revoke</span> <span class="keyword">all</span> <span class="keyword">on</span> emp <span class="keyword">from</span> zhangsan;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<h4 id="5-7、修改密码"><a href="#5-7、修改密码" class="headerlink" title="5.7、修改密码"></a>5.7、修改密码</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> 用户名 identified <span class="keyword">by</span> "密码";</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> zhangsan identified <span class="keyword">by</span> "123456";</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h3 id="第六章-DDL语言"><a href="#第六章-DDL语言" class="headerlink" title="第六章 DDL语言"></a>第六章 DDL语言</h3><h4 id="6-1、数据类型"><a href="#6-1、数据类型" class="headerlink" title="6.1、数据类型"></a>6.1、数据类型</h4><p>注意：这里整理的都是常用的并没有全部整理出所有类型</p>
+<ul>
+<li><strong>字符串类型</strong><ul>
+<li>CHAR：定长字符串，它会用空格填充来达到其最大长度，最多可以存储2000字节的信息</li>
+<li>NCHAR：这是一个包含UNICODE格式数据的定长字符串，最多可以存储2000字节的信息</li>
+<li>VARCHAR2：变长字符串，它不会用空格填充来达到其最大长度，最多可以存储4000字节的信息</li>
+<li>NVARCHAR2：这是一个包含UNICODE格式数据的变长字符串，最多可以存储4000字节的信息</li>
+</ul>
+</li>
+<li><strong>数值类型</strong><ul>
+<li>NUMBER：NUMBER(p,s)是最常见的数字类型，关于NUMBER的有效位§和精确位(s)遵循以下规则：<ul>
+<li>p：是有效数据总位数，取值范围为【1-38】，默认值是38</li>
+<li>s：表示精确到多少位，取值范围为【-84-127】，默认值是0</li>
+</ul>
+</li>
+<li>INTEGER：INTEGER是NUMBER的子类型，它等同于NUMBER(38,0)，用来存储整数</li>
+<li>FLOAT：Float(n)是NUMBER的子类型，数 n 指示位的精度，n值的范围可以从1到126</li>
+</ul>
+</li>
+<li><strong>日期类型</strong><ul>
+<li>DATE：DATE是最常用的日期数据类型，它可以存储日期和时间信息，虽然可以用字符或数字类型表示日期和时间信息，但是日期数据类型具有特殊关联的属性。Oracle 为每个日期值存储以下信息： 世纪、 年、 月、 日期、 小时、 分钟和秒，一般占用7个字节的存储空间</li>
+<li>TIMESTAMP：这是一个7字节或12字节的定宽日期/时间数据类型。它与DATE数据类型不同，因为TIMESTAMP可以包含小数秒，带小数秒的TIMESTAMP在小数点右边最多可以保留9位</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-2、创建表"><a href="#6-2、创建表" class="headerlink" title="6.2、创建表"></a>6.2、创建表</h4><p><strong>一、语法</strong></p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="selector-tag">table</span> 表名(     列名 列的类型 <span class="selector-attr">[列的约束]</span>,     列名 列的类型 <span class="selector-attr">[列的约束]</span>  );</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table users(     id number,     username varchar2(20),     password varchar2(20));</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<h4 id="6-3、复制表"><a href="#6-3、复制表" class="headerlink" title="6.3、复制表"></a>6.3、复制表</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名 <span class="keyword">as</span> 查询语句;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table emp_copy as      select * from emp;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h4 id="6-4、删除表"><a href="#6-4、删除表" class="headerlink" title="6.4、删除表"></a>6.4、删除表</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">方式一：<span class="keyword">drop</span> <span class="keyword">table</span> 表名;方式二：<span class="keyword">truncate</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">方式一：<span class="keyword">drop</span> <span class="keyword">table</span> emp_copy;方式二：<span class="keyword">truncate</span> <span class="keyword">table</span> emp_copy;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="6-5、修改表"><a href="#6-5、修改表" class="headerlink" title="6.5、修改表"></a>6.5、修改表</h4><p>1、添加一列</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 列名 列的类型;演示：<span class="keyword">alter</span> <span class="keyword">table</span> users <span class="keyword">add</span> phone varchar2(<span class="number">11</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>2、修改列名</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="keyword">alter</span> <span class="keyword">table</span> 表名 rename <span class="keyword">column</span> 旧列名 <span class="keyword">to</span> 新列名;演示：<span class="keyword">alter</span> <span class="keyword">table</span> users rename <span class="keyword">column</span> phone <span class="keyword">to</span> mobile;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>3、修改类型</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="keyword">alter</span> <span class="keyword">table</span> 表名 modify 列名 列的类型;演示：<span class="keyword">alter</span> <span class="keyword">table</span> users modify mobile <span class="type">char</span>(<span class="number">11</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>4、删除一列</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> <span class="keyword">column</span> 列名;演示：<span class="keyword">alter</span> <span class="keyword">table</span> users <span class="keyword">drop</span> <span class="keyword">column</span> mobile;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>5、修改表名</p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：rename 旧表名 <span class="keyword">to</span> 新表名;演示：rename users <span class="keyword">to</span> myusers;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="6-6、表约束"><a href="#6-6、表约束" class="headerlink" title="6.6、表约束"></a>6.6、表约束</h4><p><strong>一、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(        列名 列的类型 <span class="keyword">primary</span> key,<span class="comment">--主键约束        列名 列的类型 not null,--非空约束        列名 列的类型 unique,--唯一约束    	列名 列的类型 check(列名 in (检查列表)),--检查约束        constraint 约束名 foreign key(字段名) references 主表(被引用列)--外键约束) ;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--商品分类表create table category(       cid number primary key,       cname varchar2(20) ); --商品详情表create table product(       pid number primary key,--主键约束       pname varchar2(50) not null,--非空约束       pimg varchar2(50) unique,--唯一约束       pflag varchar2(10) check(pflag in ('上架','下架')),--检查约束       cid number,       constraint FK_CATEGORY_ID foreign key(cid) references category(cid)--外键约束);</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+</ul>
+<p><strong>三、修改</strong></p>
+<p>1、主键约束</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">constraint</span> PK_PRODUCT_PID <span class="keyword">primary</span> key(pid);删除<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">constraint</span> PK_PRODUCT_PID;或者<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">primary</span> key;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>2、非空约束</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加<span class="keyword">alter</span> <span class="keyword">table</span> product modify pname <span class="keyword">not</span> <span class="keyword">null</span>;删除<span class="keyword">alter</span> <span class="keyword">table</span> product modify pname <span class="keyword">null</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p>3、唯一约束</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">constraint</span> UK_PRODUCT_PIMG <span class="keyword">unique</span>(pimg);删除<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">constraint</span> UK_PRODUCT_PIMG;或者<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">unique</span>(pimg);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>4、检查约束</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">constraint</span> CK_PRODUCT_PFLAG <span class="keyword">check</span>(pflag <span class="keyword">in</span> (<span class="string">'上架'</span>,<span class="string">'下架'</span>));删除<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">constraint</span> CK_PRODUCT_PFLAG;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p>5、外键约束</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">constraint</span> FK_PRODUCT_ID <span class="keyword">foreign</span> key(cid) <span class="keyword">references</span> category(cid);删除<span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">drop</span> <span class="keyword">constraint</span> FK_PRODUCT_ID;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<h3 id="第七章-DML语言"><a href="#第七章-DML语言" class="headerlink" title="第七章 DML语言"></a>第七章 DML语言</h3><h4 id="7-1、插入语句"><a href="#7-1、插入语句" class="headerlink" title="7.1、插入语句"></a>7.1、插入语句</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：insert into 表名(列名1,列名2,...) values(值1,值2,...);演示：insert into category(cid,cname) values(1,'电视');注意：commit;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h4 id="7-2、修改语句"><a href="#7-2、修改语句" class="headerlink" title="7.2、修改语句"></a>7.2、修改语句</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：update 表名 set 列名1=值1,列名2=值2,... where 查询条件;演示：update category set cname='汽车' where cid = 1;注意：commit;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h4 id="7-3、删除语句"><a href="#7-3、删除语句" class="headerlink" title="7.3、删除语句"></a>7.3、删除语句</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 查询条件;演示：<span class="keyword">delete</span> <span class="keyword">from</span> category <span class="keyword">where</span> cid <span class="operator">=</span> <span class="number">1</span>;注意：<span class="keyword">commit</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h3 id="第八章-TCL语言"><a href="#第八章-TCL语言" class="headerlink" title="第八章 TCL语言"></a>第八章 TCL语言</h3><h4 id="8-1、事务"><a href="#8-1、事务" class="headerlink" title="8.1、事务"></a>8.1、事务</h4><p><strong>一、含义</strong></p>
+<p>一条或多条sql语句组成一个执行单位，一组sql语句要么都执行要么都不执行</p>
+<p><strong>二、特点（ACID）</strong></p>
+<ol>
+<li>原子性：一个事务是不可再分割的整体，要么都执行要么都不执行</li>
+<li>一致性：一个事务的执行不能破坏数据库数据的完整性和一致性</li>
+<li>隔离性：一个事务不受其它事务的干扰，多个事务是互相隔离的</li>
+<li>持久性：一个事务一旦提交了，则永久的持久化到本地</li>
+</ol>
+<p><strong>三、分类</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、开启事务Oracle <span class="number">11</span>g中事务是隐式自动开始的，它不需要用户显示的执行开始事务语句 <span class="number">2</span>、编写一组逻辑<span class="keyword">sql</span>语句注意：<span class="keyword">sql</span>语句支持的是<span class="keyword">insert</span>、<span class="keyword">update</span>、<span class="keyword">delete</span> 【设置回滚点】<span class="keyword">savepoint</span> 回滚点名; <span class="number">3</span>、结束事务提交：<span class="keyword">commit</span>;回滚：<span class="keyword">rollback</span>;回滚到指定的地方： <span class="keyword">rollback</span> <span class="keyword">to</span> 回滚点名;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<h4 id="8-2、事务并发（读问题）"><a href="#8-2、事务并发（读问题）" class="headerlink" title="8.2、事务并发（读问题）"></a>8.2、事务并发（读问题）</h4><p><strong>一、事物的并发问题如何发生？</strong></p>
+<p>多个事务同时操作同一个数据库的相同数据时</p>
+<p><strong>二、事务的并发问题都有哪些？</strong></p>
+<ol>
+<li>脏读：一个事务读到了另一个事务还未提交的update数据，导致多次查询的结果不一样（Oracle中不会产生）</li>
+<li>不可重复读：一个事务读到了另一个事务已经提交的update数据，导致多次查询结果不一致</li>
+<li>幻读：一个事务读到了另一个事务已经提交的insert数据，导致多次查询的结果不一样</li>
+</ol>
+<p><strong>三、事物的并发问题如何解决？</strong></p>
+<p>通过设置隔离级别来解决并发问题</p>
+<p><strong>四、隔离级别</strong></p>
+<p>Oracle中只支持READ COMMITTED、SERIALIZABLE、READ ONLY、READ WRITE，这些语句是互斥的，不能同时设置两个或两个以上的选项，一般默认即可。</p>
+<h4 id="8-3、丢失更新（写问题）"><a href="#8-3、丢失更新（写问题）" class="headerlink" title="8.3、丢失更新（写问题）"></a>8.3、丢失更新（写问题）</h4><p><strong>一、定义</strong></p>
+<p>在事务的隔离级别内容中，能够了解到两个不同的事务在并发的时候可能会发生数据的影响。细心的话可以发现事务隔离级别章节中，脏读、不可重复读、幻读三个问题都是由事务A对数据进行修改、增加，事务B总是在做读操作。如果两事务都在对数据进行修改则会导致另外的问题：丢失更新。</p>
+<p><strong>二、解决</strong></p>
+<ol>
+<li>悲观锁：认为两个事务更新操作一定会发生丢失更新<ul>
+<li>解决：通过在语句后边添加for update来实现行级上锁，所以又称为“行级锁”，例如：select * from t_account t wheret.id=‘1’ for update;</li>
+</ul>
+</li>
+<li>乐观锁：认为事务不一定会产生丢失更新，让事务进行并发修改，不对事务进行锁定<ul>
+<li>解决：由程序员自己解决，可以通过给数据表添加自增的version字段或时间戳timestamp，进行数据修改时，数据库会检测version字段或者时间戳是否与原来的一致，若不一致，抛出异常或者重新查询</li>
+</ul>
+</li>
+</ol>
+<p><strong>三、注意</strong></p>
+<p>对于账户交易建议直接使用悲观锁，数据库的性能很高，并发度不是很高的场景两者性能没有太大差别。如果是交易减库存的操作可以考虑乐观锁，保证并发度。</p>
+<h3 id="第九章-高级部分"><a href="#第九章-高级部分" class="headerlink" title="第九章 高级部分"></a>第九章 高级部分</h3><h4 id="9-1、序列"><a href="#9-1、序列" class="headerlink" title="9.1、序列"></a>9.1、序列</h4><p><strong>一、含义</strong></p>
+<p>序列是Oracle数据库中特有的，使用序列可以生成类似于 auto_increment 这种ID自动增长 1,2,3,4,5… 的效果</p>
+<p><strong>二、语法</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create sequence 序列名称start <span class="keyword">with</span> 从几开始increment <span class="keyword">by</span> 每次增长多少[maxvalue 最大值] | nomaxvalue[minvalue 最小值] | nominvaluecycle | nocycle --是否自动循环[cache 缓存数量] | nocache;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--创建序列create sequence auto_increment_seqstart with 1increment by 1nomaxvalueminvalue 1nocyclecache 10000; --调用序列select auto_increment_seq.nextval from dual;select auto_increment_seq.currval from dual;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+</ul>
+<h4 id="9-2、PLSQL编程"><a href="#9-2、PLSQL编程" class="headerlink" title="9.2、PLSQL编程"></a>9.2、PLSQL编程</h4><p>9.2.1、格式</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span>  <span class="comment">--声明变量          begin  --业务逻辑 end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+</ul>
+<p>9.2.2、变量</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare  --声明变量  -- 格式一：变量名 变量类型;  -- 格式二：变量名 变量类型 := 初始值;  -- 格式三：变量名 变量类型 := &amp;文本框名;  -- 格式四：变量名 表名.字段名%type;  -- 格式五：变量名 表名%rowtype;  vnum number;  vage number := 28;  vabc number := &amp;abc;--输入一个数值，从一个文本框输入  vsal emp.sal%type;  --引用型的变量，代表emp.sal的类型  vrow emp%rowtype;   --记录型的变量，代表emp一行的类型          begin  --业务逻辑  dbms_output.put_line(vnum);                       --输出一个未赋值的变量  dbms_output.put_line(vage);                       --输出一个已赋值的变量  dbms_output.put_line(vabc);                       --输出一个文本框输入的变量  select sal into vsal from emp where empno = 7654; --将查询到的sal内容存入vsal并输出  dbms_output.put_line(vsal);  select * into vrow from emp where empno = 7654;   --将查询到的一行内容存入vrow并输出    dbms_output.put_line(vrow.sal);  dbms_output.put_line(123);                        --输出一个整数  dbms_output.put_line(123.456);                    --输出一个小数    dbms_output.put_line('Hello,World');              --输出一个字符串  dbms_output.put_line('Hello'||',World');          --输出一个拼接的字符串，||拼接符Oracle特有  dbms_output.put_line(concat('Hello',',World'));   --输出一个拼接的字符串，concat函数比较通用end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+<li>22</li>
+<li>23</li>
+<li>24</li>
+<li>25</li>
+<li>26</li>
+<li>27</li>
+</ul>
+<p>9.2.3、if判断</p>
+<p><strong>一、语法</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if 条件1 then     elsif 条件2 then       else      end if;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare  age number := &amp;age;begin  if age &lt; 18 then    dbms_output.put_line('小屁孩');  elsif age &gt;= 18 and age &lt;= 24 then    dbms_output.put_line('年轻人');  elsif age &gt; 24 and age &lt; 40 then    dbms_output.put_line('老司机');  else    dbms_output.put_line('老年人');  end if;end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<p>9.2.4、while循环</p>
+<p><strong>一、语法</strong></p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 条件 <span class="keyword">loop</span>        <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--输出1~10declare  i number := 1;begin  while i &lt;= 10 loop    dbms_output.put_line(i);    i := i + 1;  end loop;end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<p>9.2.5、for循环</p>
+<p><strong>一、语法</strong></p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 变量  <span class="keyword">in</span> [reverse] 起始值..结束值 <span class="keyword">loop</span>        <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--输出1~10declare begin  for i in reverse 1 .. 10 loop    dbms_output.put_line(i);  end loop;end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+</ul>
+<p>9.2.6、loop循环</p>
+<p><strong>一、语法</strong></p>
+<figure class="highlight vbnet"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">loop</span>    <span class="keyword">exit</span> <span class="keyword">when</span> 条件  <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<p><strong>二、演示</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--输出1~10declare  i number := 1;begin  loop    exit when i &gt; 10;    dbms_output.put_line(i);    i := i + 1;  end loop;end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+</ul>
+<p>9.2.7、意外</p>
+<p><strong>一、含义</strong></p>
+<p>意外是程序运行的过程发生的异常，相当于是Java中的异常</p>
+<p><strong>二、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span>   <span class="comment">--声明变量begin   --业务逻辑exception   --处理异常   when 异常1 then     ...   when 异常2 then     ...   when others then     ...处理其它异常end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<p><strong>三、分类</strong></p>
+<ul>
+<li><p>系统异常</p>
+<ul>
+<li>zero_divide ：除数为零异常</li>
+<li>value_error ：类型转换异常</li>
+<li>no_data_found : 没有找到数据</li>
+<li>too_many_rows : 查询出多行记录，但是赋值给了%rowtype一行数据变量</li>
+</ul>
+</li>
+<li><p>自定义异常</p>
+<ul>
+<li><pre><code class="cobol">declare   --声明变量   异常名称 exception;begin   --业务逻辑   if 触发条件 then      raise 异常名称; --抛出自定义的异常exception   --处理异常   when 异常名称 then     dbms_output.put_line('输出了自定义异常');     when others then     dbms_output.put_line('输出了其它的异常');  end;
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    *   1</span><br><span class="line">    *   2</span><br><span class="line">    *   3</span><br><span class="line">    *   4</span><br><span class="line">    *   5</span><br><span class="line">    *   6</span><br><span class="line">    *   7</span><br><span class="line">    *   8</span><br><span class="line">    *   9</span><br><span class="line">    *   10</span><br><span class="line">    *   11</span><br><span class="line">    *   12</span><br><span class="line">    *   13</span><br><span class="line">    *   14</span><br><span class="line"></span><br><span class="line">**四、演示**</span><br><span class="line"></span><br><span class="line">1、内置系统异常</span><br><span class="line"></span><br><span class="line">```cobol</span><br><span class="line">  vi   number;  vrow emp%rowtype;begin  --以下四行对应四个异常，测试请依次放开  vi := 8/0;    --vi := 'aaa';  --select * into vrow from emp where empno = 1234567;  --select * into vrow from emp;exception  when zero_divide then    dbms_output.put_line('发生除数为零异常');  when value_error then    dbms_output.put_line('发生类型转换异常');  when no_data_found then    dbms_output.put_line('没有找到数据异常');  when too_many_rows then    dbms_output.put_line('查询出多行记录，但是赋值给了%rowtype一行数据变量');  when others then    dbms_output.put_line('发生了其它的异常' || sqlerrm);end;</span><br></pre></td></tr></tbody></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>1</p>
+</li>
+<li><p>2</p>
+</li>
+<li><p>3</p>
+</li>
+<li><p>4</p>
+</li>
+<li><p>5</p>
+</li>
+<li><p>6</p>
+</li>
+<li><p>7</p>
+</li>
+<li><p>8</p>
+</li>
+<li><p>9</p>
+</li>
+<li><p>10</p>
+</li>
+<li><p>11</p>
+</li>
+<li><p>12</p>
+</li>
+<li><p>13</p>
+</li>
+<li><p>14</p>
+</li>
+<li><p>15</p>
+</li>
+<li><p>16</p>
+</li>
+<li><p>17</p>
+</li>
+<li><p>18</p>
+</li>
+<li><p>19</p>
+</li>
+<li><p>20</p>
+</li>
+</ul>
+<p>2、抛出系统异常</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询指定编号的员工，如果没有找到，则抛出系统异常declare  --1.声明一个变量 %rowtype  vrow emp%rowtype;begin  --查询员工信息，保存起来  select * into vrow from emp where empno = 8000;  --判断是否触发异常的条件  if vrow.sal is null then    --抛出系统异常     raise_application_error(-20001,'员工工资为空');  end if;exception  when others then    dbms_output.put_line('输出了其它的异常' || sqlerrm);end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+</ul>
+<p>3、抛出自定义异常</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询指定编号的员工，如果没有找到，则抛出自定义异常declare  --1.声明一个变量 %rowtype  vrow emp%rowtype;  --2.声明一个自定义的异常  no_emp exception;begin  --查询员工信息，保存起来  select * into vrow from emp where empno = 8000;  --判断是否触发异常的条件  if vrow.sal is null then    raise no_emp; --抛出自定义的异常  end if;exception  when no_emp then    dbms_output.put_line('输出了自定义异常');  when others then    dbms_output.put_line('输出了其它的异常' || sqlerrm);end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+</ul>
+<h4 id="9-3、索引"><a href="#9-3、索引" class="headerlink" title="9.3、索引"></a>9.3、索引</h4><p><strong>一、含义</strong></p>
+<p>索引相当于是一本书的目录，能够提高我们的查询效率</p>
+<p><strong>二、语法</strong></p>
+<p>1、创建索引</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create [UNIQUE]|[BITMAP] index 索引名 on 表名(列名1,列名2,...);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>2、修改索引</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--重命名索引alter index 索引名称 rename to 新的名称; --合并索引alter index 索引名称 coalesce; --重建索引alter index 索引名称 rebuild; --修改某列先删除，在创建</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+</ul>
+<p>3、删除索引</p>
+<figure class="highlight perl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop <span class="keyword">index</span> 索引名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、创建索引</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create index INX_CATEGORY_CNAME <span class="keyword">on</span> <span class="title">category</span>(<span class="params">cname</span>)</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>2、修改索引</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--重命名索引alter index INX_CATEGORY_CNAME rename to INX_CATEGORY_CNAME_NEW; --合并索引alter index INX_CATEGORY_CNAME_NEW coalesce; --重建索引alter index INX_CATEGORY_CNAME_NEW rebuild; --修改某列先删除，在创建</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+</ul>
+<p>3、删除索引</p>
+<figure class="highlight perl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop <span class="keyword">index</span> INX_CATEGORY_CNAME;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="9-4、视图"><a href="#9-4、视图" class="headerlink" title="9.4、视图"></a>9.4、视图</h4><p><strong>一、含义</strong></p>
+<p>视图是对查询结果的一个封装，视图里面所有的数据，都是来自于它查询的那张表，视图本身不存储任何数据，但是可以修改原数据，但是不建议这样使用</p>
+<p><strong>二、语法</strong></p>
+<p>1、创建视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名称<span class="keyword">as</span> 查询语句[<span class="keyword">with</span> read <span class="keyword">only</span>];</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p>2、修改视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> 视图名称<span class="keyword">as</span> 查询语句[<span class="keyword">with</span> read <span class="keyword">only</span>];</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p>3、删除视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、创建视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_emp asselect ename,job,mgr <span class="keyword">from</span> emp;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>2、修改视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> view_emp asselect ename,job,mgr,deptno <span class="keyword">from</span> emp;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>3、删除视图</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> view_emp;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="9-5、同义词"><a href="#9-5、同义词" class="headerlink" title="9.5、同义词"></a>9.5、同义词</h4><p><strong>一、含义</strong></p>
+<p>同义词就是别名的意思和视图的功能类似，就是一种映射关系</p>
+<p><strong>二、语法</strong></p>
+<p>1、创建同义词</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create [<span class="keyword">public</span>] synonym 同义词名称 <span class="keyword">for</span> 对象的名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>2、修改同义词</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="keyword">or</span> replace [<span class="keyword">public</span>] synonym 同义词名称 <span class="keyword">for</span> 对象的名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>3、删除同义词</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop [<span class="keyword">public</span>] synonym 同义词名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、创建同义词</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--创建create synonym syno_emp for emp;--调用select * from syno_emp;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p>2、修改同义词</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--创建create or replace synonym syno_emp_update for emp;--调用select * from syno_emp_update;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p>3、删除同义词</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> synonym syno_emp_update;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="9-6、游标"><a href="#9-6、游标" class="headerlink" title="9.6、游标"></a>9.6、游标</h4><p><strong>一、含义</strong></p>
+<p>游标是用来操作查询结果集，相当于是JDBC中ResultSet，它可以对查询的结果一行一行的获取</p>
+<p><strong>二、语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--第一步：定义游标    --第一种：普通游标    cursor 游标名[(参数 参数类型)] is 查询语句;    --第二种：系统引用游标    游标名 sys_refcursor; --第二步：打开游标    --第一种：普通游标    open 游标名[(参数 参数类型)];    --第二种：系统引用游标    open 游标名 for 查询语句; --第三步：获取一行	fetch 游标名 into 变量; --第四步：关闭游标	close 游标名;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、普通游标使用</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--输出指定部门下的员工姓名和工资declare  --1.声明游标  cursor vrows(dno number) is select * from emp where deptno = dno;  --声明变量  vrow emp%rowtype;begin  --2.打开游标   open vrows(10);  --3.循环遍历  loop    fetch vrows into vrow;    exit when vrows%notfound;    dbms_output.put_line('姓名:' || vrow.ename || ' 工资: ' || vrow.sal);  end loop;  --4.关闭游标  close vrows;end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+</ul>
+<p>2、系统引用游标使用</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--输出员工表中所有的员工姓名和工资declare  --1.声明系统引用游标  vrows sys_refcursor;  --声明变量  vrow emp%rowtype;begin  --2.打开游标  open vrows for select * from emp;  --3.循环遍历  loop    fetch vrows into vrow;    exit when vrows%notfound;    dbms_output.put_line('姓名:' || vrow.ename || ' 工资: ' || vrow.sal);  end loop;  --4.关闭游标  close vrows;end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+</ul>
+<p>3、使用for循环输出</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--输出员工表中所有的员工姓名和工资declare  cursor vrows is select * from emp;begin  --自动定义变量vrow，自动打开游标，自动关闭游标  for vrow in vrows loop    dbms_output.put_line('姓名:' || vrow.ename || ' 工资: ' || vrow.sal || '工作:' || vrow.job);  end loop;end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<h4 id="9-7、存储过程"><a href="#9-7、存储过程" class="headerlink" title="9.7、存储过程"></a>9.7、存储过程</h4><p><strong>一、含义</strong></p>
+<p>存储过程实际上是封装在服务器上一段PLSQL代码片断，它已经编译好了，如果客户端调用存储过程，执行效率就会非常高效</p>
+<p><strong>二、语法</strong></p>
+<p>1、创建存储过程</p>
+<figure class="highlight delphi"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="function"><span class="keyword">procedure</span> 存储过程名称<span class="params">(参数名 <span class="keyword">in</span>|<span class="keyword">out</span> 参数类型,参数名 <span class="keyword">in</span>|<span class="keyword">out</span> 参数类型,...)</span><span class="title">is</span>|<span class="title">as</span> --声明部分<span class="title">begin</span> --业务逻辑 <span class="title">end</span>;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>2、修改存储过程</p>
+<figure class="highlight delphi"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create [<span class="keyword">or</span> replace] <span class="function"><span class="keyword">procedure</span> 存储过程名称<span class="params">(参数名 <span class="keyword">in</span>|<span class="keyword">out</span> 参数类型,参数名 <span class="keyword">in</span>|<span class="keyword">out</span> 参数类型,...)</span><span class="title">is</span>|<span class="title">as</span> --声明部分<span class="title">begin</span> --业务逻辑 <span class="title">end</span>;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>3、删除存储过程</p>
+<figure class="highlight delphi"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop <span class="function"><span class="keyword">procedure</span> 存储过程名称;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>4、调用存储过程</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--方式一：call 存储过程名称(...); --方式二：declare begin  存储过程名称(...);end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、创建存储过程</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--给指定员工涨薪并打印涨薪前和涨薪后的工资create procedure proc_update_sal(vempno in number,vnum in number)is  --声明变量  vsal number;begin  --查询当前的工资  select sal into vsal from emp where empno = vempno;  --输出涨薪前的工资  dbms_output.put_line('涨薪前:' || vsal);  --更新工资  update emp set sal = vsal + vnum where empno = vempno;  --输出涨薪后的工资  dbms_output.put_line('涨薪后:' || (vsal + vnum));  --提交事物  commit;end; --给员工编号为7521的员工涨工资10元call proc_update_sal(7521, 10);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+</ul>
+<p>2、修改存储过程</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--给指定员工涨薪并打印涨薪前和涨薪后的工资create or replace procedure proc_update_sal(vempno in number,vnum in number)is  --声明变量  vsal number;begin  --查询当前的工资  select sal into vsal from emp where empno = vempno;  --输出涨薪前的工资  dbms_output.put_line('涨薪前:' || vsal);  --更新工资  update emp set sal = vsal + vnum where empno = vempno;  --输出涨薪后的工资  dbms_output.put_line('涨薪后:' || (vsal + vnum));  --提交事物  commit;end; --给员工编号为7521的员工涨工资10元call proc_update_sal(7521, 10);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+</ul>
+<p>3、删除存储过程</p>
+<figure class="highlight delphi"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop <span class="function"><span class="keyword">procedure</span> <span class="title">proc_update_sal</span>;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="9-8、函数"><a href="#9-8、函数" class="headerlink" title="9.8、函数"></a>9.8、函数</h4><p><strong>一、含义</strong></p>
+<p>函数实际上是封装在服务器上一段PLSQL代码片断，它已经编译好了，如果客户端调用存储过程，执行效率就会非常高效，它跟存储过程没有什么本质区别，存储过程能做的函数也能做，只不过函数有返回值</p>
+<p><strong>二、语法</strong></p>
+<p>1、创建函数</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 函数名称(参数名 <span class="keyword">in</span><span class="operator">|</span><span class="keyword">out</span> 参数类型,参数名 <span class="keyword">in</span><span class="operator">|</span><span class="keyword">out</span> 参数类型,...) <span class="keyword">return</span> 返回的参数类型<span class="keyword">is</span><span class="operator">|</span><span class="keyword">as</span> <span class="comment">--声明部分begin --业务逻辑 end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>2、修改函数</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">or</span> replace] <span class="keyword">function</span> 函数名称(参数名 <span class="keyword">in</span><span class="operator">|</span><span class="keyword">out</span> 参数类型,参数名 <span class="keyword">in</span><span class="operator">|</span><span class="keyword">out</span> 参数类型,...) <span class="keyword">return</span> 返回的参数类型<span class="keyword">is</span><span class="operator">|</span><span class="keyword">as</span> <span class="comment">--声明部分begin --业务逻辑 end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+</ul>
+<p>3、删除函数</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> 函数名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>4、调用函数</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--方式一：select 函数名称(...) from dual; --方式二：declare  变量名 变量类型;begin  变量名 = 函数名称(...);end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+</ul>
+<p><strong>三、演示</strong></p>
+<p>1、创建函数</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询指定员工的年薪/*    参数 : 员工的编号    返回 : 员工的年薪          */create function func_getsal(vempno number) return numberis  vtotalsal number;begin  select sal * 12 + nvl(comm, 0) into vtotalsal from emp where empno = vempno;  return vtotalsal;end; --查询员工编号为7788的年薪declare  vsal number;begin  vsal := func_getsal(7788);  dbms_output.put_line(vsal);end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+</ul>
+<p>2、修改函数</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--查询指定员工的年薪/*    参数 : 员工的编号    返回 : 员工的年薪          */create or replace function func_getsal(vempno number) return numberis  vtotalsal number;begin  select sal * 12 + nvl(comm, 0) into vtotalsal from emp where empno = vempno;  return vtotalsal;end; --查询员工编号为7788的年薪declare  vsal number;begin  vsal := func_getsal(7788);  dbms_output.put_line(vsal);end;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+</ul>
+<p>3、删除函数</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> func_getsal;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="9-9、触发器"><a href="#9-9、触发器" class="headerlink" title="9.9、触发器"></a>9.9、触发器</h4><p><strong>一、含义</strong></p>
+<p>当用户执行了 insert | update | delete 这些操作之后，可以触发一系列其它的动作、业务逻辑，使用触发器可以协助应用在数据库端确保数据的完整性、日志记录 、数据校验等操作。使用别名 OLD 和 NEW 来引用触发器中发生变化的记录内容，这与其他的数据库是相似的。现在Oracle触发器不仅支持行级触发，还支持语句级触发</p>
+<p><strong>二、分类</strong></p>
+<table>
+<thead>
+<tr>
+<th>触发器类型</th>
+<th>NEW 和 OLD的使用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INSERT 型触发器</td>
+<td>NEW 表示将要或者已经新增的数据</td>
+</tr>
+<tr>
+<td>UPDATE 型触发器</td>
+<td>OLD 表示修改之前的数据 , NEW 表示将要或已经修改后的数据</td>
+</tr>
+<tr>
+<td>DELETE 型触发器</td>
+<td>OLD 表示将要或者已经删除的数据</td>
+</tr>
+</tbody></table>
+<p><strong>三、语法</strong></p>
+<p>1、创建触发器</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> 触发器名称before<span class="operator">|</span>afterinsert<span class="operator">|</span><span class="keyword">update</span><span class="operator">|</span><span class="keyword">delete</span> <span class="keyword">on</span> 表名称[<span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span>]<span class="comment">--行级触发器declare --声明部分begin --业务逻辑 end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+</ul>
+<p>2、修改触发器</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">or</span> replace] <span class="keyword">trigger</span> 触发器名称before<span class="operator">|</span>afterinsert<span class="operator">|</span><span class="keyword">update</span><span class="operator">|</span><span class="keyword">delete</span> <span class="keyword">on</span> 表名称[<span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span>]<span class="comment">--行级触发器declare --声明部分begin --业务逻辑 end;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+</ul>
+<p>3、删除触发器</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> 触发器名称;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p><strong>四、演示</strong></p>
+<p>1、INSERT 型触发器</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--新员工入职之后，输出一句话: 欢迎加入我们create or replace trigger tri_emp_insertafterinserton empdeclare begin  dbms_output.put_line('欢迎加入我们');end; --插入数据就可以自动触发触发器insert into emp(empno, ename) values(9527, '马哈哈');</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<p>2、UPDATE 型触发器</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--判断员工涨工资后的工资一定要大于涨工资前的工资create or replace trigger tri_emp_update_salbeforeupdateon empfor each rowdeclare begin  if :old.sal &gt; :new.sal then    raise_application_error(-20002,'旧的工资不能大于新的工资');  end if;end; --更新数据就可以自动触发触发器（无异常）update emp set sal = sal + 10;select * from emp; --更新数据就可以自动触发触发器（有异常）update emp set sal = sal - 100;select * from emp;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+</ul>
+<p>3、DELETE 型触发器</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--老员工离职之后，输出一句话: 有员工离职了create or replace trigger tri_emp_deleteafterdeleteon empdeclare begin  dbms_output.put_line('有员工离职了');end; --删除数据就可以自动触发触发器delete from emp where empno = 9527;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<p>4、删除触发器</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> tri_emp_insert;<span class="keyword">drop</span> <span class="keyword">trigger</span> tri_emp_update_sal;<span class="keyword">drop</span> <span class="keyword">trigger</span> tri_emp_delete;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<h3 id="第十章-数据备份与恢复"><a href="#第十章-数据备份与恢复" class="headerlink" title="第十章 数据备份与恢复"></a>第十章 数据备份与恢复</h3><h4 id="10-1、全部导出"><a href="#10-1、全部导出" class="headerlink" title="10.1、全部导出"></a>10.1、全部导出</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--注意：以下操作为cmd命令行操作全部导出: exp 管理员帐号/密码 file='d:\beifen.dmp' full=y</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="10-2、全部导入"><a href="#10-2、全部导入" class="headerlink" title="10.2、全部导入"></a>10.2、全部导入</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--注意：以下操作为cmd命令行操作全部导入: imp 管理员帐号/密码 file='d:\beifen.dmp' full=y</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="10-3、按用户导出"><a href="#10-3、按用户导出" class="headerlink" title="10.3、按用户导出"></a>10.3、按用户导出</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--注意：以下操作为cmd命令行操作按用户导出: exp 管理员帐号/密码 file='d:\beifen.dmp' owner=帐号</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="10-4、按用户导入"><a href="#10-4、按用户导入" class="headerlink" title="10.4、按用户导入"></a>10.4、按用户导入</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--注意：以下操作为cmd命令行操作按用户导入: imp 管理员帐号/密码 file='d:\beifen.dmp' fromuser=帐号</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h3 id="第十一章-安装Oracle单实例"><a href="#第十一章-安装Oracle单实例" class="headerlink" title="第十一章 安装Oracle单实例"></a>第十一章 安装Oracle单实例</h3><h4 id="11-1、环境准备"><a href="#11-1、环境准备" class="headerlink" title="11.1、环境准备"></a>11.1、环境准备</h4><p>注意：当前Linux为CentOS-6.10-x86_64-bin-DVD1.iso</p>
+<p>界面：使用图形界面</p>
+<p>内存：4GB</p>
+<p>硬盘：20GB</p>
+<p>连接：SecureCRT，上传文件（rz命令）需要安装：yum -y install lrzsz</p>
+<h4 id="11-2、下载程序"><a href="#11-2、下载程序" class="headerlink" title="11.2、下载程序"></a>11.2、下载程序</h4><p>32位需要下载（需要登录账号）：</p>
+<p><a target="_blank" rel="noopener" href="http://download.oracle.com/otn/linux/oracle11g/R2/linux/_11gR2/_database/_1of2.zip">http://download.oracle.com/otn/linux/oracle11g/R2/linux\_11gR2\_database\_1of2.zip</a></p>
+<p><a target="_blank" rel="noopener" href="http://download.oracle.com/otn/linux/oracle11g/R2/linux/_11gR2/_database/_2of2.zip">http://download.oracle.com/otn/linux/oracle11g/R2/linux\_11gR2\_database\_2of2.zip</a></p>
+<p>64位需要下载（需要登录账号）：</p>
+<p><a target="_blank" rel="noopener" href="http://download.oracle.com/otn/linux/oracle11g/R2/linux.x64/_11gR2/_database/_1of2.zip">http://download.oracle.com/otn/linux/oracle11g/R2/linux.x64\_11gR2\_database\_1of2.zip</a></p>
+<p><a target="_blank" rel="noopener" href="http://download.oracle.com/otn/linux/oracle11g/R2/linux.x64/_11gR2/_database/_2of2.zip">http://download.oracle.com/otn/linux/oracle11g/R2/linux.x64\_11gR2\_database\_2of2.zip</a></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE4MzcucG5n?x-oss-process=image/format,png" alt="image-20200814234753366"></p>
+<h4 id="11-3、解压程序"><a href="#11-3、解压程序" class="headerlink" title="11.3、解压程序"></a>11.3、解压程序</h4><ul>
+<li><strong>上传</strong></li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE4NDgucG5n?x-oss-process=image/format,png" alt="image-20200815112821911"></p>
+<ul>
+<li><strong>解压</strong><ul>
+<li>unzip linux.x64_11gR2_database_1of2.zip</li>
+<li>unzip linux.x64_11gR2_database_2of2.zip</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE4NTIucG5n?x-oss-process=image/format,png" alt="image-20200815112508045"></p>
+<ul>
+<li>注意：unzip可能会提示没有这个命令，那就需要我们安装一下了<ul>
+<li>yum -y install zip</li>
+<li>yum -y install unzip</li>
+</ul>
+</li>
+</ul>
+<h4 id="11-4、移动软件"><a href="#11-4、移动软件" class="headerlink" title="11.4、移动软件"></a>11.4、移动软件</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# mkdir -p /usr/local/oracle[root@caochenlei ~]# mv database/ /usr/local/oracle</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="11-5、域名映射"><a href="#11-5、域名映射" class="headerlink" title="11.5、域名映射"></a>11.5、域名映射</h4><p>查看当前系统主机名：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># hostnamecaochenlei</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>查看当前系统的IP地址：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># ifconfig</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>修改系统的映射文件：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># vi /etc/hosts</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>在末尾添加以下内容：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 192.168.112.129 caochenlei</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<h4 id="11-6、关闭selinux"><a href="#11-6、关闭selinux" class="headerlink" title="11.6、关闭selinux"></a>11.6、关闭selinux</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# vi /etc/selinux/config</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>设置SELINUX=disabled</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MDUucG5n?x-oss-process=image/format,png" alt="image-20200815113152263"></p>
+<p>临时关闭一下selinux：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># setenforce 0</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="11-7、关闭防火墙"><a href="#11-7、关闭防火墙" class="headerlink" title="11.7、关闭防火墙"></a>11.7、关闭防火墙</h4><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># service iptables stop[root@caochenlei ~]# chkconfig iptables off</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h4 id="11-8、安装依赖包"><a href="#11-8、安装依赖包" class="headerlink" title="11.8、安装依赖包"></a>11.8、安装依赖包</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# yum install -y binutils compat-libcap1 compat-libstdc++-33 gcc gcc-c++ glibc glibc-devel ksh libgcc libstdc++ libstdc++-devel libaio libaio-devel make sysstat unixODBC-devel pdksh java-1.8.0-openjdk*</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="11-9、添加新用户"><a href="#11-9、添加新用户" class="headerlink" title="11.9、添加新用户"></a>11.9、添加新用户</h4><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># groupadd oinstall[root@caochenlei ~]# groupadd dba[root@caochenlei ~]# useradd -g oinstall -G dba oracle[root@caochenlei ~]# passwd oracle</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<h4 id="11-10、修改内核文件"><a href="#11-10、修改内核文件" class="headerlink" title="11.10、修改内核文件"></a>11.10、修改内核文件</h4><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># vi /etc/sysctl.conf</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>在末尾添加以下内容：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.aio-max-nr = 1048576fs.file-max = 6815744kernel.shmall = 2097152kernel.shmmax = 536870912kernel.shmmni = 4096kernel.sem = 250 32000 100 128net.ipv4.ip_local_port_range = 9000 65500net.core.rmem_default = 262144net.core.rmem_max = 4194304net.core.wmem_default = 262144net.core.wmem_max = 1048576</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+</ul>
+<p>更新一下文件以生效：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># sysctl -p</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="11-11、修改用户限制"><a href="#11-11、修改用户限制" class="headerlink" title="11.11、修改用户限制"></a>11.11、修改用户限制</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# vi /etc/security/limits.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<p>在末尾添加以下内容：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oracle            soft    nproc           4096oracle            hard    nproc           65536oracle            soft    nofile          4096oracle            hard    nofile          65536</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<p>修改完成后重启服务器：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@caochenlei ~</span>]<span class="meta"># reboot</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="11-12、创建安装目录"><a href="#11-12、创建安装目录" class="headerlink" title="11.12、创建安装目录"></a>11.12、创建安装目录</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# mkdir -p /data/oracle/product/11.2.0[root@caochenlei ~]# mkdir -p /data/oracle/oradata[root@caochenlei ~]# mkdir -p /data/oracle/inventory[root@caochenlei ~]# chown -R oracle:oinstall /data/oracle[root@caochenlei ~]# chmod -R 775 /data/oracle</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<h4 id="11-13、设置环境变量"><a href="#11-13、设置环境变量" class="headerlink" title="11.13、设置环境变量"></a>11.13、设置环境变量</h4><p>切换到oracle用户下：</p>
+<figure class="highlight crystal"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@caochenlei</span> ~]<span class="comment"># su - oracle[oracle@caochenlei ~]$ vi .bash_profile</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>在末尾添加以下内容：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORACLE_BASE=/data/oracleORACLE_HOME=$ORACLE_BASE/product/11.2.0ORACLE_SID=orclPATH=$PATH:$ORACLE_HOME/binexport ORACLE_BASE ORACLE_HOME ORACLE_SID PATH</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<p>更新一下文件以生效：</p>
+<figure class="highlight crystal"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[oracle<span class="variable">@caochenlei</span> ~]<span class="variable">$ </span>source .bash_profile</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+</ul>
+<h4 id="11-14、安装应用程序"><a href="#11-14、安装应用程序" class="headerlink" title="11.14、安装应用程序"></a>11.14、安装应用程序</h4><p>这一步需要在虚拟机里进行，因为会弹出窗体程序</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[oracle@caochenlei response]$ cd /usr/local/oracle/database/[oracle@caochenlei database]$ LANG=en_US ./runInstaller</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<p>用户安装截图：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MTIucG5n?x-oss-process=image/format,png" alt="image-20200815153323361"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MTYucG5n?x-oss-process=image/format,png" alt="image-20200815155512148"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MjIucG5n?x-oss-process=image/format,png" alt="image-20200815153513163"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MjYucG5n?x-oss-process=image/format,png" alt="image-20200815153547499"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MzAucG5n?x-oss-process=image/format,png" alt="image-20200815153626997"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MzMucG5n?x-oss-process=image/format,png" alt="image-20200815153657475"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5MzYucG5n?x-oss-process=image/format,png" alt="image-20200815153729540"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NDAucG5n?x-oss-process=image/format,png" alt="image-20200815153824581"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NDMucG5n?x-oss-process=image/format,png" alt="image-20200815153957027"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NDYucG5n?x-oss-process=image/format,png" alt="image-20200815154108122"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NDkucG5n?x-oss-process=image/format,png" alt="image-20200815154148082"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NTMucG5n?x-oss-process=image/format,png" alt="image-20200815154212906"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTE5NTYucG5n?x-oss-process=image/format,png" alt="image-20200815154308140"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMDAucG5n?x-oss-process=image/format,png" alt="image-20200815154359483"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMDMucG5n?x-oss-process=image/format,png" alt="image-20200815154441764"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMDcucG5n?x-oss-process=image/format,png" alt="image-20200815154519739"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMTEucG5n?x-oss-process=image/format,png" alt="image-20200815154553810"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMTUucG5n?x-oss-process=image/format,png" alt="image-20200815154725075"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMTgucG5n?x-oss-process=image/format,png" alt="image-20200815154757587"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMjIucG5n?x-oss-process=image/format,png" alt="image-20200815154819955"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMjYucG5n?x-oss-process=image/format,png" alt="image-20200815154851708"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMzAucG5n?x-oss-process=image/format,png" alt="image-20200815154929732"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMzQucG5n?x-oss-process=image/format,png" alt="image-20200815155820687"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwMzcucG5n?x-oss-process=image/format,png" alt="image-20200815160744645"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNDAucG5n?x-oss-process=image/format,png" alt="image-20200815161507657"></p>
+<p>然后提示要执行两个脚本，使用root执行，可以使用SecureCRT重新新建一个连接进行</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@caochenlei ~]# sh /data/oracle/inventory/orainstRoot.shChanging permissions of /data/oracle/inventory.Adding read,write permissions for group.Removing read,write,execute permissions for world. Changing groupname of /data/oracle/inventory to oinstall.The execution of the script is complete.[root@caochenlei ~]# sh /data/oracle/product/11.2.0/dbhome_1/root.shRunning Oracle 11g root.sh script... The following environment variables are set as:    ORACLE_OWNER= oracle    ORACLE_HOME=  /data/oracle/product/11.2.0/dbhome_1 Enter the full pathname of the local bin directory: [/usr/local/bin]:    Copying dbhome to /usr/local/bin ...   Copying oraenv to /usr/local/bin ...   Copying coraenv to /usr/local/bin ...  Creating /etc/oratab file...Entries will be added to the /etc/oratab file as needed byDatabase Configuration Assistant when a database is createdFinished running generic part of root.sh script.Now product-specific root actions will be performed.Finished product-specific root actions.</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+<li>22</li>
+<li>23</li>
+<li>24</li>
+<li>25</li>
+<li>26</li>
+</ul>
+<p>执行完成，点ok，安装成功</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNDQucG5n?x-oss-process=image/format,png" alt="image-20200815161347478"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNDcucG5n?x-oss-process=image/format,png" alt="image-20200815161921773"></p>
+<h4 id="11-15、使用sqlplus连接"><a href="#11-15、使用sqlplus连接" class="headerlink" title="11.15、使用sqlplus连接"></a>11.15、使用sqlplus连接</h4><p><strong>配套资料，免费下载</strong><br>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1yjJY3IstA8aMQBPYhWNlCw">https://pan.baidu.com/s/1yjJY3IstA8aMQBPYhWNlCw</a><br>提取码:qmpd<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNTEucG5n?x-oss-process=image/format,png" alt="image-20200815162350374"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNTUucG5n?x-oss-process=image/format,png" alt="image-20200815162421975"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIwNTgucG5n?x-oss-process=image/format,png" alt="image-20200815162501212"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMDEucG5n?x-oss-process=image/format,png" alt="image-20200815162638326"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMDcucG5n?x-oss-process=image/format,png" alt="image-20200815162706399"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMDkucG5n?x-oss-process=image/format,png" alt="image-20200815162923228"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORCL =  (DESCRIPTION =    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.112.129)(PORT = 1521))    (CONNECT_DATA =      (SERVER = DEDICATED)      (SERVICE_NAME = orcl)    )  )</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMTQucG5n?x-oss-process=image/format,png" alt="image-20200815163222563"></p>
+<p>新建一个系统环境变量，变量名为TNS_ADMIN，变量值为tnsnames.ora所在文件夹的全路径</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMTgucG5n?x-oss-process=image/format,png" alt="image-20200815163537742"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMjIucG5n?x-oss-process=image/format,png" alt="image-20200815164417904"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vY2FvY2hlbmxlaS9CbG9nSW1hZ2VzL3Jhdy9tYXN0ZXIvMjAyMDA4MjYwOTIxMjcucG5n?x-oss-process=image/format,png" alt="image-20200815164321896"></p>
+<p>文章知识点与官方知识档案匹配，可进一步学习相关知识</p>
+<p><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/java/?utm_source=csdn_ai_skill_tree_blog">Java技能树</a><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/java/?utm_source=csdn_ai_skill_tree_blog">首页</a><a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/java/?utm_source=csdn_ai_skill_tree_blog">概览</a>148180 人正在系统学习中</p>
+<p>本文转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaomanong123/article/details/108518368">https://blog.csdn.net/xiaomanong123/article/details/108518368</a>，如有侵权，请联系删除。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/08/Oracle-%E7%AC%94%E8%AE%B0/">http://example.com/2024/07/08/Oracle-%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Oracle/">Oracle</a></div><div class="post_share"><div class="social-share" data-image="/img/post_1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/14/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E5%89%8D%E7%AB%AF/" title=""><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/07/07/RabbitMQ-%E5%85%AB%E8%82%A1%E6%96%87/" title="RabbitMQ 八股文"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RabbitMQ 八股文</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/" title="Oracle 与 MySQL 主要差异"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-05</div><div class="title">Oracle 与 MySQL 主要差异</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">第一章 数据库概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.</span> <span class="toc-text">1.1、数据库的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">1.2、数据库的常见概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">1.3、数据库的存储特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%B8%B8%E8%A7%81%E5%88%86%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">1.4、数据库的常见分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5%E3%80%81SQL%E8%AF%AD%E8%A8%80%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">1.5、SQL语言的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Oracle%E6%A6%82%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">第二章 Oracle概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81Oracle%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">2.1、Oracle的概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81Oracle%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">2.2、Oracle的下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3%E3%80%81Oracle%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">2.3、Oracle的安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4%E3%80%81Oracle%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text">2.4、Oracle的目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5%E3%80%81Oracle%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">2.5、Oracle的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6%E3%80%81Oracle%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">2.6、Oracle的命令行连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7%E3%80%81Oracle%E7%9A%84%E7%AA%97%E5%8F%A3%E5%8C%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text">2.7、Oracle的窗口化连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8%E3%80%81Oracle%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">8.</span> <span class="toc-text">2.8、Oracle的体系结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9%E3%80%81Oracle%E7%9A%84%E6%B5%8B%E8%AF%95%E7%94%A8%E6%88%B7"><span class="toc-number">9.</span> <span class="toc-text">2.9、Oracle的测试用户</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-DQL%E8%AF%AD%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">第三章 DQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E3%80%81%E5%AE%8C%E6%95%B4%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">3.1、完整语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.</span> <span class="toc-text">3.2、简单查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3%E3%80%81%E5%88%AB%E5%90%8D%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text">3.3、别名查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4%E3%80%81%E5%8E%BB%E9%87%8D%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">3.4、去重查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5%E3%80%81%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">3.5、条件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6%E3%80%81%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">6.</span> <span class="toc-text">3.6、分组查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7%E3%80%81%E5%88%86%E7%BB%84%E8%BF%87%E6%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">3.7、分组过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-8%E3%80%81%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-number">8.</span> <span class="toc-text">3.8、排序查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-9%E3%80%81%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-number">9.</span> <span class="toc-text">3.9、分页查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-10%E3%80%81%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">10.</span> <span class="toc-text">3.10、多表查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-11%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">11.</span> <span class="toc-text">3.11、联合查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-12%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">12.</span> <span class="toc-text">3.12、子查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8"><span class="toc-number"></span> <span class="toc-text">第四章 函数大全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1%E3%80%81%E6%95%B0%E5%80%BC%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">4.1、数值型函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2%E3%80%81%E5%AD%97%E7%AC%A6%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">4.2、字符型函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3%E3%80%81%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">4.3、日期函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4%E3%80%81%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">4.4、转换函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5%E3%80%81%E8%81%9A%E7%BB%84%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">4.5、聚组函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6%E3%80%81%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">4.6、分析函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7%E3%80%81%E5%85%B6%E5%AE%83%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">4.7、其它函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-DCL%E8%AF%AD%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">第五章 DCL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E3%80%81%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">5.1、创建表空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">2.</span> <span class="toc-text">5.2、删除表空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E3%80%81%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">3.</span> <span class="toc-text">5.3、创建用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4%E3%80%81%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">4.</span> <span class="toc-text">5.4、删除用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5%E3%80%81%E6%8E%88%E6%9D%83%E7%94%A8%E6%88%B7"><span class="toc-number">5.</span> <span class="toc-text">5.5、授权用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6%E3%80%81%E5%8F%96%E6%B6%88%E6%8E%88%E6%9D%83"><span class="toc-number">6.</span> <span class="toc-text">5.6、取消授权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7%E3%80%81%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">5.7、修改密码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-DDL%E8%AF%AD%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">第六章 DDL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">6.1、数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2%E3%80%81%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">6.2、创建表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3%E3%80%81%E5%A4%8D%E5%88%B6%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">6.3、复制表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">6.4、删除表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-5%E3%80%81%E4%BF%AE%E6%94%B9%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">6.5、修改表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-6%E3%80%81%E8%A1%A8%E7%BA%A6%E6%9D%9F"><span class="toc-number">6.</span> <span class="toc-text">6.6、表约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-DML%E8%AF%AD%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">第七章 DML语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1%E3%80%81%E6%8F%92%E5%85%A5%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">7.1、插入语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2%E3%80%81%E4%BF%AE%E6%94%B9%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">7.2、修改语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3%E3%80%81%E5%88%A0%E9%99%A4%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.</span> <span class="toc-text">7.3、删除语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-TCL%E8%AF%AD%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">第八章 TCL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1%E3%80%81%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">8.1、事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2%E3%80%81%E4%BA%8B%E5%8A%A1%E5%B9%B6%E5%8F%91%EF%BC%88%E8%AF%BB%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">8.2、事务并发（读问题）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3%E3%80%81%E4%B8%A2%E5%A4%B1%E6%9B%B4%E6%96%B0%EF%BC%88%E5%86%99%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">8.3、丢失更新（写问题）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E9%AB%98%E7%BA%A7%E9%83%A8%E5%88%86"><span class="toc-number"></span> <span class="toc-text">第九章 高级部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1%E3%80%81%E5%BA%8F%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text">9.1、序列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2%E3%80%81PLSQL%E7%BC%96%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">9.2、PLSQL编程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3%E3%80%81%E7%B4%A2%E5%BC%95"><span class="toc-number">3.</span> <span class="toc-text">9.3、索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4%E3%80%81%E8%A7%86%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">9.4、视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-5%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D"><span class="toc-number">5.</span> <span class="toc-text">9.5、同义词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-6%E3%80%81%E6%B8%B8%E6%A0%87"><span class="toc-number">6.</span> <span class="toc-text">9.6、游标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-7%E3%80%81%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">7.</span> <span class="toc-text">9.7、存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-8%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">9.8、函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-9%E3%80%81%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">9.9、触发器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-number"></span> <span class="toc-text">第十章 数据备份与恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1%E3%80%81%E5%85%A8%E9%83%A8%E5%AF%BC%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">10.1、全部导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2%E3%80%81%E5%85%A8%E9%83%A8%E5%AF%BC%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">10.2、全部导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3%E3%80%81%E6%8C%89%E7%94%A8%E6%88%B7%E5%AF%BC%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text">10.3、按用户导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-4%E3%80%81%E6%8C%89%E7%94%A8%E6%88%B7%E5%AF%BC%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">10.4、按用户导入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%89%E8%A3%85Oracle%E5%8D%95%E5%AE%9E%E4%BE%8B"><span class="toc-number"></span> <span class="toc-text">第十一章 安装Oracle单实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1%E3%80%81%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">11.1、环境准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2%E3%80%81%E4%B8%8B%E8%BD%BD%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">11.2、下载程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3%E3%80%81%E8%A7%A3%E5%8E%8B%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">11.3、解压程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-4%E3%80%81%E7%A7%BB%E5%8A%A8%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">11.4、移动软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-5%E3%80%81%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84"><span class="toc-number">5.</span> <span class="toc-text">11.5、域名映射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-6%E3%80%81%E5%85%B3%E9%97%ADselinux"><span class="toc-number">6.</span> <span class="toc-text">11.6、关闭selinux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-7%E3%80%81%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">7.</span> <span class="toc-text">11.7、关闭防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-8%E3%80%81%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">8.</span> <span class="toc-text">11.8、安装依赖包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-9%E3%80%81%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%94%A8%E6%88%B7"><span class="toc-number">9.</span> <span class="toc-text">11.9、添加新用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-10%E3%80%81%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6"><span class="toc-number">10.</span> <span class="toc-text">11.10、修改内核文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-11%E3%80%81%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E9%99%90%E5%88%B6"><span class="toc-number">11.</span> <span class="toc-text">11.11、修改用户限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-12%E3%80%81%E5%88%9B%E5%BB%BA%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">12.</span> <span class="toc-text">11.12、创建安装目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-13%E3%80%81%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">13.</span> <span class="toc-text">11.13、设置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-14%E3%80%81%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">14.</span> <span class="toc-text">11.14、安装应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-15%E3%80%81%E4%BD%BF%E7%94%A8sqlplus%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.</span> <span class="toc-text">11.15、使用sqlplus连接</span></a></li></ol></li></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

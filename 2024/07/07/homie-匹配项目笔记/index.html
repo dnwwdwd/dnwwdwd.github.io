@@ -1,0 +1,582 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>homie 匹配项目笔记 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="homie 匹配系统笔记前端项目初始化 使用vite初始化项目，根据你的需求选择相应地选项  1npm create vite   安装依赖  1npm install   按需整合vant组件库    1npm i vite-plugin-style-import@1.4.1 -D   关闭vite语法检查（前提使用build启动项目），在package.json文件中，将原始的build改为b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="homie 匹配项目笔记">
+<meta property="og:url" content="http://example.com/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="homie 匹配系统笔记前端项目初始化 使用vite初始化项目，根据你的需求选择相应地选项  1npm create vite   安装依赖  1npm install   按需整合vant组件库    1npm i vite-plugin-style-import@1.4.1 -D   关闭vite语法检查（前提使用build启动项目），在package.json文件中，将原始的build改为b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_1.png">
+<meta property="article:published_time" content="2024-07-07T03:06:53.000Z">
+<meta property="article:modified_time" content="2024-07-07T03:09:23.874Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="项目笔记">
+<meta property="article:tag" content="homie 匹配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'homie 匹配项目笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 11:09:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">homie 匹配项目笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-07T03:06:53.000Z" title="发表于 2024-07-07 11:06:53">2024-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-07T03:09:23.874Z" title="更新于 2024-07-07 11:09:23">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="homie 匹配项目笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_1.png');"></div><article class="post-content" id="article-container"><h1 id="homie-匹配系统笔记"><a href="#homie-匹配系统笔记" class="headerlink" title="homie 匹配系统笔记"></a>homie 匹配系统笔记</h1><h2 id="前端项目初始化"><a href="#前端项目初始化" class="headerlink" title="前端项目初始化"></a>前端项目初始化</h2><ol>
+<li>使用vite初始化项目，根据你的需求选择相应地选项</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm create vite</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>安装依赖</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>按需整合vant组件库 </li>
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vite-plugin-style-import@1.4.1 -D</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>关闭vite语法检查（前提使用build启动项目），在package.json文件中，将原始的build改为build”: “vite build” </li>
+<li>添加axios库</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br><span class="line">或者</span><br><span class="line">yarn add axios</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>引入vue-router组件，使用yarn add vue-router@4，如果报错请先删除node_modules和yarn.lock文件，再去执行命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router@4</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>main.ts: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import { createApp } from 'vue'</span><br><span class="line">import App from './App.vue'</span><br><span class="line">// 1. 引入你需要的组件</span><br><span class="line">import {Button, Icon, NavBar, Tabbar, TabbarItem, Tag, Divider, TreeSelect, Row, Col, Cell, CellGroup, Form, Field } from 'vant';</span><br><span class="line">// 2. 引入组件样式</span><br><span class="line">import * as VueRouter from 'vue-router';</span><br><span class="line">import routes from './components/config/route.ts';</span><br><span class="line"></span><br><span class="line">const app= createApp(App)</span><br><span class="line">app.use(Button);</span><br><span class="line">app.use(NavBar);</span><br><span class="line">app.use(Icon);</span><br><span class="line">app.use(Tabbar);</span><br><span class="line">app.use(TabbarItem);</span><br><span class="line">app.use(Tag);</span><br><span class="line">app.use(Divider);</span><br><span class="line">app.use(TreeSelect);</span><br><span class="line">app.use(Row);</span><br><span class="line">app.use(Col);</span><br><span class="line">app.use(Cell);</span><br><span class="line">app.use(CellGroup);</span><br><span class="line">app.use(Form);</span><br><span class="line">app.use(Field);</span><br><span class="line">app.use(Button);</span><br><span class="line"></span><br><span class="line">const router = VueRouter.createRouter({</span><br><span class="line">    // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。</span><br><span class="line">    history: VueRouter.createWebHashHistory(),</span><br><span class="line">    routes, // `routes: routes` 的缩写</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">app.use(router);</span><br><span class="line">app.mount('#app')</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>src/components/config/route.ts: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import Index from '../pages/Index.vue';</span><br><span class="line">import Team from '../pages/TeamPage.vue';</span><br><span class="line">import User from '../pages/UserPage.vue';</span><br><span class="line">import SearchPage from '../pages/SearchPage.vue';</span><br><span class="line">import UserEditPage from "../pages/UserEditPage.vue";</span><br><span class="line">import SearchResultPage from "../pages/SearchResultPage.vue";</span><br><span class="line">import UserLoginPage from "../pages/UserLoginPage.vue";</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">    { path: '/', component: Index },</span><br><span class="line">    { path: '/team', component: Team },</span><br><span class="line">    { path: '/user', component: User },</span><br><span class="line">    { path: '/search', component: SearchPage },</span><br><span class="line">    { path: '/user/list', component: SearchResultPage },</span><br><span class="line">    { path: '/user/edit', component: UserEditPage },</span><br><span class="line">    { path: '/user/login', component: UserLoginPage },</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">export default routes;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="后端配置"><a href="#后端配置" class="headerlink" title="后端配置"></a>后端配置</h2><h3 id="后端的全部依赖："><a href="#后端的全部依赖：" class="headerlink" title="后端的全部依赖："></a>后端的全部依赖：</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.7.4&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.7.4&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.mysql&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.5.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.12.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;gson&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.9.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.13.2&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.0.9&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;easyexcel&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.3.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="application-yml文件："><a href="#application-yml文件：" class="headerlink" title="application.yml文件："></a>application.yml文件：</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  mvc:</span><br><span class="line">    pathmatch:</span><br><span class="line">      matching-strategy: ant_path_matcher</span><br><span class="line">  application:</span><br><span class="line">    name: user-center</span><br><span class="line">  profiles:</span><br><span class="line">    active: dev</span><br><span class="line">  #DataSource config</span><br><span class="line">  datasource:</span><br><span class="line">    driver-class-name: com.mysql.cj.jdbc.Driver</span><br><span class="line">    url: jdbc:mysql://localhost:3306/hjj</span><br><span class="line">    username: root</span><br><span class="line">    password: 123456</span><br><span class="line">  #session失效时间（分钟）</span><br><span class="line">  session:</span><br><span class="line">    timeout: 86400</span><br><span class="line">    store-type: redis</span><br><span class="line">  redis:</span><br><span class="line">    port: 6379</span><br><span class="line">    host: localhost</span><br><span class="line">    database: 0</span><br><span class="line">server:</span><br><span class="line">  port: 8080</span><br><span class="line">  servlet:</span><br><span class="line">    context-path: /api</span><br><span class="line">    session:</span><br><span class="line">      cookie:</span><br><span class="line">#        domain: localhost</span><br><span class="line">        same-site: none</span><br><span class="line">        secure: true</span><br><span class="line">#禁止将驼峰转为下划线</span><br><span class="line">mybatis-plus:</span><br><span class="line">  configuration:</span><br><span class="line">    map-underscore-to-camel-case: false</span><br><span class="line">#    mybatis-plus打印日志信息</span><br><span class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</span><br><span class="line">  global-config:</span><br><span class="line">    db-config:</span><br><span class="line">      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)</span><br><span class="line">      logic-delete-value: 1 # 逻辑已删除值(默认为 1)</span><br><span class="line">      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<ol>
+<li></li>
+</ol>
+<h3 id="Redis相关配置"><a href="#Redis相关配置" class="headerlink" title="Redis相关配置"></a>Redis相关配置</h3><ol>
+<li></li>
+<li><p>redis依赖</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.7.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>spring - session redis（自动将session存入redis中）</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.7.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>修改spring-session存储配置 spring.session.store-type默认为none，表示存在单机服务器<br>   store-type: redis，表示从redis读写session</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8080</span><br><span class="line">  servlet:</span><br><span class="line">    context-path: /api</span><br><span class="line">    session:</span><br><span class="line">      cookie:</span><br><span class="line">#        domain: localhost</span><br><span class="line">        same-site: none</span><br><span class="line">        secure: true</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="整合Swagger-knife4j接口文档"><a href="#整合Swagger-knife4j接口文档" class="headerlink" title="整合Swagger/knife4j接口文档"></a>整合Swagger/knife4j接口文档</h3><ol>
+<li></li>
+</ol>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ol>
+<li></li>
+<li><p>后端整合Swagger + knife4j接口文档</p>
+</li>
+<li><p>存量用户信息导入及同步（爬虫）</p>
+</li>
+<li><p>前后端联调：搜索页面、用户信息页、用户信息修改页</p>
+</li>
+<li><p>标签内容整理</p>
+</li>
+<li><p>部分细节优化</p>
+</li>
+</ol>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><p>Swaggere/knife4j接口文档（本项目使用了knife4j）<br>Swagger/knife4j原理： </p>
+<ol>
+<li>自定义Swagger配置类</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line">import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line">import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact;</span><br><span class="line">import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@EnableSwagger2WebMvc</span><br><span class="line">@EnableKnife4j</span><br><span class="line">public class Knife4jConfig {</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public Docket docket() {</span><br><span class="line">        return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage("com.hjj.homieMatching.controller"))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private ApiInfo apiInfo() {</span><br><span class="line">        return new ApiInfoBuilder()</span><br><span class="line">                .title("文档标题")</span><br><span class="line">                .description("文档描述")</span><br><span class="line">                .termsOfServiceUrl("服务条款地址")</span><br><span class="line">                .version("文档版本")</span><br><span class="line">                .license("开源版本号")</span><br><span class="line">                .licenseUrl("开源地址")</span><br><span class="line">                .contact(new Contact("作者名", "作者网址", "作者邮箱"))</span><br><span class="line">                .build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>定义需要生成文档接口的位置（controller）千万注意：在线上环境不要把接口暴露出去，可以在Swagger配置类添加@Profile({“dev”,”test”})注解 </li>
+<li>启动即可 </li>
+<li>若Spring Boot版本大于2.6，需在yml文件中要更换Spring Boot的路径匹配策略或者在Spring Boot启动类中添加@EnableWebMvc注解（不推荐使用，因为还是需要更换匹配策略）</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">    mvc:</span><br><span class="line">        pathmatch:</span><br><span class="line">          matching-strategy: ant_path_matcher</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>引入对应依赖（Swagger或者Knife4j）</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">3.0</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">3.0</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.0</span><span class="number">.9</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="前端遇到的问题"><a href="#前端遇到的问题" class="headerlink" title="前端遇到的问题"></a>前端遇到的问题</h2><ol>
+<li></li>
+</ol>
+<h3 id="Toast报错，那是因为视频中用的是vant3，你可能用的是vant4。直接把Toast替换为showSuccessToast，在引入一下就好了。"><a href="#Toast报错，那是因为视频中用的是vant3，你可能用的是vant4。直接把Toast替换为showSuccessToast，在引入一下就好了。" class="headerlink" title="Toast报错，那是因为视频中用的是vant3，你可能用的是vant4。直接把Toast替换为showSuccessToast，在引入一下就好了。"></a>Toast报错，那是因为视频中用的是vant3，你可能用的是vant4。直接把Toast替换为showSuccessToast，在引入一下就好了。</h3><p>1.<br>   引用： </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import { showSuccessToast } from 'vant';</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>使用： </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const onChange = (index) =&gt; showSuccessToast(`标签 ${index}`);</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="如果出现组件在中间的问题，请把style-css文件给删除"><a href="#如果出现组件在中间的问题，请把style-css文件给删除" class="headerlink" title="如果出现组件在中间的问题，请把style.css文件给删除"></a>如果出现组件在中间的问题，请把style.css文件给删除</h3><ol>
+<li></li>
+<li></li>
+</ol>
+<h3 id="前端向后端发送请求出现400"><a href="#前端向后端发送请求出现400" class="headerlink" title="前端向后端发送请求出现400"></a>前端向后端发送请求出现400</h3><p>1.<br>   一般4开头的错误码是由于客户端发送请求的有问题，很明显我们在第三期发请求出现的400是由于前端传参出现了问题 </p>
+<ol>
+<li>请求参数错误</li>
+<li>前后端请求不一致</li>
+<li>服务器端错误</li>
+</ol>
+<p>解决办法<br>先安装qs库，并且要引入qs </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install qs</span><br><span class="line">或者</span><br><span class="line">yarn add qs</span><br></pre></td></tr></tbody></table></figure>
+
+<p>修改后的代码：<br>SearchResultPage.vue: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;user-card-list :user-list="userList" /&gt;</span><br><span class="line">  &lt;van-empty v-show="!userList || userList.length &lt; 1" description="暂无符合要求的用户" /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import {useRoute} from "vue-router";</span><br><span class="line">import {onMounted, ref} from "vue";</span><br><span class="line">import myAxios from "../../plugins/myAxios.ts";</span><br><span class="line">import qs from 'qs';</span><br><span class="line">import UserCardList from "../UserCardList.vue";</span><br><span class="line"></span><br><span class="line">const route = useRoute();</span><br><span class="line">const { tags } = route.query;</span><br><span class="line"></span><br><span class="line">const userList = ref([]);</span><br><span class="line"></span><br><span class="line">onMounted(async() =&gt; {</span><br><span class="line">  const userListData = await myAxios.get('/user/search/tags', {</span><br><span class="line">    params: {</span><br><span class="line">      tagNameList: tags</span><br><span class="line">    },</span><br><span class="line">    paramsSerializer: params =&gt; {</span><br><span class="line">      return qs.stringify(params, { indices: false })</span><br><span class="line">    }</span><br><span class="line">  }).then(function (response) {</span><br><span class="line">    console.log('/user/search/tags succeed', response);</span><br><span class="line">    return response?.data;</span><br><span class="line">  }).catch(function(error) {</span><br><span class="line">    console.log('/user/search/tags error', error)</span><br><span class="line">  })</span><br><span class="line">  if(userListData) {</span><br><span class="line">    userListData.forEach(user =&gt; {</span><br><span class="line">      if(user.tags){</span><br><span class="line">        user.tags = JSON.parse(user.tags);</span><br><span class="line">      }</span><br><span class="line">    })</span><br><span class="line">    // 如果请求成功，就把响应结果返回给userList</span><br><span class="line">    userList.value = userListData;</span><br><span class="line">  }</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>myAxios.ts: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import axios from 'axios';</span><br><span class="line"></span><br><span class="line">const myAxios = axios.create({</span><br><span class="line">    baseURL: 'http://localhost:8080/api'</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">myAxios.defaults.withCredentials = true; //设置为true</span><br><span class="line"></span><br><span class="line">// Add a request interceptor</span><br><span class="line">myAxios.interceptors.request.use(function (config) {</span><br><span class="line">    console.log('我要发请求啦')</span><br><span class="line">    return config;</span><br><span class="line">}, function (error) {</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">myAxios.interceptors.response.use(function (response) {</span><br><span class="line">    console.log('我收到你的响应啦')</span><br><span class="line">    return response.data;</span><br><span class="line">}, function (error) {</span><br><span class="line">    // Do something with response error</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">export default myAxios;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="前端报错-import-myAxios-from-“-plugins-myAxios-ts”-、"><a href="#前端报错-import-myAxios-from-“-plugins-myAxios-ts”-、" class="headerlink" title="前端报错 import myAxios from “../../plugins/myAxios.ts”;、"></a>前端报错 import myAxios from “../../plugins/myAxios.ts”;、</h3><p>1.<br>   引入文件时去掉拓展名就好了<br>   比如： </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import myAxios from "../../plugins/myAxios.ts";</span><br><span class="line">改为</span><br><span class="line">import myAxios from "../../plugins/myAxios";</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="Axios发送请求获取data失败"><a href="#Axios发送请求获取data失败" class="headerlink" title="Axios发送请求获取data失败"></a>Axios发送请求获取data失败</h3><p>1.<br>   因为Axios自动帮我们封装了一层data，所以我们取的时候要多取一层data<br>   myAxios.ts: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import axios from 'axios';</span><br><span class="line"></span><br><span class="line">const myAxios = axios.create({</span><br><span class="line">    baseURL: 'http://localhost:8080/api'</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">myAxios.defaults.withCredentials = true; //设置为true</span><br><span class="line"></span><br><span class="line">// Add a request interceptor</span><br><span class="line">myAxios.interceptors.request.use(function (config) {</span><br><span class="line">    console.log('我要发请求啦')</span><br><span class="line">    return config;</span><br><span class="line">}, function (error) {</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">myAxios.interceptors.response.use(function (response) {</span><br><span class="line">    console.log('我收到你的响应啦')</span><br><span class="line">    return response.data;</span><br><span class="line">}, function (error) {</span><br><span class="line">    // Do something with response error</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">export default myAxios;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="前端发送登录请求没有携带Cookie"><a href="#前端发送登录请求没有携带Cookie" class="headerlink" title="前端发送登录请求没有携带Cookie"></a>前端发送登录请求没有携带Cookie</h3><p>1.<br>   在myAxios.ts文件中添加 </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myAxios.defaults..withCredentials = true;//向后端发送请求携带cookie</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>如果添加了上面的代码还是无效的话可以试试下面的两个方法（可以都试试）<br>可以在后端common包中添加一个解决<strong>跨域配置类，</strong>这样的话就好了哈<br>CorsConfig: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.CorsRegistry;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 解决跨域问题：重写WebMvcConfigurer的addCorsMappings方法（全局跨域配置）</span><br><span class="line"> * @author rabbiter</span><br><span class="line"> * @date 2023/1/3 1:30</span><br><span class="line"> */</span><br><span class="line">@Configuration</span><br><span class="line">public class CorsConfig implements WebMvcConfigurer {</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void addCorsMappings(CorsRegistry registry) {</span><br><span class="line">        registry.addMapping("/**")</span><br><span class="line">                //是否发送Cookie</span><br><span class="line">                .allowCredentials(true)</span><br><span class="line">                //放行哪些原始域</span><br><span class="line">                .allowedOriginPatterns("*")</span><br><span class="line">                .allowedMethods(new String[]{"GET", "POST", "PUT", "DELETE"})</span><br><span class="line">                .allowedHeaders("*")</span><br><span class="line">                .exposedHeaders("*");</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>除此之外呢还可以看看这位鱼友的帖子：<a target="_blank" rel="noopener" href="https://articles.zsxq.com/id_2v7g78iofjn7.html">https://articles.zsxq.com/id_2v7g78iofjn7.html</a> </p>
+<ol>
+<li></li>
+</ol>
+<h3 id="Uncaught-in-promise-TypeError-Cannot-read-properties-of-undefined-reading-‘username’-出现了user-username-undefined"><a href="#Uncaught-in-promise-TypeError-Cannot-read-properties-of-undefined-reading-‘username’-出现了user-username-undefined" class="headerlink" title="Uncaught (in promise) TypeError: Cannot read properties of undefined (reading ‘username’) 出现了user.username undefined"></a>Uncaught (in promise) TypeError: Cannot read properties of undefined (reading ‘username’) 出现了user.username undefined</h3><p>1.<br>   可以看看这位鱼友的帖子，<a target="_blank" rel="noopener" href="https://wx.zsxq.com/dweb2/index/topic_detail/814245214541452">https://wx.zsxq.com/dweb2/index/topic_detail/814245214541452</a><br>2.  </p>
+<h3 id="出现-setup-user-createTime-toISOString-is-not-a-function问题"><a href="#出现-setup-user-createTime-toISOString-is-not-a-function问题" class="headerlink" title="出现 $setup.user.createTime.toISOString is not a function问题"></a>出现 $setup.user.createTime.toISOString is not a function问题</h3><ol>
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把</span><br><span class="line">&lt;van-cell title="注册时间" is-link to="/user/edit" :value="user.createTime.toISOString()" /&gt;</span><br><span class="line">改为</span><br><span class="line">&lt;van-cell title="注册时间" is-link to="/user/edit" :value="user?.createTime" /&gt; 试试</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="没有任何的报错，但是个人信息就是显示不出来"><a href="#没有任何的报错，但是个人信息就是显示不出来" class="headerlink" title="没有任何的报错，但是个人信息就是显示不出来"></a>没有任何的报错，但是个人信息就是显示不出来</h3><p>1.<br>   如果没有其他的报错的，但是还是显示不出来用户的信息，可试试下面的方法 </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    把</span><br><span class="line">      &lt;template if="user"&gt;</span><br><span class="line">    &lt;van-cell title="昵称" is-link to="/user/edit" :value="user?.username"/&gt;</span><br><span class="line">    &lt;van-cell title="账号" is-link to="/user/edit" :value="user?.userAccount" /&gt;</span><br><span class="line">    &lt;van-cell title="头像" is-link to="/user/edit"&gt;</span><br><span class="line">      &lt;img style="height: 48px" :src="user?.avatarUrl"/&gt;</span><br><span class="line">    &lt;/van-cell&gt;</span><br><span class="line">    &lt;van-cell title="性别" is-link to="/user/edit" :value="user?.gender" @click="toEdit('gender', '性别', user.gender)"/&gt;</span><br><span class="line">    &lt;van-cell title="电话" is-link to="/user/edit" :value="user?.phone" @click="toEdit('phone', '电话', user.phone)"/&gt;</span><br><span class="line">    &lt;van-cell title="邮箱" is-link to="/user/edit" :value="user?.email" /&gt;</span><br><span class="line">    &lt;van-cell title="星球编号" is-link to="/user/edit" :value="user?.planetCode" /&gt;</span><br><span class="line">    &lt;van-cell title="注册时间" is-link to="/user/edit" :value="user.createTime" /&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">  </span><br><span class="line">    换成 </span><br><span class="line">    </span><br><span class="line">    &lt;van-cell title="昵称" is-link to="/user/edit" :value="user?.username"/&gt;</span><br><span class="line">    &lt;van-cell title="账号" is-link to="/user/edit" :value="user?.userAccount" /&gt;</span><br><span class="line">    &lt;van-cell title="头像" is-link to="/user/edit"&gt;</span><br><span class="line">      &lt;img style="height: 48px" :src="user?.avatarUrl"/&gt;</span><br><span class="line">    &lt;/van-cell&gt;</span><br><span class="line">    &lt;van-cell title="性别" is-link to="/user/edit" :value="user?.gender" @click="toEdit('gender', '性别', user.gender)"/&gt;</span><br><span class="line">    &lt;van-cell title="电话" is-link to="/user/edit" :value="user?.phone" @click="toEdit('phone', '电话', user.phone)"/&gt;</span><br><span class="line">    &lt;van-cell title="邮箱" is-link to="/user/edit" :value="user?.email" /&gt;</span><br><span class="line">    &lt;van-cell title="星球编号" is-link to="/user/edit" :value="user?.planetCode" /&gt;</span><br><span class="line">&lt;!--    &lt;van-cell title="注册时间" is-link to="/user/edit" :value="user.createTime" /&gt;--&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="后端遇到的问题"><a href="#后端遇到的问题" class="headerlink" title="后端遇到的问题"></a>后端遇到的问题</h2><ol>
+<li></li>
+</ol>
+<h3 id="Mybatis-Plus分页查询查不出来？或者报错？"><a href="#Mybatis-Plus分页查询查不出来？或者报错？" class="headerlink" title="Mybatis-Plus分页查询查不出来？或者报错？"></a>Mybatis-Plus分页查询查不出来？或者报错？</h3><ol>
+<li></li>
+<li><p>‘Page’ 为 abstract；无法实例化或者’com.baomidou.mybatisplus.extension.service.IService’ 中的 ‘page(com.baomidou.mybatisplus.core.metadata.IPage&lt;com.hjj.homieMatching.model.domain.User&gt;, com.baomidou.mybatisplus.core.conditions.Wrapper&lt;com.hjj.homieMatching.model.domain.User&gt;)’ 无法应用于 ‘(org.springframework.data.domain.Page&lt;com.hjj.homieMatching.model.domain.User&gt;, com.baomidou.mybatisplus.core.conditions.query.QueryWrapper&lt;com.hjj.homieMatching.model.domain.User&gt;)’<br>   <strong>这是因为Page的包引错了，而第二个错误是因为类型不兼容</strong><br>   应该引的是</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import com.baomidou.mybatisplus.core.metadata.IPage;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.pagination.Page;</span><br><span class="line">// 对应的controller部分的代码改为</span><br><span class="line">    @GetMapping("/recommend")</span><br><span class="line">    public BaseResponse&lt;IPage&lt;User&gt;&gt; recommendUsers(long pageSize, long pageNum, HttpServletRequest request){</span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();</span><br><span class="line">        IPage&lt;User&gt; page = new Page&lt;&gt;(pageNum, pageSize);</span><br><span class="line">        IPage&lt;User&gt; userList = userService.page(page, queryWrapper);</span><br><span class="line">        return ResultUtils.success(userList);</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="如果出现无法解析符号-‘MybatisPlusInterceptor’"><a href="#如果出现无法解析符号-‘MybatisPlusInterceptor’" class="headerlink" title="如果出现无法解析符号 ‘MybatisPlusInterceptor’"></a>如果出现无法解析符号 ‘MybatisPlusInterceptor’</h3><p>1.<br>   package com.hjj.homieMatching.config;<br>   import com.baomidou.mybatisplus.annotation.DbType;<br>   import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;<br>   import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;<br>   import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;<br>   import org.springframework.context.annotation.Bean;<br>   import org.springframework.context.annotation.Configuration;<br>   <strong>这个问题说明你的Mybatis-Plus依赖版本过低，请调整为3.4.0以上。</strong><br>2.  </p>
+<h3 id="配置MyBatis-Plus分页查询配置类"><a href="#配置MyBatis-Plus分页查询配置类" class="headerlink" title="配置MyBatis-Plus分页查询配置类"></a>配置MyBatis-Plus分页查询配置类</h3><ol>
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import com.baomidou.mybatisplus.annotation.DbType;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">public class MybatisPlusConfig {</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 新的分页插件,一缓和二缓遵循mybatis的规则,需要设置 MybatisConfiguration#useDeprecatedExecutor = false 避免缓存出现问题(该属性会在旧插件移除后一同移除)</span><br><span class="line">     */</span><br><span class="line">    @Bean</span><br><span class="line">    public MybatisPlusInterceptor mybatisPlusInterceptor() {</span><br><span class="line">        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();</span><br><span class="line">        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();</span><br><span class="line">        paginationInnerInterceptor.setDbType(DbType.MYSQL);</span><br><span class="line">        paginationInnerInterceptor.setOverflow(true);</span><br><span class="line">        interceptor.addInnerInterceptor(paginationInnerInterceptor);</span><br><span class="line">        return interceptor;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<h3 id="利用RedisTemplate往Redis中存值，发现乱码"><a href="#利用RedisTemplate往Redis中存值，发现乱码" class="headerlink" title="利用RedisTemplate往Redis中存值，发现乱码"></a>利用RedisTemplate往Redis中存值，发现乱码</h3><p>1.<br>   为什么在这里我们往redis存值取值发现是存在的，但是在redis客户端取值却显示不存在呢？<br>   因为redistemplate帮我们序列化了，。这就是为什么鱼皮哥在Redis GUI软件查看键是乱码的</p>
+<p>   想用RedisTemplate往Redis中进行crud操作时，得提前配置一下 </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.data.redis.connection.RedisConnectionFactory;</span><br><span class="line">import org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line">import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;</span><br><span class="line">import org.springframework.data.redis.serializer.StringRedisSerializer;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">public class RedisConfig {</span><br><span class="line">    @Bean</span><br><span class="line">    public RedisTemplate&lt;String,Object&gt; redisTemplate(RedisConnectionFactory connectionFactory){</span><br><span class="line">        RedisTemplate&lt;String, Object&gt; template=new RedisTemplate&lt;&gt;();</span><br><span class="line">        template.setConnectionFactory(connectionFactory);</span><br><span class="line">        template.setKeySerializer(new StringRedisSerializer());</span><br><span class="line">        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());</span><br><span class="line">        return template;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h2><h3 id="存量用户信息导入"><a href="#存量用户信息导入" class="headerlink" title="存量用户信息导入"></a>存量用户信息导入</h3><ol>
+<li>把所有星球用户的信息导入</li>
+<li>把写了自我介绍的同学的标签信息导入</li>
+</ol>
+<h3 id="怎么抓取网上信息"><a href="#怎么抓取网上信息" class="headerlink" title="怎么抓取网上信息"></a>怎么抓取网上信息</h3><ol>
+<li>分析原网站是怎么获取这些数据的？哪个接口？按 F 12 打开控制台，查看网络请求，复制 curl 代码便于查看和执行</li>
+<li><strong>用程序去调用接口</strong> （java okhttp httpclient / python 都可以）</li>
+<li>处理（清洗）一下数据，之后就可以写到数据库里</li>
+</ol>
+<h4 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h4><ol>
+<li>从 excel 中导入全量用户数据，<strong>判重</strong> 。 easy excel：<a target="_blank" rel="noopener" href="https://alibaba-easyexcel.github.io/index.html">https://alibaba-easyexcel.github.io/index.html</a></li>
+<li>抓取写了自我介绍的同学信息，提取出用户昵称、用户唯一 id、自我介绍信息</li>
+<li>从自我介绍中提取信息，然后写入到数据库中</li>
+</ol>
+<h5 id="EasyExcel"><a href="#EasyExcel" class="headerlink" title="EasyExcel"></a>EasyExcel</h5><p>两种读对象的方式：</p>
+<ol>
+<li>确定表头：建立对象，和表头形成映射关系</li>
+<li>不确定表头：每一行数据映射为 Map&lt;String, Object&gt;</li>
+</ol>
+<p>两种读取模式：</p>
+<ol>
+<li>监听器：先创建监听器、在读取文件时绑定监听器。单独抽离处理逻辑，代码清晰易于维护；一条一条处理，适用于数据量大的场景。<br>   TableListener:</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.excel.context.AnalysisContext;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.excel.metadata.data.ReadCellData;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.excel.read.listener.ReadListener;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 有个很重要的点 TableListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TableListener</span> <span class="keyword">implements</span> <span class="title class_">ReadListener</span>&lt;PlanetUserInfo&gt; {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(PlanetUserInfo planetUserInfo, AnalysisContext analysisContext)</span> {</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterAllAnalysed</span><span class="params">(AnalysisContext context)</span> {</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invokeHead</span><span class="params">(Map&lt;Integer, ReadCellData&lt;?&gt;&gt; headMap, AnalysisContext context)</span> {</span><br><span class="line">        ReadListener.<span class="built_in">super</span>.invokeHead(headMap, context);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>ImportExcel: </p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.excel.EasyExcel;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导入excel数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ImportExcel</span> {</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 读取数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="comment">// 写法1：JDK8+ ,不用额外写一个DemoDataListener</span></span><br><span class="line">        <span class="comment">// since: 3.0.0-beta1</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> <span class="string">"E:\\Java星球项目\\homieMatching\\homieMatching\\src\\main\\resources\\alarm.csv"</span>;</span><br><span class="line">        <span class="comment">// 这里默认每次会读取100条数据 然后返回过来 直接调用使用数据就行</span></span><br><span class="line">        <span class="comment">// 具体需要返回多少行可以在`PageReadListener`的构造函数设置</span></span><br><span class="line">        EasyExcel.read(fileName, PlanetUserInfo.class, <span class="keyword">new</span> <span class="title class_">TableListener</span>()).sheet().doRead();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>PlanetUserInfo: </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.excel.annotation.ExcelProperty;</span><br><span class="line"></span><br><span class="line">public class PlanetUserInfo {</span><br><span class="line">    @ExcelProperty("ID")</span><br><span class="line">    private String ID;</span><br><span class="line">    @ExcelProperty("alarm")</span><br><span class="line">    private String alarm;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>同步读：无需创建监听器，一次性获取完整数据。方便简单，但是数据量大时会有等待时常，也可能内存溢出。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void synchronousRead(String fileName){</span><br><span class="line">    // 这里 需要指定读用哪个class去读，然后读取第一个sheet 同步读取会自动finish</span><br><span class="line">    List&lt;PlanetUserInfo&gt; totalDataList = EasyExcel.read(fileName).head(PlanetUserInfo.class).sheet().doReadSync();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="干货"><a href="#干货" class="headerlink" title="干货"></a>干货</h2><h3 id="router-push-和router-replace-的区别"><a href="#router-push-和router-replace-的区别" class="headerlink" title="router.push()和router.replace()的区别"></a>router.push()和router.replace()的区别</h3><p>router.push()会在原有的历史记录中压入新的历史记录，而router.place()则会代替上一条历史记录，这样用户点击返回不会回到登录页了</p>
+<h3 id="Session共享"><a href="#Session共享" class="headerlink" title="Session共享"></a>Session共享</h3><p>种 session 的时候注意范围，cookie.domain</p>
+<p>如果想要共享cookie，可以种一个更高层的域名，将要共享session的两个域名设为二级域名</p>
+<h3 id="如何开启同一后端项目，但配置不同的端口号"><a href="#如何开启同一后端项目，但配置不同的端口号" class="headerlink" title="如何开启同一后端项目，但配置不同的端口号"></a>如何开启同一后端项目，但配置不同的端口号</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar .\homieMatching-0.0.1-SNAPSHOT.jar --server.port=8081</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="为什么在服务器A登录后，服务器B拿不到用户信息"><a href="#为什么在服务器A登录后，服务器B拿不到用户信息" class="headerlink" title="为什么在服务器A登录后，服务器B拿不到用户信息"></a>为什么在服务器A登录后，服务器B拿不到用户信息</h3><p>因为用户在A登录，session只存在于A中，而B中没有，所以服务器B获取用户信息时会失败</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ol>
+<li>Redis（基于内存的 K/V 数据库）<br>   将Cookie存储在Redis中实现分布式登录，在A中登录的Cookie存在Redis中，那么B要获取登录信息先从Redis中获取对应Cookie再拿到登录信息 </li>
+<li>MySQL </li>
+<li>文件服务器ceph</li>
+</ol>
+<h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><ol>
+<li>用户可视化界面：适合一次性导入，数据量可控 </li>
+<li>写程序：for循环，建议分批，不要一次梭哈（可以用接口控制）<strong>要保证可控，幂等，注意线上环境和测试环境是有区别的</strong><br>   导入1000万条，for i 1000w</li>
+</ol>
+<h4 id="编写一次性任务"><a href="#编写一次性任务" class="headerlink" title="编写一次性任务"></a>编写一次性任务</h4><p>for循环插入数据的问题：</p>
+<ol>
+<li>建立和释放数据库的链接（批量插入）</li>
+<li>for循环是绝对线性的（并发），并发要注意执行的先后顺序，不要使用非并发类的集合</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//CPU密集型：分配的核心线程数=CPU-1</span><br><span class="line">//I0密集型：分配的核心线程数可以大于CPU核数</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>数据库慢？预先把数据查出来，放到一个更快读取的地方，不用再<br>查数据库了。（缓存）<br>预加载缓存，定时更新缓存。（定时任务）<br>多个机器都要执行任务么？（分布式锁：控制同一时间只有一台机<br>器去执行定时任务，其他机器不用重复执行了)</p>
+<h3 id="数据查询慢怎么办？"><a href="#数据查询慢怎么办？" class="headerlink" title="数据查询慢怎么办？"></a>数据查询慢怎么办？</h3><p>用缓存：提前把数据取出来保存好（通常保存在读写更快地介质，比如内存），就可以更快地读写</p>
+<p>缓存的实现：</p>
+<ul>
+<li>Redis（分布式缓存，支持多个进程或者多个服务器之间的数据共享）</li>
+<li>memcached（分布式）</li>
+<li>Etcd（主要用于共享配置和服务发现。云原生架构的一个分布式，扩容能力强）</li>
+<li>ehcache（单机）</li>
+<li>本地缓存（Java的Map集合）</li>
+<li>Caffeine（是一个Java库，但是呢它是本地的，只能在单个JVM进程中使用，不能再多个进程或服务器之间共享数据）</li>
+<li>Google Guava</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
+<li>基于内存的K/V存储中间件</li>
+<li>NoSQL键值对数据库</li>
+<li>也可作为消息队列</li>
+</ul>
+<h3 id="Java中操作Redis的方式"><a href="#Java中操作Redis的方式" class="headerlink" title="Java中操作Redis的方式"></a>Java中操作Redis的方式</h3><ol>
+<li>Spring Data Redis（推荐）<br>   通用的数据库访问框架，定义了一组<strong>增删改查</strong>的接口 </li>
+<li>Jedis（独立于Spring操作Redis） </li>
+<li>Redisson</li>
+</ol>
+<h4 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h4><ul>
+<li>独立于Spring操作Redis的Java客户端</li>
+<li>要配合Jedis Pool使用</li>
+<li><strong>Jedis与commons pool会有冲突</strong></li>
+</ul>
+<h4 id="Lettuce"><a href="#Lettuce" class="headerlink" title="Lettuce"></a>Lettuce</h4><p><strong>高阶</strong>的操作Redis的Java客户端</p>
+<ul>
+<li>支持异步、连接池</li>
+</ul>
+<h4 id="Redisson（写在简历上，是个亮点）"><a href="#Redisson（写在简历上，是个亮点）" class="headerlink" title="Redisson（写在简历上，是个亮点）"></a>Redisson（写在简历上，是个亮点）</h4><p>分布式操作Redis的Java客户端，像操作本地的集合一样操作Redis</p>
+<h4 id="JetCache"><a href="#JetCache" class="headerlink" title="JetCache"></a>JetCache</h4><h3 id="操作方式对比："><a href="#操作方式对比：" class="headerlink" title="操作方式对比："></a>操作方式对比：</h3><ol>
+<li>如果你用Spring开发，并且没有过多的定制化要求选Spring Data Redis</li>
+<li>如果你没有用Spring，并且追求简单，没有过多的性能要求，可以用Jedis + Jedis Pool</li>
+<li>如果你的项目不是Spring，并且追求高性能，高定制化，可以用lettuce。支持异步、连接池（技术大牛使用）</li>
+<li>如果你的项目是分布式的，需要用到一些分布特性（比如分布式锁，分布式集合），推荐使用Redisson</li>
+</ol>
+<h3 id="Redis数据结构"><a href="#Redis数据结构" class="headerlink" title="Redis数据结构"></a>Redis数据结构</h3><ul>
+<li>String类型：sex:”男” </li>
+<li>List列表：hobby:[“编程”,”睡觉”] </li>
+<li>Set集合：hobby:[“编程”,”睡觉”]，值不重复。可用于点赞，即一个人只能点一次赞 </li>
+<li>Hash哈希：nameAge:{“burger”:1,”hamburger”:2} </li>
+<li>Zset集合：相比对Set多一个score分数，是一个有顺序的Set集合，一般用作实现排行榜 </li>
+<li>bloomfilter（布隆过滤器，主要从大量数据中快速过滤值，比如邮件黑名单拦截） </li>
+<li>geo（计算地理位置） </li>
+<li>hyperloglog（pv / uv） </li>
+<li>pub / sub （发布订阅，类似消息队列） </li>
+<li>BitMap（101101011110101001）可用于签到和存储压缩值</li>
+</ul>
+<h3 id="如何如何设计缓存Key"><a href="#如何如何设计缓存Key" class="headerlink" title="如何如何设计缓存Key"></a>如何如何设计缓存Key</h3><p>目的：使得不同用户看到的数据不同</p>
+<p>systemId:moudleId:func:options(不要和别人冲突)</p>
+<p>homie:user:recommend:</p>
+<p>redis 内存不能无限增加，k一定要设置过期时间</p>
+<h3 id="缓存预热"><a href="#缓存预热" class="headerlink" title="缓存预热"></a><strong>缓存预热</strong></h3><p>问题：第一个用户访问还是很慢（加入第一个勇士），也能一定程度上保护数据库</p>
+<p>缓存预热的优缺点：</p>
+<ol>
+<li>解决上述问题，让用户始终访问很快</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>增加开发成本（需要额外的开发和设计）</li>
+<li>预热的时机和时间不合适的话，有可能你缓存的数据不对或者太老</li>
+<li>空间换时间</li>
+</ol>
+<h4 id="缓存预热目的"><a href="#缓存预热目的" class="headerlink" title="缓存预热目的"></a>缓存预热目的</h4><p>用定时任务，每天刷新所有用户的推荐列表</p>
+<p>注意点：</p>
+<ol>
+<li>缓存预热的意义(新增少、总用户多)</li>
+<li>缓存的空间不能太大，要预留给其他缓存空间</li>
+<li>缓存数据的周期</li>
+</ol>
+<h4 id="怎么预热缓存？"><a href="#怎么预热缓存？" class="headerlink" title="怎么预热缓存？"></a>怎么预热缓存？</h4><ol>
+<li>定时触发（常用）</li>
+<li>手动触发</li>
+</ol>
+<h4 id="定时任务实现"><a href="#定时任务实现" class="headerlink" title="定时任务实现"></a>定时任务实现</h4><ol>
+<li>Spring Scheduler（Spring Boot默认整合的）</li>
+<li>Quartz（独立于Spring Boot存在的定时任务框架）</li>
+<li>XXL-Job之类的分布式任务调度平台（界面 + SDK）</li>
+</ol>
+<p>第一种方式：</p>
+<ol>
+<li>在主类添加@EnableScheduling注解</li>
+<li>给要执行的方法添加@Scheduling注解，指定cron表达式或者执行频率</li>
+</ol>
+<p>不要去背cron表达式</p>
+<h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>用户访问的数据既不在缓存也不再数据库中，导致大致请求到达数据库，对数据库造成巨大压力</p>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>大量的Key同时失效或者Redis宕机，导致大量请求访问数据库，带来巨大压力</p>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>也叫热点Key问题。在一段时间内，被高并发访问并且缓存重建业务较为复杂的Key突然失效，巨量的请求会抵达数据库，对其造成巨大冲击</p>
+<h3 id="控制定时任务的发布"><a href="#控制定时任务的发布" class="headerlink" title="控制定时任务的发布"></a>控制定时任务的发布</h3><h4 id="why？"><a href="#why？" class="headerlink" title="why？"></a>why？</h4><ol>
+<li>浪费资源，想象10000条服务器同时“打鸣”</li>
+<li>脏数据，比如重复插入</li>
+</ol>
+<p>要控制定时任务在同一时间只有一个服务器执行</p>
+<h4 id="实现方式："><a href="#实现方式：" class="headerlink" title="实现方式："></a>实现方式：</h4><ol>
+<li>分离定时任务，只安排一个服务器执行定时任务。成本太大 </li>
+<li>写死配置，每个服务器都执行定时任务，但是只有IP地址符合配置的服务器才会执行。适合于并发量不大的场景，成本低。问题：IP可能是不固定的。 </li>
+<li>动态配置，配置是可以轻松得、方便更新得，但还是只有ip符合配置的服务器才真会执行业务逻辑代码</li>
+</ol>
+<ul>
+<li>数据库</li>
+<li>Redis</li>
+<li>配置中心（Nacos，Apollo，Spring Cloud Config）</li>
+</ul>
+<p>问题：服务器多了，IP不可控还是很麻烦，还要人工修改 </p>
+<ol>
+<li>分布式锁，只有抢到锁的服务器才能执行对应的业务逻辑。</li>
+</ol>
+<ul>
+<li>坏处：增加成本</li>
+<li>好处：不用手动配置，不管有多少个服务器在抢锁</li>
+</ul>
+<p><strong>单机就会存在故障</strong></p>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>在资源有限的情况下，控制同一时间（段）只有某些线程（用户 / 服务器）能够访问资源</p>
+<p>Java实现锁：synchronized，并发包</p>
+<h4 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h4><p>为啥需要分布式锁？</p>
+<ol>
+<li>从锁的必要性出发。在资源有限的情况下，控制同一时间（段）只有某些线程（用户 / 服务器）能够访问资源</li>
+<li>单个锁只对单个JVM有效</li>
+</ol>
+<h4 id="分布式锁实现的关键"><a href="#分布式锁实现的关键" class="headerlink" title="分布式锁实现的关键"></a>分布式锁实现的关键</h4><h5 id="抢锁机制"><a href="#抢锁机制" class="headerlink" title="抢锁机制"></a>抢锁机制</h5><p>怎么保证同一时间只有一个服务器能抢到锁？</p>
+<p>核心思想：先来的人先把数据改为自己独有的标识（比如服务器IP），后来的人发现标识存在，则抢锁失败，继续等到。等先来的人的执行方法结束，把标识清空，其他人继续抢锁。</p>
+<p>实现方式：</p>
+<ol>
+<li>MySQL数据库：select for update行级锁（最简单） </li>
+<li>乐观锁 </li>
+<li><strong>Redis实现</strong>：内存数据库，速度快。支持setnx，lua脚本支持原子性操作<br>   setnx: set if not exists如果不存在，则设置；只有设置成功才会返回true </li>
+<li>Zookeeper实现（不推荐）</li>
+</ol>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ol>
+<li>用完就删掉锁</li>
+<li>锁一定要添加过期时间，防止因为服务器宕机没释放锁</li>
+<li>过期时间要大于业务执行时间</li>
+<li></li>
+</ol>
+<h4 id="分布式锁导致其他服务器数据不一致"><a href="#分布式锁导致其他服务器数据不一致" class="headerlink" title="分布式锁导致其他服务器数据不一致"></a>分布式锁导致其他服务器数据不一致</h4></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">http://example.com/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a><a class="post-meta__tags" href="/tags/homie-%E5%8C%B9%E9%85%8D/">homie 匹配</a></div><div class="post_share"><div class="social-share" data-image="/img/post_1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5-GEO-%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie 匹配引入 GEO 实现搜索附近用户"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">homie 匹配引入 GEO 实现搜索附近用户</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/07/%E8%81%9A%E5%90%88%E6%90%9C%E6%90%9C%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="聚合搜搜项目笔记"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">聚合搜搜项目笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/02/homie%20%E5%8C%B9%E9%85%8D%20websocket%20%E8%81%8A%E5%A4%A9%E9%83%A8%E5%88%86/" title="homie 匹配 websocket 聊天部分"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">homie 匹配 websocket 聊天部分</div></div></a></div><div><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5-GEO-%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie 匹配引入 GEO 实现搜索附近用户"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">homie 匹配引入 GEO 实现搜索附近用户</div></div></a></div><div><a href="/2024/07/02/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%20Vue%20+%20Spring%20Boot%20+%20MySQL%20+%20Redis%20%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</div></div></a></div><div><a href="/2024/07/02/homie%E5%8C%B9%E9%85%8DAxios+AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">homie匹配Axios+AOP实现全局登录拦截</div></div></a></div><div><a href="/2024/07/07/API-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="API 项目笔记"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">API 项目笔记</div></div></a></div><div><a href="/2024/07/07/BI-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="BI 项目笔记"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">BI 项目笔记</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#homie-%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">homie 匹配系统笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">前端项目初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">后端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E7%9A%84%E5%85%A8%E9%83%A8%E4%BE%9D%E8%B5%96%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">后端的全部依赖：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#application-yml%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">application.yml文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text">Redis相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E5%90%88Swagger-knife4j%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="toc-number">1.2.4.</span> <span class="toc-text">整合Swagger/knife4j接口文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">后端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">前端遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Toast%E6%8A%A5%E9%94%99%EF%BC%8C%E9%82%A3%E6%98%AF%E5%9B%A0%E4%B8%BA%E8%A7%86%E9%A2%91%E4%B8%AD%E7%94%A8%E7%9A%84%E6%98%AFvant3%EF%BC%8C%E4%BD%A0%E5%8F%AF%E8%83%BD%E7%94%A8%E7%9A%84%E6%98%AFvant4%E3%80%82%E7%9B%B4%E6%8E%A5%E6%8A%8AToast%E6%9B%BF%E6%8D%A2%E4%B8%BAshowSuccessToast%EF%BC%8C%E5%9C%A8%E5%BC%95%E5%85%A5%E4%B8%80%E4%B8%8B%E5%B0%B1%E5%A5%BD%E4%BA%86%E3%80%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">Toast报错，那是因为视频中用的是vant3，你可能用的是vant4。直接把Toast替换为showSuccessToast，在引入一下就好了。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%87%BA%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%9C%A8%E4%B8%AD%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E6%8A%8Astyle-css%E6%96%87%E4%BB%B6%E7%BB%99%E5%88%A0%E9%99%A4"><span class="toc-number">1.3.2.</span> <span class="toc-text">如果出现组件在中间的问题，请把style.css文件给删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%90%91%E5%90%8E%E7%AB%AF%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%87%BA%E7%8E%B0400"><span class="toc-number">1.3.3.</span> <span class="toc-text">前端向后端发送请求出现400</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%A5%E9%94%99-import-myAxios-from-%E2%80%9C-plugins-myAxios-ts%E2%80%9D-%E3%80%81"><span class="toc-number">1.3.4.</span> <span class="toc-text">前端报错 import myAxios from “../../plugins/myAxios.ts”;、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Axios%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E8%8E%B7%E5%8F%96data%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.5.</span> <span class="toc-text">Axios发送请求获取data失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E7%99%BB%E5%BD%95%E8%AF%B7%E6%B1%82%E6%B2%A1%E6%9C%89%E6%90%BA%E5%B8%A6Cookie"><span class="toc-number">1.3.6.</span> <span class="toc-text">前端发送登录请求没有携带Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uncaught-in-promise-TypeError-Cannot-read-properties-of-undefined-reading-%E2%80%98username%E2%80%99-%E5%87%BA%E7%8E%B0%E4%BA%86user-username-undefined"><span class="toc-number">1.3.7.</span> <span class="toc-text">Uncaught (in promise) TypeError: Cannot read properties of undefined (reading ‘username’) 出现了user.username undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0-setup-user-createTime-toISOString-is-not-a-function%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.8.</span> <span class="toc-text">出现 $setup.user.createTime.toISOString is not a function问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E4%BB%BB%E4%BD%95%E7%9A%84%E6%8A%A5%E9%94%99%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%87%BA%E6%9D%A5"><span class="toc-number">1.3.9.</span> <span class="toc-text">没有任何的报错，但是个人信息就是显示不出来</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">后端遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis-Plus%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E6%9F%A5%E4%B8%8D%E5%87%BA%E6%9D%A5%EF%BC%9F%E6%88%96%E8%80%85%E6%8A%A5%E9%94%99%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">Mybatis-Plus分页查询查不出来？或者报错？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%87%BA%E7%8E%B0%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%AC%A6%E5%8F%B7-%E2%80%98MybatisPlusInterceptor%E2%80%99"><span class="toc-number">1.4.2.</span> <span class="toc-text">如果出现无法解析符号 ‘MybatisPlusInterceptor’</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMyBatis-Plus%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-number">1.4.3.</span> <span class="toc-text">配置MyBatis-Plus分页查询配置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8RedisTemplate%E5%BE%80Redis%E4%B8%AD%E5%AD%98%E5%80%BC%EF%BC%8C%E5%8F%91%E7%8E%B0%E4%B9%B1%E7%A0%81"><span class="toc-number">1.4.4.</span> <span class="toc-text">利用RedisTemplate往Redis中存值，发现乱码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E8%99%AB"><span class="toc-number">1.5.</span> <span class="toc-text">爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E9%87%8F%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%AF%BC%E5%85%A5"><span class="toc-number">1.5.1.</span> <span class="toc-text">存量用户信息导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E6%8A%93%E5%8F%96%E7%BD%91%E4%B8%8A%E4%BF%A1%E6%81%AF"><span class="toc-number">1.5.2.</span> <span class="toc-text">怎么抓取网上信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">具体流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#EasyExcel"><span class="toc-number">1.5.2.1.1.</span> <span class="toc-text">EasyExcel</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B2%E8%B4%A7"><span class="toc-number">1.6.</span> <span class="toc-text">干货</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#router-push-%E5%92%8Crouter-replace-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.6.1.</span> <span class="toc-text">router.push()和router.replace()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Session%E5%85%B1%E4%BA%AB"><span class="toc-number">1.6.2.</span> <span class="toc-text">Session共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E5%90%8C%E4%B8%80%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%BD%86%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">1.6.3.</span> <span class="toc-text">如何开启同一后端项目，但配置不同的端口号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8A%E7%99%BB%E5%BD%95%E5%90%8E%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8B%E6%8B%BF%E4%B8%8D%E5%88%B0%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.4.</span> <span class="toc-text">为什么在服务器A登录后，服务器B拿不到用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.6.5.</span> <span class="toc-text">导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E4%B8%80%E6%AC%A1%E6%80%A7%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.6.5.1.</span> <span class="toc-text">编写一次性任务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%85%A2%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.6.6.</span> <span class="toc-text">数据查询慢怎么办？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">1.7.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%B8%AD%E6%93%8D%E4%BD%9CRedis%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">1.7.1.</span> <span class="toc-text">Java中操作Redis的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Jedis"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">Jedis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lettuce"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">Lettuce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redisson%EF%BC%88%E5%86%99%E5%9C%A8%E7%AE%80%E5%8E%86%E4%B8%8A%EF%BC%8C%E6%98%AF%E4%B8%AA%E4%BA%AE%E7%82%B9%EF%BC%89"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">Redisson（写在简历上，是个亮点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JetCache"><span class="toc-number">1.7.1.4.</span> <span class="toc-text">JetCache</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-number">1.7.2.</span> <span class="toc-text">操作方式对比：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.3.</span> <span class="toc-text">Redis数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%BC%93%E5%AD%98Key"><span class="toc-number">1.7.4.</span> <span class="toc-text">如何如何设计缓存Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD"><span class="toc-number">1.7.5.</span> <span class="toc-text">缓存预热</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD%E7%9B%AE%E7%9A%84"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">缓存预热目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E9%A2%84%E7%83%AD%E7%BC%93%E5%AD%98%EF%BC%9F"><span class="toc-number">1.7.5.2.</span> <span class="toc-text">怎么预热缓存？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.5.3.</span> <span class="toc-text">定时任务实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="toc-number">1.7.6.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-number">1.7.7.</span> <span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-number">1.7.8.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%8F%91%E5%B8%83"><span class="toc-number">1.7.9.</span> <span class="toc-text">控制定时任务的发布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#why%EF%BC%9F"><span class="toc-number">1.7.9.1.</span> <span class="toc-text">why？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.7.9.2.</span> <span class="toc-text">实现方式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">1.7.10.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-number">1.7.10.1.</span> <span class="toc-text">分布式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%85%B3%E9%94%AE"><span class="toc-number">1.7.10.2.</span> <span class="toc-text">分布式锁实现的关键</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%A2%E9%94%81%E6%9C%BA%E5%88%B6"><span class="toc-number">1.7.10.2.1.</span> <span class="toc-text">抢锁机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.7.10.2.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%AF%BC%E8%87%B4%E5%85%B6%E4%BB%96%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-number">1.7.10.3.</span> <span class="toc-text">分布式锁导致其他服务器数据不一致</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

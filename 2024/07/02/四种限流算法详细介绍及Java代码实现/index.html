@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>四种限流算法详细介绍及Java代码实现 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="四种限流算法详细介绍及Java代码实现前言在BI项目中接触和了解限流算法，目的是为了限制用户疯狂调用AI生成接口，但是当时学习时并不够系统和深入，基本都是跟着教程敲代码，于是有了这篇文章和大家介绍一下四种限流算法。 固定窗口限流将单位时间内作为一个时间窗口，同时维护一个计数器，记录次时间窗口内接收的请求次数。  当次数小于等于限流阈值，允许请求通过，并且计数器 +1 当次数大于限流阈值，不允许请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四种限流算法详细介绍及Java代码实现">
+<meta property="og:url" content="http://example.com/2024/07/02/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="四种限流算法详细介绍及Java代码实现前言在BI项目中接触和了解限流算法，目的是为了限制用户疯狂调用AI生成接口，但是当时学习时并不够系统和深入，基本都是跟着教程敲代码，于是有了这篇文章和大家介绍一下四种限流算法。 固定窗口限流将单位时间内作为一个时间窗口，同时维护一个计数器，记录次时间窗口内接收的请求次数。  当次数小于等于限流阈值，允许请求通过，并且计数器 +1 当次数大于限流阈值，不允许请求">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_2.png">
+<meta property="article:published_time" content="2024-07-02T07:40:33.000Z">
+<meta property="article:modified_time" content="2024-07-07T03:05:32.375Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="拓展知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/02/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '四种限流算法详细介绍及Java代码实现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 11:05:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">四种限流算法详细介绍及Java代码实现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-07T03:05:32.375Z" title="更新于 2024-07-07 11:05:32">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="四种限流算法详细介绍及Java代码实现"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_2.png');"></div><article class="post-content" id="article-container"><h1 id="四种限流算法详细介绍及Java代码实现"><a href="#四种限流算法详细介绍及Java代码实现" class="headerlink" title="四种限流算法详细介绍及Java代码实现"></a>四种限流算法详细介绍及Java代码实现</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在BI项目中接触和了解限流算法，目的是为了限制用户疯狂调用AI生成接口，但是当时学习时并不够系统和深入，基本都是跟着教程敲代码，于是有了这篇文章和大家介绍一下四种限流算法。</p>
+<h2 id="固定窗口限流"><a href="#固定窗口限流" class="headerlink" title="固定窗口限流"></a>固定窗口限流</h2><p>将单位时间内作为一个时间窗口，同时维护一个计数器，记录次时间窗口内接收的请求次数。</p>
+<ul>
+<li>当次数小于等于限流阈值，允许请求通过，并且计数器 +1</li>
+<li>当次数大于限流阈值，不允许请求通过，计数器不变</li>
+<li>当系统时间（当前时间）超过时间窗口，计数器重置为0并且开始记录新的窗口内接收的请求次数</li>
+</ul>
+<p>缺陷：定义时间窗口为1s，允许请求数量为3（请求阈值），说明1s内只能接收并处理3个请求。然而如果0.8<del>0.9s来了三个请求，1.1</del>1.2s来了三个请求。虽然这6个请求都没超过各自窗口的请求阈值，但是已经违背了1s内接收并处理3个请求了，因为在不到1s内其接收了6个请求，存在临界问题。</p>
+<p>优点：简单易实现</p>
+<p>缺点：</p>
+<ol>
+<li>有临界问题（流量突刺）</li>
+<li>不适用于分布式系统</li>
+</ol>
+<p>Java代码实现</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line">public class FixedWindowRateLimiter {</span><br><span class="line">    private final int requestLimit; // 限流阈值</span><br><span class="line">    private final long windowSize; // 时间窗口大小（毫秒）</span><br><span class="line">    private int count; // 计数器</span><br><span class="line">    private volatile long windowStart; // 时间窗口起始时间</span><br><span class="line"></span><br><span class="line">    public FixedWindowRateLimiter(long windowSize, int requestLimit) {</span><br><span class="line">        this.windowSize = windowSize;</span><br><span class="line">        this.requestLimit = requestLimit;</span><br><span class="line">        this.count = 0;</span><br><span class="line">        this.windowStart = System.currentTimeMillis() / 1000;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public synchronized boolean tryAcquire() {</span><br><span class="line">        long currentTime = System.currentTimeMillis();</span><br><span class="line">        if (currentTime - windowStart &gt; windowSize) { // 如果当前时间已经超出窗口时间，则重置窗口</span><br><span class="line">            windowStart = currentTime;</span><br><span class="line">            count = 0;</span><br><span class="line">        }</span><br><span class="line">        if (count &lt; requestLimit) {</span><br><span class="line">            count++; // 增加计数</span><br><span class="line">            return true;</span><br><span class="line">        } else {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        FixedWindowRateLimiter fixedWindowRateLimiter = new FixedWindowRateLimiter(10, 2); // 时间窗口大小，请求阈值（请求限制）</span><br><span class="line">        for (int i = 0;i &lt; 10;i++) {</span><br><span class="line">            boolean allowed = fixedWindowRateLimiter.tryAcquire();</span><br><span class="line">            System.out.println("请求" + (i+1) + "：" + (allowed ? "被允许" : "被拒绝"));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434135840-5a051559-3472-4d4d-8e21-1ee18ed4b41c.png"><img src="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434135840-5a051559-3472-4d4d-8e21-1ee18ed4b41c.png" alt="img"></a></p>
+<h2 id="滑动窗口限流"><a href="#滑动窗口限流" class="headerlink" title="滑动窗口限流"></a>滑动窗口限流</h2><p>为了解决固定窗口限流的临界问题，便有了滑动窗口限流算法。</p>
+<p>滑动窗口将单位时间划分n个小周期，通过计数器记录每个小周期内的请求次数，每过0.2s后时间窗口就往后推移1小格即一个小周期（0.2s），那么<strong>最初的小周期就会被删除，</strong>并且随着时间的推移删除已过期的小周期。</p>
+<p>比如，将单位时间1s划分5个小周期，每个小周期为0.2s。每个小周期内的请求次数由各自且独立的计数器记录，统计5个小周期的计数器总和是否超过请求阈值，没有就请求允许，否则请求被拒绝。起初滑动窗口是0<del>1s；当过了0.2s后，0</del>0.2s这个小周期就会被删除，同时滑动窗口后移0.2s（一个小周期），那么新的滑动窗口变为了0.2~1.2s。</p>
+<p>用上述固定窗口的临界例子应用到滑动窗口：0.8<del>0.9来了三个请求，这三个请求被允许了（此时滑动窗口是0</del>1.0s）。过了0.2s后，新的滑动窗口变为了0.2<del>1.2s，当1.1</del>1.2s来了三个请求，这三个请求就会被拒绝。因为此时新的5个小周期的计数器总和为3达到了请求阈值，所以.1~1.2s来的三个请求会被拒绝。</p>
+<p>优点：解决了固定限流算法的临界（流量突刺）问题</p>
+<p>缺点：</p>
+<ol>
+<li>相比固定限流难理解和实现</li>
+<li>不适用分布式系统</li>
+<li>超过请求阈值的请求直接被拒绝了，而不是丢弃，给用户的体验不好</li>
+<li>限流效果与划分的小周期的数量有关，但往往很难选取</li>
+</ol>
+<p>Java实现</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line">public class SlidingWindowRateLimiter {</span><br><span class="line">    private final int windowSize;  // 时间窗口大小，单位为秒</span><br><span class="line">    private final int requestLimit;  // 在时间窗口内允许的最大请求数</span><br><span class="line">    private final LinkedList&lt;Long&gt; timestamps;  // 存储请求的时间戳</span><br><span class="line"></span><br><span class="line">    public SlidingWindowRateLimiter(int windowSize, int requestLimit) {</span><br><span class="line">        this.windowSize = windowSize;</span><br><span class="line">        this.requestLimit = requestLimit;</span><br><span class="line">        this.timestamps = new LinkedList&lt;&gt;();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public synchronized boolean allowRequest() {</span><br><span class="line">        long currentTime = System.currentTimeMillis() / 1000;  // 获取当前时间戳（秒）</span><br><span class="line"></span><br><span class="line">        // 移除时间窗口之外的时间戳</span><br><span class="line">        while (!timestamps.isEmpty() &amp;&amp; timestamps.getFirst() &lt;= currentTime - windowSize) {</span><br><span class="line">            timestamps.removeFirst();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        // 检查当前请求数是否超过限制</span><br><span class="line">        if (timestamps.size() &lt; requestLimit) {</span><br><span class="line">            timestamps.addLast(currentTime);</span><br><span class="line">            return true;  // 允许请求</span><br><span class="line">        } else {</span><br><span class="line">            return false;  // 请求超过限制</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        SlidingWindowRateLimiter rateLimiter = new SlidingWindowRateLimiter(10, 2);</span><br><span class="line"></span><br><span class="line">        // 模拟请求</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) {</span><br><span class="line">            boolean allowed = rateLimiter.allowRequest();</span><br><span class="line">            System.out.println("请求 " + (i + 1) + ": " + (allowed ? "被允许" : "被拒绝"));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434136007-c34d89f0-e931-4225-8729-d6dffb445086.png"><img src="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434136007-c34d89f0-e931-4225-8729-d6dffb445086.png" alt="img"></a></p>
+<h2 id="漏桶限流"><a href="#漏桶限流" class="headerlink" title="漏桶限流"></a>漏桶限流</h2><p>漏桶限流算法又算是解决了固定窗口限流和滑动窗口限流出现的请求被拒绝的问题，其对于超出请求阈值的请求会直接丢弃。</p>
+<p>水（请求）以任意的速率流入桶内，以固定的速率从桶底流出（处理请求），如果水的流入速度大于流出速度（系统请求速度大于处理请求的速度），水就会溢出（即请求直接被丢弃）。</p>
+<p>优点：</p>
+<ol>
+<li>解决了请求被直接拒绝的问题</li>
+<li>一定程度上解决了临界问题（流量突刺）</li>
+</ol>
+<p>缺点：不能迅速处理一批请求（并发处理请求），因为水的流出速率是固定的（请求的处理速率是固定的，只能处理一个请求后再去处理下一个）</p>
+<p>Java实现：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line">package DataStructure.RateLimtAlgorithm;</span><br><span class="line"></span><br><span class="line">import java.time.Instant;</span><br><span class="line">import java.util.concurrent.atomic.AtomicLong;</span><br><span class="line"></span><br><span class="line">public class LeakyBucketRateLimiter {</span><br><span class="line">    private final int capacity; // 桶的容量</span><br><span class="line">    private final int rate; // 漏水速率，单位：请求/秒</span><br><span class="line">    private AtomicLong water; // 当前桶中的水量</span><br><span class="line">    private Instant lastLeakTime; // 上一次漏水的时间点</span><br><span class="line"></span><br><span class="line">    public LeakyBucketRateLimiter(int capacity, int rate) {</span><br><span class="line">        this.capacity = capacity;</span><br><span class="line">        this.rate = rate;</span><br><span class="line">        this.water = new AtomicLong(0);</span><br><span class="line">        this.lastLeakTime = Instant.now();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public synchronized boolean allowed() {</span><br><span class="line">        leak(); // 漏水</span><br><span class="line">        if (water.get() &lt; capacity) {</span><br><span class="line">            water.incrementAndGet();</span><br><span class="line">            return true; // 桶未满，允许请求通过</span><br><span class="line">        } else {</span><br><span class="line">            return false; // 桶已满，拒绝请求</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private synchronized void leak() {</span><br><span class="line">        Instant now = Instant.now();</span><br><span class="line">        long interval = now.getEpochSecond() - lastLeakTime.getEpochSecond();</span><br><span class="line">        long leakedWater = interval * rate; // 计算漏水的数量</span><br><span class="line">        if (leakedWater &gt; 0) {</span><br><span class="line">            water.set(Math.max(0, water.get() - leakedWater)); // 更新桶中的水量</span><br><span class="line">            lastLeakTime = now; // 更新上一次漏水的时间点</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        LeakyBucketRateLimiter leakyBucketRateLimiter = new LeakyBucketRateLimiter(5, 2); // 创建一个容量为10，速率为1个请求/秒的漏桶</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) {</span><br><span class="line">            boolean allowed = leakyBucketRateLimiter.allowed();</span><br><span class="line">            System.out.println("请求 " + (i + 1) + ": " + (allowed ? "被允许" : "被拒绝"));</span><br><span class="line">            try {</span><br><span class="line">                Thread.sleep(100); // 模拟请求间隔</span><br><span class="line">            } catch (InterruptedException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434403677-b5b3a511-e942-43bc-86f3-ca635276ae22.png"><img src="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434403677-b5b3a511-e942-43bc-86f3-ca635276ae22.png" alt="img"></a></p>
+<h2 id="令牌桶限流"><a href="#令牌桶限流" class="headerlink" title="令牌桶限流"></a>令牌桶限流</h2><p>根据请求的数量多少，管理员匀速生成一批令牌。只有拥有令牌的请求才会被允许，否则就会被丢弃，不予通过。比如管理员生成了5个令牌，此时来了10个请求，那么拿到令牌的5个请求会被同时处理，另外5个请求就会被丢弃。</p>
+<p>一般令牌桶限流可以通过Redisson限流器实现，因此其适用于分布式系统，当然前面三种限流算也可用于分布式系统但是需要手动实现。既然令牌桶限流算法这么好，Redisson还帮我们实现了，所以一般我们都会选择它，因为专业 [doge]。</p>
+<p>优点：以上三种算法的所有优点，并且支持并发处理请求。</p>
+<p>缺点：不适合长时间限流，对资源消耗高，依赖Redis实现，不适用于突发性任务</p>
+<p>Java实现：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line">@Service</span><br><span class="line">public class RedisLimiterManager {</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private RedissonClient redissonClient;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 限流操作</span><br><span class="line">     *</span><br><span class="line">     * @param key 区分不同的限流器，比如不同的用户 id 应该分别统计</span><br><span class="line">     */</span><br><span class="line">    public void doRateLimit(String key) {</span><br><span class="line">        // 创建一个名称为user_limiter的限流器，每秒最多访问2次</span><br><span class="line">        RRateLimiter rateLimiter = redissonClient.getRateLimiter(key);</span><br><span class="line">        rateLimiter.trySetRate(RateType.OVERALL, 2, 1, RateIntervalUnit.SECONDS); // OVERALL类型：不管有多少台服务器都是放在一起统计的，请求阈值，生成令牌的频率</span><br><span class="line">        // 每当一个操作来了后，请求一个令牌</span><br><span class="line">        boolean canOp = rateLimiter.tryAcquire(1);// 令牌请求数，处理请求需消耗的令牌</span><br><span class="line">        if (!canOp) {</span><br><span class="line">            throw new BusinessException(ErrorCode.TOO_MANY_REQUEST);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@SpringBootTest</span><br><span class="line">class RedisLimiterManagerTest {</span><br><span class="line">    @Resource</span><br><span class="line">    private RedisLimiterManager redisLimiterManager;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    void doRateLimit() throws InterruptedException {</span><br><span class="line">        String userId = "1";</span><br><span class="line">        for (int i=0;i&lt;10;i++) {</span><br><span class="line">            redisLimiterManager.doRateLimit(userId);</span><br><span class="line">            System.out.println("success");</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434135928-261a862b-8348-4e01-930e-87e583473a79.png"><img src="https://blog.hejiajun.icu/2024/02/25/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/1708434135928-261a862b-8348-4e01-930e-87e583473a79.png" alt="img"></a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/02/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">http://example.com/2024/07/02/%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86/">拓展知识</a></div><div class="post_share"><div class="social-share" data-image="/img/post_2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/02/homie%E5%8C%B9%E9%85%8DAxios+AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截"><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">homie匹配Axios+AOP实现全局登录拦截</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/02/%E6%98%9F%E7%90%83%E9%B1%BC%E5%8F%8B%E9%9D%A2%E7%BB%8F/" title="星球鱼友面经"><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">星球鱼友面经</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/26/EasyExcel-%E5%88%9D%E4%BD%BF%E7%94%A8%E2%80%94%E2%80%94-Java-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%A7%8D%E5%86%99%E5%85%A5-Excel-%E5%8A%9F%E8%83%BD-CSDN%E5%8D%9A%E5%AE%A2/" title="EasyExcel 初使用—— Java 实现多种写入 Excel 功能-CSDN博客"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-26</div><div class="title">EasyExcel 初使用—— Java 实现多种写入 Excel 功能-CSDN博客</div></div></a></div><div><a href="/2024/07/22/EasyExcel-%E5%88%9D%E4%BD%BF%E7%94%A8%E2%80%94%E2%80%94-Java-%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%8F%96-Excel-%E5%8A%9F%E8%83%BD/" title="EasyExcel 初使用—— Java 实现读取 Excel 功能"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-22</div><div class="title">EasyExcel 初使用—— Java 实现读取 Excel 功能</div></div></a></div><div><a href="/2024/07/28/Spring-Boot-%E5%BC%95%E5%85%A5-Guava-Retry-%E5%AE%9E%E7%8E%B0%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6-CSDN%E5%8D%9A%E5%AE%A2/" title="Spring Boot 引入 Guava Retry 实现重试机制"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-28</div><div class="title">Spring Boot 引入 Guava Retry 实现重试机制</div></div></a></div><div><a href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-29</div><div class="title">手摸手教你前端和后端是如何实现导出 Excel 的？</div></div></a></div><div><a href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-22</div><div class="title">JVM 面试题</div></div></a></div><div><a href="/2024/07/02/Java%E4%BA%8C%E7%BA%A7/" title="Java二级"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">Java二级</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E5%8F%8AJava%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">四种限流算法详细介绍及Java代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E7%AA%97%E5%8F%A3%E9%99%90%E6%B5%81"><span class="toc-number">1.2.</span> <span class="toc-text">固定窗口限流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%99%90%E6%B5%81"><span class="toc-number">1.3.</span> <span class="toc-text">滑动窗口限流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%A1%B6%E9%99%90%E6%B5%81"><span class="toc-number">1.4.</span> <span class="toc-text">漏桶限流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A4%E7%89%8C%E6%A1%B6%E9%99%90%E6%B5%81"><span class="toc-number">1.5.</span> <span class="toc-text">令牌桶限流</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

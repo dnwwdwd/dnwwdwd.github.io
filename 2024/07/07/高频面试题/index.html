@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高频面试题 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="spring bean 的生命周期spring bean 的生命周期主要有5个过程。  实例化：Spring IOC 容器根据 bean 定义或 xml 文件创建 bean 实例，可以通过构造方法或者工厂方法实例化 bean。 属性赋值：spring ioc 容器将配置的属性值或者依赖注入到 bean 实例中，这个阶段也称为依赖注入。 初始化：在此阶段，bean 可以执行一些初始化操作，比如调用自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高频面试题">
+<meta property="og:url" content="http://example.com/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="spring bean 的生命周期spring bean 的生命周期主要有5个过程。  实例化：Spring IOC 容器根据 bean 定义或 xml 文件创建 bean 实例，可以通过构造方法或者工厂方法实例化 bean。 属性赋值：spring ioc 容器将配置的属性值或者依赖注入到 bean 实例中，这个阶段也称为依赖注入。 初始化：在此阶段，bean 可以执行一些初始化操作，比如调用自">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_1.png">
+<meta property="article:published_time" content="2024-07-07T02:58:20.000Z">
+<meta property="article:modified_time" content="2024-07-07T03:00:34.044Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="MyBatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '高频面试题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 11:00:34'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">高频面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-07T02:58:20.000Z" title="发表于 2024-07-07 10:58:20">2024-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-07T03:00:34.044Z" title="更新于 2024-07-07 11:00:34">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="高频面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_1.png');"></div><article class="post-content" id="article-container"><h2 id="spring-bean-的生命周期"><a href="#spring-bean-的生命周期" class="headerlink" title="spring bean 的生命周期"></a>spring bean 的生命周期</h2><p>spring bean 的生命周期主要有5个过程。</p>
+<ol>
+<li>实例化：Spring IOC 容器根据 bean 定义或 xml 文件创建 bean 实例，可以通过构造方法或者工厂方法实例化 bean。</li>
+<li>属性赋值：spring ioc 容器将配置的属性值或者依赖注入到 bean 实例中，这个阶段也称为依赖注入。</li>
+<li>初始化：在此阶段，bean 可以执行一些初始化操作，比如调用自定义的初始化方法。可以通过配置 init-method 属性或者实现 InitializingBean 接口来定义初始化方法。</li>
+<li>使用：bean 被应用程序使用，执行业务逻辑</li>
+<li>销毁：当容器关闭时，或者根据配置销毁 Bean 实例时，容器会调用 Bean 的销毁方法。可以通过配置 destroy-method 属性或者实现 DisposableBean 接口来定义销毁方法。</li>
+</ol>
+<h2 id="Spring-IOC-的实现原理"><a href="#Spring-IOC-的实现原理" class="headerlink" title="Spring IOC 的实现原理"></a>Spring IOC 的实现原理</h2><p>spring ioc 的实现原理依靠两个核心概念：BeanFactory 和 ApplicationContext。</p>
+<ol>
+<li><strong>BeanFactory</strong>：BeanFactory 是 Spring 框架的核心接口，负责管理 Bean 的生命周期和依赖关系。它通过读取配置文件（如 XML 文件或注解）来实例化和配置 Bean，然后将它们放置到容器中。在需要时，通过反射机制来创建 Bean 的实例，并将依赖关系注入到 Bean 中。BeanFactory 提供了对 Bean 的管理、查找和访问等功能。</li>
+<li><strong>ApplicationContext</strong>：ApplicationContext 是 BeanFactory 接口的扩展，它提供了更多的企业级功能，如国际化支持、事件发布、AOP 集成等。ApplicationContext 通常是通过 XML 配置文件、注解或者 Java 代码来创建的。在应用程序启动时，ApplicationContext 会负责读取配置信息并初始化所有的 Bean，然后在需要时按需加载和注入 Bean。</li>
+</ol>
+<p>Spring IOC 的实现原理主要依赖于 Java 反射和依赖注入技术。当容器启动时，会根据配置信息实例化和配置所有的 Bean，并根据依赖关系将它们注入到相应的对象中。这样，对象之间的依赖关系由容器来管理，而不是由对象自己来创建和维护，实现了控制反转的目的。</p>
+<h2 id="Spring-容器启动阶段会干什么"><a href="#Spring-容器启动阶段会干什么" class="headerlink" title="Spring 容器启动阶段会干什么"></a>Spring 容器启动阶段会干什么</h2><ol>
+<li><strong>加载配置</strong>：IOC 容器会加载应用程序的配置信息（这些配置信息可以是 XML 文件、Java 配置类或者其他方式定义的配置）加载配置的过程包括读取配置文件或扫描配置类，并将其转换为内部数据结构以便后续处理。</li>
+<li><strong>分析配置信息</strong>：在加载配置之后，IOC 容器会对配置信息进行解析和分析，确定每个 Bean 的定义及其依赖关系。这个过程包括解析 XML 文件或扫描注解，识别 Bean 的名称、类型、作用域、依赖关系等信息。</li>
+<li><strong>装载 BeanDefinition</strong>：在分析配置信息之后，IOC 容器会根据解析得到的信息创建对应的 BeanDefinition 对象。BeanDefinition 包含了 Bean 的各种属性和依赖关系的描述，以便后续实例化和依赖注入。</li>
+<li><strong>其他后处理</strong>：在装载 BeanDefinition 之后，IOC 容器可能会执行一些其他的后处理操作，例如注册特定类型的 BeanPostProcessor、自定义 Bean 的注册策略、处理属性占位符等。这些后处理操作可以根据需要对容器进行定制化配置和扩展。</li>
+</ol>
+<h2 id="Spring-为什么要用三级缓存"><a href="#Spring-为什么要用三级缓存" class="headerlink" title="Spring 为什么要用三级缓存"></a>Spring 为什么要用三级缓存</h2><p>使用三级缓存的主要目的是解决循环依赖问题。当 A 依赖于 B，同时 B 也依赖于 A，如果不采取措施，就会导致无限循环的创建过程。通过三级缓存，Spring 能够在创建过程中识别出循环依赖，并在合适时机提前暴露未完全初始化的Bean，保证 Bean 的正确创建和初始化顺利完成。</p>
+<h2 id="Spring-事务的种类"><a href="#Spring-事务的种类" class="headerlink" title="Spring 事务的种类"></a>Spring 事务的种类</h2><ol>
+<li>编程式事务：通过 TransactionTemplate 和 PlatformTransactionManager 实现，通过编码的方式指定事务的开始、提交和回滚，允许自定义事务的边界。</li>
+<li>声明式事务：在方法上标上@Transactional 注解实现。</li>
+</ol>
+<h2 id="Spring-的事务传播机制"><a href="#Spring-的事务传播机制" class="headerlink" title="Spring 的事务传播机制"></a>Spring 的事务传播机制</h2><ul>
+<li>REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。Spring 的默认传播行为。</li>
+<li>SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务方式执行。</li>
+<li>MANDATORY：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。</li>
+<li>REQUIRES_NEW：总是启动一个新的事务，如果当前存在事务，则将当前事务挂起。</li>
+<li>NOT_SUPPORTED：总是以非事务方式执行，如果当前存在事务，则将当前事务挂起。</li>
+<li>NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前事务不存在，则行为与 REQUIRED 一样。嵌套事务是一个子事务，它依赖于父事务。父事务失败时，会回滚子事务所做的所有操作。但子事务异常不一定会导致父事务的回滚。</li>
+</ul>
+<h2 id="Spring-声明事务失效场景"><a href="#Spring-声明事务失效场景" class="headerlink" title="Spring 声明事务失效场景"></a>Spring 声明事务失效场景</h2><p><img src="https://cdn.nlark.com/yuque/0/2024/png/38562687/1716892301615-8e4a1e77-be80-4d7b-9fb5-f0af664e2dac.png" alt="img"></p>
+<h2 id="Spring-AOP-是什么？它的作用和注解？"><a href="#Spring-AOP-是什么？它的作用和注解？" class="headerlink" title="Spring AOP 是什么？它的作用和注解？"></a>Spring AOP 是什么？它的作用和注解？</h2><p>AOP 就是面向切面编程，简单来说就是把业务逻辑中相同的代码抽到一个模块中，让业务逻辑更加清爽。</p>
+<p><strong>AOP 切面编程涉及到的一些专业术语：</strong></p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标(Target)</td>
+<td>被通知的对象</td>
+</tr>
+<tr>
+<td>代理(Proxy)</td>
+<td>向目标对象应用通知之后创建的代理对象</td>
+</tr>
+<tr>
+<td>连接点(JoinPoint)</td>
+<td>目标对象的所属类中，定义的所有方法均为连接点</td>
+</tr>
+<tr>
+<td>切入点(Pointcut)</td>
+<td>被切面拦截 / 增强的连接点（切入点一定是连接点，连接点不一定是切入点）</td>
+</tr>
+<tr>
+<td>通知(Advice)</td>
+<td>增强的逻辑 / 代码，也即拦截到目标对象的连接点之后要做的事情</td>
+</tr>
+<tr>
+<td>切面(Aspect)</td>
+<td>切入点(Pointcut)+通知(Advice)</td>
+</tr>
+<tr>
+<td>Weaving(织入)</td>
+<td>将通知应用到目标对象，进而生成代理对象的过程动作</td>
+</tr>
+</tbody></table>
+<p>可以用 @Order 注解实现切面的执行顺序，值越小优先级越高。</p>
+<h2 id="JDK-动态代理和-CGLIB-代理的区别？"><a href="#JDK-动态代理和-CGLIB-代理的区别？" class="headerlink" title="JDK 动态代理和 CGLIB 代理的区别？"></a>JDK 动态代理和 CGLIB 代理的区别？</h2><p><strong>JDK 动态代理</strong></p>
+<ol>
+<li><strong>基于 Interface</strong>：JDK 动态代理要求目标对象必须实现一个或多个接口。代理对象不是直接继承自目标对象，而是实现了与目标对象相同的接口。</li>
+<li><strong>使用 InvocationHandler</strong>：在调用代理对象的任何方法时，调用都会被转发到一个 InvocationHandler 实例的 invoke 方法。可以在这个 invoke 方法中定义拦截逻辑，比如方法调用前后执行的操作。</li>
+<li><strong>基于 Proxy</strong>：Proxy 利用 InvocationHandler 动态创建一个符合目标类实现的接口实例，生成目标类的代理对象。</li>
+</ol>
+<p><strong>CGLIB 代理</strong></p>
+<ol>
+<li><strong>基于继承</strong>，CGLIB 通过在运行时生成目标对象的子类来创建代理对象，并在子类中覆盖非 final 的方法。因此，它不要求目标对象必须实现接口。</li>
+<li><strong>基于 ASM</strong>，ASM 是一个 Java 字节码操作和分析框架，CGLIB 可以通过 ASM 读取目标类的字节码，然后修改字节码生成新的类。它在运行时动态生成一个被代理类的子类，并在子类中覆盖父类的方法，通过方法拦截技术插入增强代码。</li>
+</ol>
+<h2 id="Spring-MVC-的核心组件"><a href="#Spring-MVC-的核心组件" class="headerlink" title="Spring MVC 的核心组件"></a>Spring MVC 的核心组件</h2><ul>
+<li><strong>DispatcherServlet</strong>：<strong>核心的中央处理器</strong>，负责接收请求、分发，并给予客户端响应。</li>
+<li><strong>HandlerMapping</strong>：<strong>处理器映射器</strong>，根据 URL 去匹配查找能处理的 Handler ，并会将请求涉及到的拦截器和 Handler 一起封装。</li>
+<li><strong>HandlerAdapter</strong>：<strong>处理器适配器</strong>，根据 HandlerMapping 找到的 Handler ，适配执行对应的 Handler；</li>
+<li><strong>Handler</strong>：<strong>请求处理器</strong>，处理实际请求的处理器。</li>
+<li><strong>ViewResolver</strong>：<strong>视图解析器</strong>，根据 Handler 返回的逻辑视图 / 视图，解析并渲染真正的视图，并传递给 DispatcherServlet 响应客户端</li>
+</ul>
+<h2 id="Spring-MVC-工作流程"><a href="#Spring-MVC-工作流程" class="headerlink" title="Spring MVC 工作流程"></a>Spring MVC 工作流程</h2><ul>
+<li>客户端（浏览器）发送请求， DispatcherServlet拦截请求。</li>
+<li>DispatcherServlet 根据请求信息调用 HandlerMapping 。HandlerMapping 根据 URL 去匹配查找能处理的 Handler（也就是我们平常说的 Controller 控制器） ，并会将请求涉及到的拦截器和 Handler 一起封装。</li>
+<li>DispatcherServlet 调用 HandlerAdapter适配器执行 Handler 。</li>
+<li>Handler 完成对用户请求的处理后，会返回一个 ModelAndView 对象给DispatcherServlet，ModelAndView 顾名思义，包含了数据模型以及相应的视图的信息。Model 是返回的数据对象，View 是个逻辑上的 View。</li>
+<li>ViewResolver 会根据逻辑 View 查找实际的 View。</li>
+<li>DispaterServlet 把返回的 Model 传给 View（视图渲染）。</li>
+<li>把 View 返回给请求者（浏览器）</li>
+</ul>
+<h2 id="Spring-Boot-自动装配的原理"><a href="#Spring-Boot-自动装配的原理" class="headerlink" title="Spring Boot 自动装配的原理"></a>Spring Boot 自动装配的原理</h2><ol>
+<li>在Spring Boot项目中有一个注解@SpringBootApplication，这个注解是对三个注解进行了封装：@SpringBootConfiguration、@EnableAutoConfiguration、@ComponentScan 其中@EnableAutoConfiguration是实现自动化配置的核心注解。</li>
+<li>该注解通过@Import注解导入AutoConfigurationImportSelector，这个类实现了一个导入器接口ImportSelector。在该接口中存在一个方法selectImports，</li>
+<li>该方法的返回值是一个数组，数组中存储的就是要被导入到spring容器中的类的全类名。在AutoConfigurationImportSelector类中重写了这个方法,</li>
+<li>该方法内部就是读取了项目的classpath路径下META-INF/spring.factories文件中的所配置的类的全类名。</li>
+</ol>
+<p>在这些配置类中所定义的Bean会根据条件注解所指定的条件来决定是否需要将其导入到Spring容器中。</p>
+<h2 id="Spring-Boot-是什么？它的好处？"><a href="#Spring-Boot-是什么？它的好处？" class="headerlink" title="Spring Boot 是什么？它的好处？"></a>Spring Boot 是什么？它的好处？</h2><p>Spring Boot 是一个开源的、用于简化 Spring 应用初始化和开发的框架。提供了一套默认配置，约定优于配置，来帮助我们快速搭建 Spring 项目骨架，提高我们的开发效率。</p>
+<p><strong>好处：</strong></p>
+<ol>
+<li>通过 Spring initializr 勾选我们想要的依赖，快速创建项目骨架</li>
+<li>Spring Boot 内嵌 Tomcat，Jetty，Undertow 容器，无需在服务器外挂 war 包，直接运行 jar 包就可启动项目</li>
+<li>通过 application.yml/properties 集中、方便地配置多个框架和库。引入 spring-boot-starter-web，Spring Boot 会自动配置 tomcat 和 spring mvc</li>
+<li>Spring Boot 提供了一系列 starter，可以快速集成常用框架，还允许我们自定 starter</li>
+<li>Spring Boot 提供了一系列的 Actuator，帮助我们监控和管理应用，如健康检查、审计、统计。</li>
+</ol>
+<h2 id="Spring-Boot-如何自定-Starter？"><a href="#Spring-Boot-如何自定-Starter？" class="headerlink" title="Spring Boot 如何自定 Starter？"></a>Spring Boot 如何自定 Starter？</h2><p>第一步，创建一个新的 Maven 项目，例如命名为 my-spring-boot-starter。在 pom.xml 文件中添加必要的依赖和配置：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">spring.boot.version</span>&gt;</span>2.3.1.RELEASE<span class="tag">&lt;/<span class="name">spring.boot.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>${spring.boot.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>${spring.boot.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>第二步，在 src/main/java 下创建一个自动配置类，比如 MyServiceAutoConfiguration.java：（通常是 autoconfigure 包下）。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(MyStarterProperties.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyServiceAutoConfiguration</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> MyService <span class="title function_">myService</span><span class="params">(MyStarterProperties properties)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MyService</span>(properties.getMessage());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第三步，创建一个配置属性类 MyStarterProperties.java：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties(prefix = "mystarter")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyStarterProperties</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="string">"二哥的 Java 进阶之路不错啊!"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMessage</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setMessage</span><span class="params">(String message)</span> {</span><br><span class="line">        <span class="built_in">this</span>.message = message;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第四步，创建一个简单的服务类 MyService.java：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyService</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyService</span><span class="params">(String message)</span> {</span><br><span class="line">        <span class="built_in">this</span>.message = message;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMessage</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第五步，配置 spring.factories，在 src/main/resources/META-INF 目录下创建 spring.factories 文件，并添加：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">com.itwanger.mystarter.autoconfigure.MyServiceAutoConfiguration</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第六步，使用 Maven 打包这个项目：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean install</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="MyBatis-使用过程？生命周期？"><a href="#MyBatis-使用过程？生命周期？" class="headerlink" title="MyBatis 使用过程？生命周期？"></a>MyBatis 使用过程？生命周期？</h2><p><strong>使用过程</strong></p>
+<ul>
+<li>1）创建 SqlSessionFactory</li>
+</ul>
+<p>可以从配置或者直接编码来创建 SqlSessionFactory</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">resource</span> <span class="operator">=</span> <span class="string">"org/mybatis/example/mybatis-config.xml"</span>;</span><br><span class="line"><span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> Resources.getResourceAsStream(resource);</span><br><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(inputStream);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>2）通过 SqlSessionFactory 创建 SqlSession</li>
+</ul>
+<p>SqlSession（会话）可以理解为程序和数据库之间的桥梁</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> sqlSessionFactory.openSession();</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>3）通过 sqlsession 执行数据库操作</li>
+</ul>
+<p>可以通过 SqlSession 实例来直接执行已映射的 SQL 语句：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Blog</span> <span class="variable">blog</span> <span class="operator">=</span> (Blog)session.selectOne(<span class="string">"org.mybatis.example.BlogMapper.selectBlog"</span>, <span class="number">101</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>更常用的方式是先获取 Mapper(映射)，然后再执行 SQL 语句：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BlogMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> session.getMapper(BlogMapper.class);</span><br><span class="line"><span class="type">Blog</span> <span class="variable">blog</span> <span class="operator">=</span> mapper.selectBlog(<span class="number">101</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>4）调用 session.commit()提交事务</li>
+</ul>
+<p>如果是更新、删除语句，我们还需要提交一下事务。</p>
+<ul>
+<li>5）调用 session.close()关闭会话</li>
+</ul>
+<p><strong>生命周期</strong></p>
+<ul>
+<li>SqlSessionFactoryBuilder</li>
+</ul>
+<p>一旦创建了 SqlSessionFactory，就不再需要它了。 因此 SqlSessionFactoryBuilder 实例的生命周期只存在于方法的内部。</p>
+<ul>
+<li>SqlSessionFactory</li>
+</ul>
+<p>SqlSessionFactory 是用来创建 SqlSession 的，相当于一个数据库连接池，每次创建 SqlSessionFactory 都会使用数据库资源，多次创建和销毁是对资源的浪费。所以 SqlSessionFactory 是应用级的生命周期，而且应该是单例的。</p>
+<ul>
+<li>SqlSession</li>
+</ul>
+<p>SqlSession 相当于 JDBC 中的 Connection，SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的生命周期是一次请求或一个方法。</p>
+<ul>
+<li>Mapper</li>
+</ul>
+<p>映射器是一些绑定映射语句的接口。映射器接口的实例是从 SqlSession 中获得的，它的生命周期在 sqlsession 事务方法之内，一般会控制在方法级。</p>
+<h2 id="在-mapper-中如何传递多个参数？"><a href="#在-mapper-中如何传递多个参数？" class="headerlink" title="在 mapper 中如何传递多个参数？"></a>在 mapper 中如何传递多个参数？</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.nlark.com/yuque/0/2024/png/38562687/1718537480606-b87e4f01-d757-40ae-a450-ac77f8ff9bbd.png" alt="img"></h2><h2 id="MyBatis-是如何进行分页的？分页插件的原理是什么？"><a href="#MyBatis-是如何进行分页的？分页插件的原理是什么？" class="headerlink" title="MyBatis 是如何进行分页的？分页插件的原理是什么？"></a>MyBatis 是如何进行分页的？分页插件的原理是什么？</h2><p><strong>如何分页</strong></p>
+<ol>
+<li>MyBatis 使用 RowBounds 对象进行分页，它是针对 ResultSet 结果集执行的内存分页，而非物理分页</li>
+<li>在 sql 内直接书写带有物理分页的参数来完成物理分页功能</li>
+<li>也可以使用分页插件来完成物理分页</li>
+</ol>
+<p><strong>分页插件的原理</strong></p>
+<p>MyBatis 仅可以编写针对 ParameterHandler、 ResultSetHandler、 StatementHandler、 Executor 这 4 种接口的插件，MyBatis 使用 JDK 的动态代理对执行的 SQL 进行拦截，然后重写 SQL，根据方言添加对应的物理分页语句和参数。 </p>
+<h2 id="RBAC-角色权限是怎么控制的？"><a href="#RBAC-角色权限是怎么控制的？" class="headerlink" title="RBAC 角色权限是怎么控制的？"></a>RBAC 角色权限是怎么控制的？</h2><ol>
+<li>角色定义：系统定一个一组角色，一个角色代表一组权限的集合。例如系统有“管理员”、“普通用户”、“审计员”等角色</li>
+<li>权限分配：为每个角色赋予特定的权限，这些权限可以是访问特定的资源或者执行特定的操作。</li>
+<li>用户分配角色：用角色分配给用户，一个用户可以拥有一个或多个角色。</li>
+<li>权限校验：系统根据用户的角色进行权限校验，确定用户能够进行某些操作不能进行某些操作。</li>
+</ol>
+<h2 id="前端是如何发送请求的？"><a href="#前端是如何发送请求的？" class="headerlink" title="前端是如何发送请求的？"></a>前端是如何发送请求的？</h2><p>我的前端是通过 axios 发送请求的，我自定义了一个 axios 实例叫 myAxios，设置了基础 URL 便于请求后端，此外，我还设置了请求拦截器和响应拦截器，最后导出 axios 实例。其中两个拦截器用以在请求前打上日志和拦截后端的响应码，通过判断响应码是否等于 40100 验证用户是否登录，没有的话自动跳转登录页面。</p>
+<h2 id="从浏览器地址栏输入-url-到显示主页的过程？"><a href="#从浏览器地址栏输入-url-到显示主页的过程？" class="headerlink" title="从浏览器地址栏输入 url 到显示主页的过程？"></a>从浏览器地址栏输入 url 到显示主页的过程？</h2><ol>
+<li><strong>DNS 解析</strong>：浏览器发起一个 DNS 请求到 DNS 服务器，将域名解析为服务器的 IP 地址。</li>
+<li><strong>TCP 连接</strong>：浏览器通过解析得到的 IP 地址与服务器建立 TCP 连接（通常是通过 443 端口进行 SSL 加密的 HTTPS 连接）。这一步涉及到 TCP 的三次握手过程，确保双方都准备好进行数据传输。</li>
+<li><strong>发送 HTTP 请求</strong>：浏览器构建 HTTP 请求消息，包括请求行（如 GET / HTTP/1.1）、请求头（包含用户代理、接受的内容类型等信息）和请求体（如果有）；将请求发送到服务器。</li>
+<li><strong>服务器处理请求</strong>：服务器接收到 HTTP 请求后，根据请求的资源路径，经过后端处理（可能包括数据库查询等），生成 HTTP 响应消息；响应消息包括状态行（如 HTTP/1.1 200 OK）、响应头（内容类型、缓存控制等信息）和响应体（请求的资源内容）。</li>
+<li><strong>浏览器接收 HTTP 响应</strong>：浏览器接收到服务器返回的 HTTP 响应数据，开始解析响应体中的 HTML 内容；然后构建 DOM 树、解析 CSS 和 JavaScript 文件等，最终渲染页面。</li>
+<li><strong>断开连接</strong>：TCP 四次挥手，连接结束。</li>
+</ol>
+<h2 id="说说-DNS-解析过程"><a href="#说说-DNS-解析过程" class="headerlink" title="说说 DNS 解析过程"></a>说说 DNS 解析过程</h2><ol>
+<li>假设我们在浏览器地址栏里键入了 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 浏览器会首先检查自己的缓存中是否有这个域名对应的 IP 地址，如果有，直接返回；如果没有，进入下一步。</li>
+<li>检查本地 DNS 缓存是否有该域名的记录。如果没有，向<strong>根域名服务器</strong>发送请求，根域名服务器将请求指向更具体的服务，如 com 顶级域名服务器。</li>
+<li>顶级域名服务器再将请求指向权限域名服务器，权限域名服务器会找到对应的 DNS 服务器，并将 IP 地址返回给浏览器。</li>
+<li>浏览器使用得到 IP 地址发送 HTTP 请求到目标服务器，然后该服务器返回对应的网页内容。</li>
+</ol>
+<h2 id="TCP-和-UDP-的区别？"><a href="#TCP-和-UDP-的区别？" class="headerlink" title="TCP 和 UDP 的区别？"></a>TCP 和 UDP 的区别？</h2><p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/38562687/1716959699382-78fd6f4e-b94e-476d-bde6-264888b3033c.jpeg" alt="img"></p>
+<p><strong>说说 TCP 和 UDP 的应用场景？</strong></p>
+<ul>
+<li><strong>TCP：</strong> 适用于那些对数据准确性要求高于数据传输速度的场合。例如：网页浏览、电子邮件、文件传输（FTP）、远程控制、数据库链接。</li>
+<li><strong>UDP：</strong> 适用于对速度要求高、可以容忍一定数据丢失的场合。例如：QQ 聊天、在线视频、网络语音电话、广播通信。容忍一定的数据丢失。</li>
+</ul>
+<h2 id="TCP-的三次握手和四次挥手"><a href="#TCP-的三次握手和四次挥手" class="headerlink" title="TCP 的三次握手和四次挥手"></a>TCP 的三次握手和四次挥手</h2><p>TCP（传输控制协议）的三次握手机制是一种用于在两个 TCP 主机之间建立一个可靠的连接的过程。这个机制确保了两端的通信是同步的，并且在数据传输开始前，双方都准备好了进行通信。</p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022410446">https://segmentfault.com/a/1190000022410446</a></p>
+<p><strong>三次握手：</strong></p>
+<ul>
+<li><strong>一次握手</strong>:客户端发送带有 SYN（SEQ=x） 标志的数据包 -&gt; 服务端，然后客户端进入 <strong>SYN_SEND</strong> 状态，等待服务端的确认；</li>
+<li><strong>二次握手</strong>:服务端发送带有 SYN+ACK(SEQ=y,ACK=x+1) 标志的数据包 –&gt; 客户端,然后服务端进入 <strong>SYN_RECV</strong> 状态；</li>
+<li><strong>三次握手</strong>:客户端发送带有 ACK(ACK=y+1) 标志的数据包 –&gt; 服务端，然后客户端和服务端都进入<strong>ESTABLISHED</strong> 状态，完成 TCP 三次握手。</li>
+</ul>
+<p><strong>当建立了 3 次握手之后，客户端和服务端就可以传输数据啦！</strong></p>
+<p><strong>四次挥手：</strong></p>
+<ol>
+<li><strong>第一次挥手</strong>：客户端发送一个 FIN（SEQ=x） 标志的数据包-&gt;服务端，用来关闭客户端到服务端的数据传送。然后客户端进入 <strong>FIN-WAIT-1</strong> 状态。</li>
+<li><strong>第二次挥手</strong>：服务端收到这个 FIN（SEQ=X） 标志的数据包，它发送一个 ACK （ACK=x+1）标志的数据包-&gt;客户端 。然后服务端进入 <strong>CLOSE-WAIT</strong> 状态，客户端进入 <strong>FIN-WAIT-2</strong> 状态。</li>
+<li><strong>第三次挥手</strong>：服务端发送一个 FIN (SEQ=y)标志的数据包-&gt;客户端，请求关闭连接，然后服务端进入 <strong>LAST-ACK</strong> 状态。</li>
+<li><strong>第四次挥手</strong>：客户端发送 ACK (ACK=y+1)标志的数据包-&gt;服务端，然后客户端进入<strong>TIME-WAIT</strong>状态，服务端在收到 ACK (ACK=y+1)标志的数据包后进入 CLOSE 状态。此时如果客户端等待 <strong>2MSL</strong> 后依然没有收到回复，就证明服务端已正常关闭，随后客户端也可以关闭连接了。</li>
+</ol>
+<p><strong>只要四次挥手没有结束，客户端和服务端就可以继续传输数据！</strong></p>
+<h2 id="TCP-握手为什么是三次？不是两次或者四次？"><a href="#TCP-握手为什么是三次？不是两次或者四次？" class="headerlink" title="TCP 握手为什么是三次？不是两次或者四次？"></a>TCP 握手为什么是三次？不是两次或者四次？</h2><p><strong>为什么 TCP 握手不是两次？</strong></p>
+<ul>
+<li>防止服务器一直等</li>
+<li>防止客户端已经失效的连接请求又传到了服务器</li>
+</ul>
+<p><strong>为什么 TCP 握手不是四次？</strong></p>
+<p>三次握手连接的连接已经足够可靠，没有再多握一次手。</p>
+<h2 id="HTTP-加密过程"><a href="#HTTP-加密过程" class="headerlink" title="HTTP 加密过程"></a>HTTP 加密过程</h2><ol>
+<li><strong>建立连接</strong>：</li>
+</ol>
+<ul>
+<li>客户端向服务器发起 HTTPS 请求，请求建立安全连接。</li>
+<li>服务器在接收到请求后，会发送一个包含公钥的数字证书给客户端。</li>
+</ul>
+<ol>
+<li><strong>验证证书</strong>：</li>
+</ol>
+<ul>
+<li>客户端接收到服务器发送的数字证书后，会验证证书的合法性。</li>
+<li>客户端检查证书的颁发机构是否受信任、证书是否过期、域名是否与请求的域名匹配等。</li>
+<li>如果验证通过，客户端生成一个随机的对称密钥，并使用服务器的公钥加密该密钥，然后将加密后的密钥发送给服务器。</li>
+</ul>
+<ol>
+<li><strong>建立加密通道</strong>：</li>
+</ol>
+<ul>
+<li>服务器收到客户端发送的加密后的对称密钥后，使用自己的私钥解密，获取对称密钥。</li>
+<li>客户端和服务器现在都拥有了相同的对称密钥，它们将使用这个密钥来加密和解密后续的通信内容。</li>
+</ul>
+<ol>
+<li><strong>安全传输数据</strong>：</li>
+</ol>
+<ul>
+<li>客户端和服务器之间的通信内容现在都通过对称密钥进行加密和解密。</li>
+<li>客户端和服务器可以安全地传输敏感数据，如用户登录信息、个人数据等，而不必担心数据被窃取或篡改。</li>
+</ul>
+<ol>
+<li><strong>维持连接</strong>：</li>
+</ol>
+<ul>
+<li>一旦安全连接建立起来，客户端和服务器可以保持长时间的通信，直到一方关闭连接或超时。</li>
+</ul>
+<h3 id="HTTP-加密过程为什么要一次非对称和多次对称"><a href="#HTTP-加密过程为什么要一次非对称和多次对称" class="headerlink" title="HTTP 加密过程为什么要一次非对称和多次对称"></a>HTTP 加密过程为什么要一次非对称和多次对称</h3><p>这边讲一下多次对称加密和一次非对称加密的优缺点和使用场景就可以了，然后我再介绍了下常见的对称加密算法和非对称加密的算法，以及算法优化的一个历史，这边说了一下有些历史算法是不安全的，已经被破解过。</p>
+<h2 id="Synchronized和ReentrantLock区别"><a href="#Synchronized和ReentrantLock区别" class="headerlink" title="Synchronized和ReentrantLock区别"></a>Synchronized和ReentrantLock区别</h2><ol>
+<li><strong>类型不同：</strong><a target="_blank" rel="noopener" href="https://javabetter.cn/thread/synchronized-1.html">synchronized</a>是一个关键字，而 Lock 属于一个接口，其实现类主要有 <a target="_blank" rel="noopener" href="https://javabetter.cn/thread/reentrantLock.html">ReentrantLock</a>、<a target="_blank" rel="noopener" href="https://javabetter.cn/thread/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a>。</li>
+<li><strong>使用方式不同：</strong>synchronized 可以直接在方法上加锁，也可以在代码块上加锁（无需手动释放锁，锁会自动释放），而 ReentrantLock 必须手动声明来加锁和释放锁。</li>
+<li>如果需要更细粒度的控制（如可中断的锁操作、尝试非阻塞获取锁、超时获取锁或者使用公平锁等），可以使用 Lock。</li>
+</ol>
+<ul>
+<li>ReentrantLock 提供了一种能够中断等待锁的线程的机制，通过 lock.lockInterruptibly()来实现这个机制。</li>
+<li>ReentrantLock 可以指定是公平锁还是非公平锁。</li>
+<li>ReentrantReadWriteLock 读写锁，读锁是共享锁，写锁是独占锁，读锁可以同时被多个线程持有，写锁只能被一个线程持有。这种锁的设计可以提高性能，特别是在读操作的数量远远超过写操作的情况下。</li>
+</ul>
+<p>Lock 还提供了newCondition()方法来创建等待通知条件<a target="_blank" rel="noopener" href="https://javabetter.cn/thread/condition.html">Conditionopen in new window</a>，比 synchronized 与 wait()、 notify()/notifyAll()方法的组合更强大。</p>
+<h2 id="HashMap-的-put-流程？"><a href="#HashMap-的-put-流程？" class="headerlink" title="HashMap 的 put 流程？"></a>HashMap 的 put 流程？</h2><ol>
+<li>通过 hash 方法计算 key 的哈希值</li>
+<li>数组进行第一次扩容</li>
+<li>根据哈希值计算 key 在数组中的下标，如果对应下标没有存数据，则直接插入，如果有数据判断 key 是否相同，是则覆盖；否则判断是否为树节点，是则向树中插入节点，否则向链表中插入数据</li>
+<li>在链表中插入节点时，如果链表长度大于 8，则将链表转换为红黑树</li>
+<li>所有元素处理完，还需判断是否超过 threshold，超过就扩容</li>
+</ol>
+<h2 id="HashMap-的查找"><a href="#HashMap-的查找" class="headerlink" title="HashMap 的查找"></a>HashMap 的查找</h2><ol>
+<li>使用扰动函数，获取新的哈希值</li>
+<li>计算数组下标，获取节点</li>
+<li>当前节点和 key 匹配，直接返回</li>
+<li>否则，当前节点是否为树节点，查找红黑树</li>
+<li>否则，遍历链表查找</li>
+</ol>
+<h2 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a>CompletableFuture</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hjj.homiematching.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hjj.homieMatching.model.domain.User;</span><br><span class="line"><span class="keyword">import</span> com.hjj.homieMatching.service.UserService;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.StopWatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.Resource;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: shayu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2022/12/06</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: yupao-backend01</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:    用户插入单元测试，注意打包时要删掉或忽略，不然打一次包就插入一次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InsertUserTest</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//线程设置</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">16</span>, <span class="number">1000</span>, <span class="number">10000</span>, TimeUnit.MINUTES, <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">10000</span>));</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环插入用户  耗时：7260ms</span></span><br><span class="line"><span class="comment">     * 批量插入用户   1000  耗时： 4751ms</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doInsertUser</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">StopWatch</span> <span class="variable">stopWatch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StopWatch</span>();</span><br><span class="line">        stopWatch.start();</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INSERT_NUM</span> <span class="operator">=</span> <span class="number">1000</span>;</span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; INSERT_NUM; i++) {</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">            user.setUsername(<span class="string">"假沙鱼"</span>);</span><br><span class="line">            user.setUserAccount(<span class="string">"yusha"</span>);</span><br><span class="line">            user.setAvatarUrl(<span class="string">"shanghai.myqcloud.com/shayu931/shayu.png"</span>);</span><br><span class="line">            user.setProfile(<span class="string">"一条咸鱼"</span>);</span><br><span class="line">            user.setGender(<span class="number">0</span>);</span><br><span class="line">            user.setUserPassword(<span class="string">"12345678"</span>);</span><br><span class="line">            user.setPhone(<span class="string">"123456789108"</span>);</span><br><span class="line">            user.setEmail(<span class="string">"shayu-yusha@qq.com"</span>);</span><br><span class="line">            user.setUserStatus(<span class="number">0</span>);</span><br><span class="line">            user.setUserRole(<span class="number">0</span>);</span><br><span class="line">            user.setPlanetCode(<span class="string">"931"</span>);</span><br><span class="line">            user.setTags(<span class="string">"[]"</span>);</span><br><span class="line">           userList.add(user);</span><br><span class="line">        }</span><br><span class="line">        userService.saveBatch(userList,<span class="number">100</span>);</span><br><span class="line">        stopWatch.stop();</span><br><span class="line">        System.out.println( stopWatch.getLastTaskTimeMillis());</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 并发批量插入用户   100000  耗时： 26830ms</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doConcurrencyInsertUser</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">StopWatch</span> <span class="variable">stopWatch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StopWatch</span>();</span><br><span class="line">        stopWatch.start();</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INSERT_NUM</span> <span class="operator">=</span> <span class="number">100000</span>;</span><br><span class="line">        <span class="comment">// 分十组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//批量插入数据的大小</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">batchSize</span> <span class="operator">=</span> <span class="number">5000</span>;</span><br><span class="line">        List&lt;CompletableFuture&lt;Void&gt;&gt; futureList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// i 要根据数据量和插入批量来计算需要循环的次数。（鱼皮这里直接取了个值，会有问题,我这里随便写的）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; INSERT_NUM/batchSize; i++) {</span><br><span class="line">            List&lt;User&gt; userList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>){</span><br><span class="line">                j++;</span><br><span class="line">                <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">                user.setUsername(<span class="string">"假沙鱼"</span>);</span><br><span class="line">                user.setUserAccount(<span class="string">"yusha"</span>);</span><br><span class="line">                user.setAvatarUrl(<span class="string">"shanghai.myqcloud.com/shayu931/shayu.png"</span>);</span><br><span class="line">                user.setProfile(<span class="string">"一条咸鱼"</span>);</span><br><span class="line">                user.setGender(<span class="number">0</span>);</span><br><span class="line">                user.setUserPassword(<span class="string">"12345678"</span>);</span><br><span class="line">                user.setPhone(<span class="string">"123456789108"</span>);</span><br><span class="line">                user.setEmail(<span class="string">"shayu-yusha@qq.com"</span>);</span><br><span class="line">                user.setUserStatus(<span class="number">0</span>);</span><br><span class="line">                user.setUserRole(<span class="number">0</span>);</span><br><span class="line">                user.setPlanetCode(<span class="string">"931"</span>);</span><br><span class="line">                user.setTags(<span class="string">"[]"</span>);</span><br><span class="line">                userList.add(user);</span><br><span class="line">                <span class="keyword">if</span> (j % batchSize == <span class="number">0</span> ){</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">//异步执行</span></span><br><span class="line">            CompletableFuture&lt;Void&gt; future = CompletableFuture.runAsync(() -&gt;{</span><br><span class="line">                System.out.println(<span class="string">"ThreadName："</span> + Thread.currentThread().getName());</span><br><span class="line">                userService.saveBatch(userList,batchSize);</span><br><span class="line">            },executorService);</span><br><span class="line">                futureList.add(future);</span><br><span class="line">        }</span><br><span class="line">        CompletableFuture.allOf(futureList.toArray(<span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[]{})).join();</span><br><span class="line"></span><br><span class="line">        stopWatch.stop();</span><br><span class="line">        System.out.println( stopWatch.getLastTaskTimeMillis());</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="Java-创建线程池的方式"><a href="#Java-创建线程池的方式" class="headerlink" title="Java 创建线程池的方式"></a>Java 创建线程池的方式</h2><ol>
+<li>ExecutorService executorService = Executors.newFixedThreadPool(5)（创建固定大小的线程池）</li>
+<li>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();（创建一个根据需要创建新线程的线程池）</li>
+<li>ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();（单线程化的 Executor，保证顺序的执行任务）</li>
+<li>ExecutorService executorService = new ThreadPoolExecutor();</li>
+</ol>
+<h2 id="Java-实现多线程的几种方式？"><a href="#Java-实现多线程的几种方式？" class="headerlink" title="Java 实现多线程的几种方式？"></a>Java 实现多线程的几种方式？</h2><ol>
+<li>继承 Thread 类</li>
+<li>实现 Runnable 接口</li>
+<li>使用匿名内部类重写 run 方法</li>
+<li>实现 Callable 接口</li>
+<li>基于线程池实现</li>
+</ol>
+<h2 id="synchronized-和-Lock-的区别"><a href="#synchronized-和-Lock-的区别" class="headerlink" title="synchronized 和 Lock 的区别"></a>synchronized 和 Lock 的区别</h2><ol>
+<li>synchronized 是一个关键字，Lock 是接口</li>
+<li>synchronized 加锁和释放锁都由 jvm 完成，发生异常时会自动释放锁。Lock 加锁释放锁是手动的由开发者完成，发生异常时不会自动释放锁。</li>
+<li>synchronized 不能响应中断会一直等锁，Lock 等待锁的过程中可通过 interrupt 中断等待。</li>
+<li>synchronized 不知道有没有获取锁，Lock 可通过 tryLock 方法知道获没获取锁</li>
+<li>synchronized 是不公平的，Lock 是公平的</li>
+<li>锁竞争激烈时，后者性能更高</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/">http://example.com/2024/07/07/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/MyBatis/">MyBatis</a></div><div class="post_share"><div class="social-share" data-image="/img/post_1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/07/API-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="API 项目笔记"><img class="cover" src="/img/post_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">API 项目笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/07/%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%8A%A0%E8%BD%BD/" title="引入第三方组件实现滑动加载"><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">引入第三方组件实现滑动加载</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-22</div><div class="title">JVM 面试题</div></div></a></div><div><a href="/2024/07/02/Java%20%E5%85%AB%E8%82%A1%E6%96%87/" title="Java 八股文"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">Java 八股文</div></div></a></div><div><a href="/2024/07/02/MySQL%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="2024上半年面经"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">2024上半年面经</div></div></a></div><div><a href="/2024/07/02/2024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E9%9D%A2%E7%BB%8F/" title="2024上半年面经"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">2024上半年面经</div></div></a></div><div><a href="/2024/07/07/RabbitMQ-%E5%85%AB%E8%82%A1%E6%96%87/" title="RabbitMQ 八股文"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">RabbitMQ 八股文</div></div></a></div><div><a href="/2024/07/02/Redis%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis 面试题"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">Redis 面试题</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-bean-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">spring bean 的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-IOC-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Spring IOC 的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E4%BC%9A%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">Spring 容器启动阶段会干什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">4.</span> <span class="toc-text">Spring 为什么要用三级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">Spring 事务的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E7%9A%84%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6"><span class="toc-number">6.</span> <span class="toc-text">Spring 的事务传播机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E5%A3%B0%E6%98%8E%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF"><span class="toc-number">7.</span> <span class="toc-text">Spring 声明事务失效场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-AOP-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%B3%A8%E8%A7%A3%EF%BC%9F"><span class="toc-number">8.</span> <span class="toc-text">Spring AOP 是什么？它的作用和注解？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8C-CGLIB-%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">9.</span> <span class="toc-text">JDK 动态代理和 CGLIB 代理的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-MVC-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-number">10.</span> <span class="toc-text">Spring MVC 的核心组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-MVC-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">11.</span> <span class="toc-text">Spring MVC 工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">12.</span> <span class="toc-text">Spring Boot 自动装配的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">Spring Boot 是什么？它的好处？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A-Starter%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">Spring Boot 如何自定 Starter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%EF%BC%9F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">MyBatis 使用过程？生命周期？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-mapper-%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">在 mapper 中如何传递多个参数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">17.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%88%86%E9%A1%B5%E7%9A%84%EF%BC%9F%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">18.</span> <span class="toc-text">MyBatis 是如何进行分页的？分页插件的原理是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RBAC-%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E6%98%AF%E6%80%8E%E4%B9%88%E6%8E%A7%E5%88%B6%E7%9A%84%EF%BC%9F"><span class="toc-number">19.</span> <span class="toc-text">RBAC 角色权限是怎么控制的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%EF%BC%9F"><span class="toc-number">20.</span> <span class="toc-text">前端是如何发送请求的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5-url-%E5%88%B0%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-number">21.</span> <span class="toc-text">从浏览器地址栏输入 url 到显示主页的过程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4-DNS-%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">22.</span> <span class="toc-text">说说 DNS 解析过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E5%92%8C-UDP-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">23.</span> <span class="toc-text">TCP 和 UDP 的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-number">24.</span> <span class="toc-text">TCP 的三次握手和四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F%E4%B8%8D%E6%98%AF%E4%B8%A4%E6%AC%A1%E6%88%96%E8%80%85%E5%9B%9B%E6%AC%A1%EF%BC%9F"><span class="toc-number">25.</span> <span class="toc-text">TCP 握手为什么是三次？不是两次或者四次？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="toc-number">26.</span> <span class="toc-text">HTTP 加密过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%80%E6%AC%A1%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%92%8C%E5%A4%9A%E6%AC%A1%E5%AF%B9%E7%A7%B0"><span class="toc-number">26.1.</span> <span class="toc-text">HTTP 加密过程为什么要一次非对称和多次对称</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Synchronized%E5%92%8CReentrantLock%E5%8C%BA%E5%88%AB"><span class="toc-number">27.</span> <span class="toc-text">Synchronized和ReentrantLock区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-%E7%9A%84-put-%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="toc-number">28.</span> <span class="toc-text">HashMap 的 put 流程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-number">29.</span> <span class="toc-text">HashMap 的查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CompletableFuture"><span class="toc-number">30.</span> <span class="toc-text">CompletableFuture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">31.</span> <span class="toc-text">Java 创建线程池的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">32.</span> <span class="toc-text">Java 实现多线程的几种方式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronized-%E5%92%8C-Lock-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">33.</span> <span class="toc-text">synchronized 和 Lock 的区别</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

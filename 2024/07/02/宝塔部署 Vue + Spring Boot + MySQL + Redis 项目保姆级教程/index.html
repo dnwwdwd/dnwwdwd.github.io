@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程 | 雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！ 服务器安装宝塔不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是 1yum install -y wget &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程">
+<meta property="og:url" content="http://example.com/2024/07/02/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%20Vue%20+%20Spring%20Boot%20+%20MySQL%20+%20Redis%20%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！ 服务器安装宝塔不同的服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是 1yum install -y wget &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/post_2.png">
+<meta property="article:published_time" content="2024-07-02T07:40:33.000Z">
+<meta property="article:modified_time" content="2024-09-09T08:36:35.167Z">
+<meta property="article:author" content="雪荷">
+<meta property="article:tag" content="项目笔记">
+<meta property="article:tag" content="拓展知识">
+<meta property="article:tag" content="homie 匹配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/post_2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/02/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%20Vue%20+%20Spring%20Boot%20+%20MySQL%20+%20Redis%20%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-09 16:36:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post_2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-09T08:36:35.167Z" title="更新于 2024-09-09 16:36:35">2024-09-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/post_2.png');"></div><article class="post-content" id="article-container"><h1 id="宝塔部署-Vue-Spring-Boot-MySQL-Redis-项目保姆级教程"><a href="#宝塔部署-Vue-Spring-Boot-MySQL-Redis-项目保姆级教程" class="headerlink" title="宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程"></a>宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</h1><p>最近做了一个厚米匹配的项目并且成功用宝塔部署上线了。因此写了这篇文章和大家分享、记录一下，希望对大家有所帮助，如果觉得有用的话，能给我点个赞嘛，多谢！</p>
+<h3 id="服务器安装宝塔"><a href="#服务器安装宝塔" class="headerlink" title="服务器安装宝塔"></a>服务器安装宝塔</h3><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%B8%8D%E5%90%8C%E7%9A%84&amp;spm=1001.2101.3001.7020">不同的</a>服务器操作系统对应着不同的安装命令。这里我用的是centos8.6，所以安装命令是</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<p>详情请看这篇博客：<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/NlPXj" title="http://t.csdnimg.cn/NlPXj">http://t.csdnimg.cn/NlPXj</a>&nbsp;注意安装<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF&amp;spm=1001.2101.3001.7020">宝塔面板</a>时，服务器不要部署任何项目，最好是纯净状态。</p>
+<h3 id="部署项目前的宝塔前置配置"><a href="#部署项目前的宝塔前置配置" class="headerlink" title="部署项目前的宝塔前置配置"></a>部署项目前的宝塔前置配置</h3><h4 id="安装tomcat再卸载tomcat"><a href="#安装tomcat再卸载tomcat" class="headerlink" title="安装tomcat再卸载tomcat"></a>安装tomcat再卸载tomcat</h4><p>安装tomcat是为了安装jdk1.8，卸载是因为Spring Boot内置了tomcat，所以它是一个安装jdk的跳板。如果你的项目不是jdk1.8可以点击Java环境管理选择你想要的jdk版本。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d0017bc7cfbd6198419f3708ed7504ea.png"></p>
+<p>&nbsp;进入软件商店搜索tomcat，版本选择9.x，直接极速安装。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7830712689d1eda52cce914b0990aa49.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/43b40020b6034e4f7e4fb576da3ca72c.png"></p>
+<h4 id="安装和配置MySQL"><a href="#安装和配置MySQL" class="headerlink" title="安装和配置MySQL"></a>安装和配置MySQL</h4><p>还是一样在软件商店搜索MySQL，点击安装。选择你需要的版本，我选的是8.x，再点击极速安装。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5e52b451fb6803a55dd5f67cb0d30f6a.png"></p>
+<p>&nbsp;安装完成后，点击侧边栏中的数据库，再点击添加数据库。选一个数据库名字要和yml文件中连接MySQL数据库的库名一致，用户名和密码也对应yml中的MySQL用户名和密码。访问权限，暂时选择所有人，方便后续使用navicat或者IDEA往线上数据库添加数据，当然后续可以在设置中修改。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c1be0723b3cdc620018a1357ae5fa0e2.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/519de59f0b4aaddd5a81c12f8bc1258e.png"></p>
+<p>&nbsp;想连接服务器上的MySQL把localhost改为服务器IP地址，端口是3306，库名、账号和密码就上面的。（前提访问权限改为所有人，或者只指定你的电脑的IP地址）。这样就可以往线上数据库添加数据了。</p>
+<h4 id="安装和配置Redis"><a href="#安装和配置Redis" class="headerlink" title="安装和配置Redis"></a>安装和配置Redis</h4><p>安装Redis也是一样，在软件商店里面搜索，点击安装。我安装的是6.x版本，因为我自己电脑安装的是5.x版本，安装过高害怕有问题。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5b1bc4bc2302a8643d78aee6e5ea7f7f.png"></p>
+<p>点击设置，再点击性能调整，这里可以设置Redis数据库数量，密码和端口啥的。（建议设个密码，要和yml文件Redis的密码一致。）</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b4e7d40028bf689ecb246cc19b9c1492.png"></p>
+<p>对了如果Redis设置了密码，那么后端RedissonConfig配置类一定要改，改为这样子。多一个password变量和setPassword。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span><span class="meta">@ConfigurationProperties(prefix = "spring.redis")</span><span class="meta">@Datapublic</span> <span class="keyword">class</span> <span class="title class_">RedissonConfig</span> {    <span class="keyword">private</span> String host;    <span class="keyword">private</span> String port;    <span class="keyword">private</span> String password;     <span class="meta">@Bean</span>    <span class="keyword">public</span> RedissonClient <span class="title function_">redissonClient</span><span class="params">()</span>{        <span class="comment">// 1. 创建配置        Config config = new Config();        String redisAddress = String.format("redis://%s:%s", host, port);        config.useSingleServer().setAddress(redisAddress).setDatabase(3).setPassword(password);//设置单个服务器，设置地址，选择数据库        // 2. 创建实例        RedissonClient redisson = Redisson.create(config);        return redisson;    }}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><p>在软件商店里面搜索并安装nginx</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3eba60149df2fa3fa77a46f3360dc8ec.png"></p>
+<p>&nbsp;对了为了防止项目部署后登录出现nginx 404的问题，我们可以在nginx的配置文件中，添加以下配置。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location / {  try_files $uri $uri/ <span class="meta">@router</span>;#需要指向下面的<span class="meta">@router</span>否则会出现vue的路由在      index index.html index.htm;    }  location <span class="meta">@router</span> {    rewrite ^.*$ /index.html last;  }</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d89073b8994ca544f5fdc774fe2ded8e.png"></p>
+<h4 id="安装Java项目一键部署"><a href="#安装Java项目一键部署" class="headerlink" title="安装Java项目一键部署"></a>安装Java项目一键部署</h4><p>在软件商店里面搜索并安装Java项目一键部署</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d390964163fdb5903cc8bf578b21f9.png"></p>
+<h4 id="在服务器和宝塔面板中放行对应端口"><a href="#在服务器和宝塔面板中放行对应端口" class="headerlink" title="在服务器和宝塔面板中放行对应端口"></a>在服务器和宝塔面板中放行对应端口</h4><p>&nbsp;最后，在服务器中添加安全组，放行对应的端口。（6379：Redis端口，3306：MySQL，80：前端，8080：后端，21528：宝塔面板端口）</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/489939acf79eeb501348424105b004c4.png"></p>
+<p>宝塔亦是如此点击侧边栏的安全，再点击添加端口规则就可以放行了。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c63299a71693d66e29bd9f5a13453a20.png"></p>
+<h4 id="后端配置跨域"><a href="#后端配置跨域" class="headerlink" title="后端配置跨域"></a>后端配置跨域</h4><p>如果前端和后端的协议、域名和端口有一个不同就会涉及跨域问题，所以我们可以在前端或者后端配置跨域策略，以防止请求跨域。本次，我们在后端配置跨域，在config目录下添加跨域配置类就好了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configurationpublic</span> <span class="keyword">class</span> <span class="title class_">CorsConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> {     <span class="meta">@Override</span>    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> {        registry.addMapping(<span class="string">"/**"</span>)                <span class="comment">//是否发送Cookie                .allowCredentials(true)                //放行哪些原始域                .allowedOriginPatterns("*")                .allowedMethods(new String[]{"GET", "POST", "PUT", "DELETE"})                .allowedHeaders("*")                .exposedHeaders("*");    }}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>到这里部署项目的前置配置就结束了。接下来，就正式开始打包前端和后端项目了，并将打包文件上传到宝塔面板中，它会帮我们把文件部署在服务器中。</p>
+<h3 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h3><h4 id="配置生产和开发环境"><a href="#配置生产和开发环境" class="headerlink" title="配置生产和开发环境"></a>配置生产和开发环境</h4><p>在项目打包之前，先配置myAxios.ts文件（这个文件就是你自定义axios的文件，并且在里面区分开发环境和生产环境）的线上环境和生产环境。（注意生产环境的url后面要加上后端端口号，但有时又不要加，视情况而定。）</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>; <span class="keyword">const</span> isDev = process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">'development'</span>; <span class="keyword">const</span> myAxios = axios.<span class="title function_">create</span>({    <span class="attr">baseURL</span>: isDev ? <span class="string">'http://localhost:8080/api'</span> : <span class="string">'http://你的服务器IP地址或者域名/api'</span>,}) myAxios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>; <span class="comment">//设置为true // Add a request interceptormyAxios.interceptors.request.use(function (config) {    console.log('我要发请求啦')    return config;}, function (error) {    return Promise.reject(error);}); myAxios.interceptors.response.use(function (response) {    console.log('我收到你的响应啦')    // 未登录则跳转登录页    if (response?.data?.code === 40100) {        const redirectUrl = window.location.href;        window.location.href = `/user/login?=redirect=${redirectUrl}`;    }    return response.data;}, function (error) {    // Do something with response error    return Promise.reject(error);}); export default myAxios;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="前端项目打包"><a href="#前端项目打包" class="headerlink" title="前端项目打包"></a>前端项目打包</h4><p>在宝塔部署前端项目之前，先将前端项目打包好。在package.json文件中执行buid命令。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4a214f12a818408f79d27ff5d02f7d8a.png"></p>
+<p>打包后会多出一个dist目录，点击右键打开于终端，在终端中执行serve命令，判断打包好的项目是否能够运行成功。（注意一定要切换至dist目录下执行serve命令，不然点击链接显示不出来项目）</p>
+<p>&nbsp;<img src="https://i-blog.csdnimg.cn/blog_migrate/286e495a32d18f8599f41f62138f738a.png"></p>
+<p>&nbsp;<img src="https://i-blog.csdnimg.cn/blog_migrate/4846a01304f6e5768ad98ef8f37f8400.png"></p>
+<p>&nbsp;点击Local后面的地址，看看项目打包是否有问题。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/177da7bbc1320bce6a71a36fc710339f.png"></p>
+<p>&nbsp;如果是这样子的话就没啥问题。（我这个显示了当前登录用户“ikun”，是因为我已经上线了，你们是不会显示的）</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f02029dff31e9e72c51d001442ddccb4.png"></p>
+<h4 id="前端打包后的项目拖到宝塔"><a href="#前端打包后的项目拖到宝塔" class="headerlink" title="前端打包后的项目拖到宝塔"></a>前端打包后的项目拖到宝塔</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b33e1c96e118e55c738125788d99cdc6.png"></p>
+<p>连接Linux宝塔面板后点击PHP项目，点击添加站点。域名最好就填你的服务器IP地址，或者你自己想一个域名（前提域名是你买的，不是随便起的）吧。随后直接提交。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f9cbd03296cb1426c413dab3634f2c3e.png"></p>
+<p>接着点击根目录下面的绿色链接。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c97d9c723a1d0814cb36ff47c3024fa7.png"></p>
+<p>把打包后的dist目录下的东西全部拖进去。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a5165768757a9c7c1bbf2eec91b9feb1.png">至此前端部署已经结束，开始后端部署。</p>
+<p><strong>如果前端部署的时候出现 404 not found 的话，请在站点的配置文件中加上一下配置，如果还是不行点击侧边栏的软件商店找到 nginx 查看其监听的端口号，把这个端口在宝塔和云服务器中放行。</strong></p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location / {    try_files $uri $uri/ @router;#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404      index  index.html index.htm;    }    #对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件    #因此需要rewrite到index.html中，然后交给路由在处理请求资源    location @router {        rewrite ^.*$ /index.html last;    }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h3><h4 id="配置生产和开发环境-1"><a href="#配置生产和开发环境-1" class="headerlink" title="配置生产和开发环境"></a>配置生产和开发环境</h4><p>在后端打成jar包之前，先把后端的application-prod.yml文件给配置好。这里直接放我的哪个文件了。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring</span>:  <span class="attr">mvc</span>:    <span class="attr">pathmatch</span>:      matching-<span class="attr">strategy</span>: ant_path_matcher  <span class="attr">application</span>:    <span class="attr">name</span>: homieMatching  <span class="attr">datasource</span>:    driver-<span class="keyword">class</span>-<span class="attr">name</span>: com.<span class="property">mysql</span>.<span class="property">cj</span>.<span class="property">jdbc</span>.<span class="property">Driver</span>    <span class="attr">url</span>: <span class="attr">jdbc</span>:<span class="attr">mysql</span>:<span class="comment">//服务器IP地址:3306/MySQL库名?characterEncoding=UTF-8    username: 服务器MySQL账号    password: 服务器MySQL密码  session:    timeout: 86400    store-type: redis  redis:    port: 6379    host: 127.0.0.1    database: 0    password: 服务器redis密码server:  port: 8080  servlet:    context-path: /api    session:      cookie:        domain: 服务器IP地址或者域名（其实就是前端添加站点时的网站名，我这里还是建议全部设为服务器IP地址吧，但注意别把IP地址告诉任何人）        same-site: lax        secure: falsemybatis-plus:  configuration:    map-underscore-to-camel-case: false    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  global-config:    db-config:      logic-delete-field: isDelete      logic-delete-value: 1      logic-not-delete-value: 0</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="后端项目打包"><a href="#后端项目打包" class="headerlink" title="后端项目打包"></a>后端项目打包</h4><p>点击Maven，点击禁止标志（这是为了跳过Test测试用例的打包，如果某些Test类有问题就会打包失败），再点击package准备打包，等待打包完成。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/ce5aa0320df8f1135d216c28b4e8a502.png"></p>
+<p>&nbsp;打包完成之后，target目录下就会出现一个homieMatching-0.0.1-SNAPSHOT.jar文件，这个就是后端打包后的jar包。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d8e944faf23fe2a8d007a385b40fdbb8.png"></p>
+<h4 id="后端项目拖到宝塔"><a href="#后端项目拖到宝塔" class="headerlink" title="后端项目拖到宝塔"></a>后端项目拖到宝塔</h4><p>点击侧边栏中的文件在/www/wwwroot目录下新建一个文件，将打包后的jar放进新建的目录下。我新建的目录名是homieMatching-backend。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2095a7a642cde39c7056e05a0ac54894.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/100ad53fe9f29a87e2d663e0dcfa8a5b.png"></p>
+<p>&nbsp;随后进入你新建的目录下面，把后端打包好的jar包拖进去。此时复制一下路径名，为后面做准备。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/91a6ac409535ceb5114876caac326099.png"></p>
+<p>复制路径名。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/8ee2cd18709013deb8c0bb871c104cbe.png"></p>
+<p>&nbsp;随后点击侧边栏的网站，再点击Java项目，再点击添加Java项目。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/96b06a309a94378e3b8f439b585ccc9e.png"></p>
+<p>&nbsp;点击项目jar路径后的文件夹标志，选择刚才拖进目录的jar包。项目端后就是yml文件中的port，即你后端的端口，同时勾选放行该端口。如果你是8081你就放行8081端口，同时项目执行命令中的–server.port的端口也要修改，得与上面项目端口一致。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d7a6b2381034d7b39ca6ea3eba88f43b.png"></p>
+<p>点击保存项目配置，Spring Boot项目就会开始运行了。（如果项目启动失败，请看看左侧边栏的项目日志，看看项目启动时抛了什么异常或者有什么问题，随后逐一排查）</p>
+<p>这时候你就可以输入网站名，看看项目前后端联调存不存在问题了。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9d2cbea495882a774a6c7dbee950143c.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果在部署过程中有问题可以私信我。另外觉得文章有用的话能否给我点个赞呢，谢谢。01029b7a0c9ea6.png)</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪荷</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/02/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%20Vue%20+%20Spring%20Boot%20+%20MySQL%20+%20Redis%20%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">http://example.com/2024/07/02/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%20Vue%20+%20Spring%20Boot%20+%20MySQL%20+%20Redis%20%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">雪荷的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a><a class="post-meta__tags" href="/tags/%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86/">拓展知识</a><a class="post-meta__tags" href="/tags/homie-%E5%8C%B9%E9%85%8D/">homie 匹配</a></div><div class="post_share"><div class="social-share" data-image="/img/post_2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/02/homie%20%E5%8C%B9%E9%85%8D%20websocket%20%E8%81%8A%E5%A4%A9%E9%83%A8%E5%88%86/" title="homie 匹配 websocket 聊天部分"><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">homie 匹配 websocket 聊天部分</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/02/homie%E5%8C%B9%E9%85%8DAxios+AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截"><img class="cover" src="/img/post_1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">homie匹配Axios+AOP实现全局登录拦截</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/02/homie%20%E5%8C%B9%E9%85%8D%20websocket%20%E8%81%8A%E5%A4%A9%E9%83%A8%E5%88%86/" title="homie 匹配 websocket 聊天部分"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">homie 匹配 websocket 聊天部分</div></div></a></div><div><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E5%BC%95%E5%85%A5-GEO-%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E9%99%84%E8%BF%91%E7%94%A8%E6%88%B7/" title="homie 匹配引入 GEO 实现搜索附近用户"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">homie 匹配引入 GEO 实现搜索附近用户</div></div></a></div><div><a href="/2024/07/02/homie%E5%8C%B9%E9%85%8DAxios+AOP%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA/" title="homie匹配Axios+AOP实现全局登录拦截"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">homie匹配Axios+AOP实现全局登录拦截</div></div></a></div><div><a href="/2024/07/07/homie-%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="homie 匹配项目笔记"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">homie 匹配项目笔记</div></div></a></div><div><a href="/2024/07/07/%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2%E7%81%B5%E7%8A%80-BI/" title="宝塔部署灵犀 BI"><img class="cover" src="/img/post_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">宝塔部署灵犀 BI</div></div></a></div><div><a href="/2024/07/07/%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%8A%A0%E8%BD%BD/" title="引入第三方组件实现滑动加载"><img class="cover" src="/img/post_1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">引入第三方组件实现滑动加载</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%83%A8%E7%BD%B2-Vue-Spring-Boot-MySQL-Redis-%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">宝塔部署 Vue + Spring Boot + MySQL + Redis 项目保姆级教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94"><span class="toc-number">1.0.1.</span> <span class="toc-text">服务器安装宝塔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%89%8D%E7%9A%84%E5%AE%9D%E5%A1%94%E5%89%8D%E7%BD%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">部署项目前的宝塔前置配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85tomcat%E5%86%8D%E5%8D%B8%E8%BD%BDtomcat"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">安装tomcat再卸载tomcat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEMySQL"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">安装和配置MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AERedis"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">安装和配置Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">安装nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Java%E9%A1%B9%E7%9B%AE%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.2.5.</span> <span class="toc-text">安装Java项目一键部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E4%B8%AD%E6%94%BE%E8%A1%8C%E5%AF%B9%E5%BA%94%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.0.2.6.</span> <span class="toc-text">在服务器和宝塔面板中放行对应端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE%E8%B7%A8%E5%9F%9F"><span class="toc-number">1.0.2.7.</span> <span class="toc-text">后端配置跨域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.3.</span> <span class="toc-text">前端部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%9F%E4%BA%A7%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">配置生产和开发环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">前端项目打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%8B%96%E5%88%B0%E5%AE%9D%E5%A1%94"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">前端打包后的项目拖到宝塔</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.4.</span> <span class="toc-text">后端部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%9F%E4%BA%A7%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-1"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">配置生产和开发环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">后端项目打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%8B%96%E5%88%B0%E5%AE%9D%E5%A1%94"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">后端项目拖到宝塔</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'uTxTLDSTgec4bcmjQMhzZLXJ-gzGzoHsz',
+      appKey: 'Mj7im3r78jFLJCaSKJKqGj7m',
+      avatar: 'monsterid',
+      serverURLs: 'https://utxtldst.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

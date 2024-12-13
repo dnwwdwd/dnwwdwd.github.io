@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>雪荷的博客</title><meta name="author" content="雪荷"><meta name="copyright" content="雪荷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="热爱生活，热爱编程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="雪荷的博客">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="雪荷的博客">
+<meta property="og:description" content="热爱生活，热爱编程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/ava.png">
+<meta property="article:author" content="雪荷">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/ava.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '雪荷的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-12-13 21:49:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="雪荷的博客"><span class="site-name">雪荷的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">雪荷的博客</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/" title="Oracle 与 MySQL 主要差异"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Oracle 与 MySQL 主要差异"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/05/Oracle-%E4%B8%8E-MySQL-%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82/" title="Oracle 与 MySQL 主要差异">Oracle 与 MySQL 主要差异</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-05T02:29:09.000Z" title="发表于 2024-07-05 10:29:09">2024-07-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">
+&nbsp;&nbsp;导航：
+&nbsp;【Java笔记+踩坑汇总】Java基础+进阶+JavaWeb+SSM+SpringBoot+瑞吉外卖+SpringCloud+黑马旅游+谷粒商城+学成在线+MySQL高级篇+设计模式+面试题汇总+源码_vincewm的博客-CSDN博客
+
+目录
+一、基本区别
+1.1 基本特性
+1.2 Oracle和MySQL如何做技术选型？
+1.3 RDBMS和ORDBMS的区别
+1.4 默认端口号和用户名
+1.5 基本操作
+1.5.1 登录方式
+1.5.2 修改用户名密码&nbsp;
+1.5.3 Oracle解锁账号
+1.5.4 Oracle内存优化
+1.6 大小写是否敏感
+1.6.1 Oracle：双引号下大小写敏感
+1.6.2 MySQL：大小写不敏感
+二、常用字段类型
+2.1 Oracle常用字段类型
+2.2 MySQL常用字段类型
+三、时间日期
+3.1 Oracle
+3.2 MySQL
+四、创建表空间/数据库
+4.1 Oracle创建表空间
+4.2 MySQL创建数据库
+五、创建临时表
+5.1 Oracle创建临时表
+5.2 MySQL创建临时表
+六、删除表空间/数 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/2024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E9%9D%A2%E7%BB%8F/" title="2024上半年面经"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024上半年面经"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/2024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E9%9D%A2%E7%BB%8F/" title="2024上半年面经">2024上半年面经</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span></div><div class="content">湖北湖北亚信科技面经线下面试1.自我介绍
+2.介绍你的项目（BI 和 伙伴匹配）
+3.== 与 equals 区别
+4.String 有哪些方法
+5.接口和抽象类的区别
+6.Spring Boot 常用注解
+7.说说 Spring 是什么
+8.怎么实现分页
+9.常用的 Linux 命令
+反问1.公司业务
+答：什么都做吧（其实就是外包）
+2.对我的建议，说说我的不足
+答：接触过少，说不出来，但面试下来感觉还可以
+3.薪资
+答：3 k / 一个月，上五休二
+湖北（微创新）面经 30 mins线上面试1.说说 HashMap 和底层原理？
+2.HashMap 是线程安全的吗？怎么实现线程安全的？
+3.HashTable 和 ConcurrentHashMap 的区别？
+4.HashMap 的扩容机制
+5.谈谈 Spring 和其优势
+6.讲讲 Spring AOP 实现原理
+7.Spring Boot 自动装配原理
+8.说说 Spring Boot 常用注解
+9.说说索引，会多少说多少
+10.聚簇索引和非聚簇索引是什么？有什么区别
+11.什么是回表？什么时候会发 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/Docker/" title="Docker笔记"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/Docker/" title="Docker笔记">Docker笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">Docker笔记Docker初始项目部署问题大型项目组件较多，运行环境也较为复杂，部署时会碰到一些问题：
+
+依赖关系复杂，容易出现兼容性问题
+开发、测试、生产环境有差异
+
+Docker如何解决依赖的兼容问题的？
+将应用的Libs(函数库)、Deps（依赖)、配置与应用一起打包
+将每个应用放到一个隔离容器去运行，避免互相干扰
+
+Docker如何解决不同系统环境的问题？
+Docker将用户程序与所需要调用的系统（比如Ubuntu)函数库一起打包
+Docker运行到不同操作系统时，直接基于打包的库函数，借助于操作系统的Linux内核来运行
+
+Docker如何解决大型项目依赖关系复杂，不同组件依赖的兼容性问题？
+Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像
+Docker应用运行在容器中，使用沙箱机制，相互隔离
+
+总结：Docker是一个快速交付应用、运行应用的技术：
+
+可以将程序及其依赖、运行环境一起打包为一个镜像，可以迁移到任意Linux操作系统
+运行时利用沙箱机制形成隔离容器，各个应用互不干扰
+启动、移除都可以通过一行命令完成，方便快捷
+
+Docker和容器Do ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/Java%E4%BA%8C%E7%BA%A7/" title="Java二级"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java二级"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/Java%E4%BA%8C%E7%BA%A7/" title="Java二级">Java二级</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span></div><div class="content">Java二级冒泡排序、快速排序，直接插入排序在最坏的情况下，比较次数为n（n-1）/2次。
+堆排序在最坏的情况下的比较次数为nlog2n次。
+在长度为n的有序线性表中进行二分查找，最坏情况下需要比较的次数是O(log2n)
+在任意一个二叉树中，叶子节点数总比度为二的节点数多一个。
+算法一般由顺序，选择和循环三种控制结构组合而成。
+不属于软件设计原则的是自下而上。
+面向对象方法中最基本的概念是对象，它的基本特点有：标识唯一性、分类性、多态性、封装性和模块独立性好。
+结构化程序设计可使程序结构良好、易读、易理解、易维护。
+数据库技术的根本目标是要解决数据共享的问题。
+内模式能够给出数据库物理存储结构与物理存取方法。
+数据库设计包括概念设计和逻辑设计两个方面的设计内容。
+关系数据库管理系统能实现的专门关系运算，包括选择运算、投影运算、连接运算。
+索引属于内模式。
+选择运算是一个一元运算，关系R通过选择运算（并由该运算给出所选择的逻辑条件）后仍为一个关系。这个关系是由R中那些满足逻辑条件的元组所组成。如果关系的逻辑条件为f，则R满足f的选择运算可以写成：бf(R)。
+SQL语言又称为 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/Java%20%E5%85%AB%E8%82%A1%E6%96%87/" title="Java 八股文"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 八股文"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/Java%20%E5%85%AB%E8%82%A1%E6%96%87/" title="Java 八股文">Java 八股文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="content">Java 八股文Java 基础基础概念与常识Java 语言的特点
+简单易学
+面向对象（封装、继承、多态）
+安全性（Java语言提供了多种资源权限访问修饰符、限制程序直接访问操作系统资源）
+可靠性（异常处理和自动内存管理机制）
+跨平台性（依靠JVM，Java语言可以实现一次编译，处处运行的机制）
+
+Java SE vs Java EE
+Java SE：Java编程语言的标准版，包含支持了应用程序开发和运行的核心类库和虚拟机等核心组件，用于构建桌面应用程序和简单的服务器应用程序。
+Java EE：Java编程语言的企业版，包含支持了企业级应用程序的开发和部署规范，如Servlet、JSP、JDBC、JPA等，用于构建企业级应用程序和 Web 应用。
+
+JVM vs JDK vs JRE
+JVM（Java virtual machine）：Java 虚拟机，是运行 Java 字节码的虚拟机，JVM对于不同的操作系统有特定的实现，以保证相同的字节码文件给出相同的结果。
+JDK（Java Development Kit）：Java开发工具包。是提供开发者使用的Java SDK，能够创建和编译 J ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/OJ%20%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="OJ 项目笔记"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OJ 项目笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/OJ%20%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="OJ 项目笔记">OJ 项目笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">OJ 系统最大的难点在于 判题系统
+项目介绍用于在线评测编程题目代码的系统，能够根据用户提交的代码、出题人预先设置的题目输入和输出用例，进行编译
+代码、运行代码、判断代码运行结果是否正确。
+判题系统作为一个开放API提供给大家，便于开发者开发自己的O)系统。
+初步需求
+不能让用户随便引入包、随便遍历、暴力破解，需要使用正确的算法。=&gt;安全性
+判题过程是异步的=&gt;异步化
+提交之后，会生成一个提交记录，有运行的结果以及运行信息（时间限制、内存限制）
+OJ 系统常用概念ac表示你的题目通过，结果正确
+题目限制：时间限制、内存限制
+题目介绍
+题目输入
+题目输出
+题目输入用例
+题目输出用例
+普通测评：比对用例文件，管理员设置题目的输入和输出用例，比如我输入1，你要输出2才是正确的；交给判题机去执行用户的代码，给用户的代码喂输入用例，比如1，看用户程序的执行结果是否和标准答案的输出一致。
+特殊测评（SPJ）：管理员设置题目的输入和输出，比如我输入1，用户的答案只要是 &gt; 0 或 &lt; 2 都是正确的；特定程序，不是通过比对用例文件是否一致这种死板程序来检验 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/MySQL%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="2024上半年面经"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024上半年面经"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/MySQL%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="2024上半年面经">2024上半年面经</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="content">MySQL 面试题1.什么是内连接、外连接、交叉连接？内连接：取两张表符合连接条件的记录
+外连接：除取两张表符合连接条件的记录外，还取某张表或两张表中不满足连接条件记录
+交叉连接：取两张表所有记录的一一对应
+2.MySQL 的内连接、左连接、右连接有什么区别？内连接：返回两张表符合连接条件的记录
+左连接：返回左表的所有记录和右表满足连接条件的记录，如果右表没有满足条件的记录，则以 NULL 填充
+右连接：返回右表的所有记录和左表满足连接条件的记录，如果左表没有满足条件的记录，则以 NULL 填充
+3.数据库的三大范式三大范式的作用是减少数据冗余，提高数据完整性
+
+
+第一范式：确保表中每一列是不可分割的
+第二范式：在第一范式的基础上，要求数据库表中的每一列和主键直接相关，而不能只与主键的某一部分相关
+第三范式：在第二范式的基础上，消除非主键列对主键的传递依赖
+4.varchar 与 char 的区别？
+varchar 是不定长字符串，char 是定长字符串
+varchar：插入数据是多长就按照多长存储，char：插入数据长度小于 char 的固定长度就用空格补齐
+varchar 存取速度 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ——死信队列介绍和使用"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ——死信队列介绍和使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/RabbitMQ%E4%B8%80%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%BA%94%E7%94%A8/" title="RabbitMQ——死信队列介绍和使用">RabbitMQ——死信队列介绍和使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></span></div><div class="content">死信和死信队列的概念什么是死信？简单来说就是无法被消费和处理的消息。一般生产者将消息投递到broker或者queue，消费者直接从中取出消息进行消费。但有时因为某些原因导致消息不能被消费，导致消息积压在队列中，这样的消息如果没有后续的处理就会变成死信，那么专门存放死信的队列就是死信队列。
+
+注意：如果一个消息队列设置了过期时间，在队列过期后其中的消息并不会自动转发到死信队列中，而是会被系统丢弃或执行其他的操作。
+
+什么是死信交换机？那么什么是死信交换机呢？死信交换机是指专门将死信路由到死信队列的交换机。
+
+注意：死信交换机和普通交换机无任何区别，只是路由的消息类别不同。同理，死信队列和普通队列也无任何区别，仅仅是一个专门存放死信的队列而已。无论是死信交换机还是队列，它们的创建方法都和普通的交换机和队列一致，无非是名称和routingKey不同。
+
+产生死信的原因根据官方文档，我们发现一般有三种场景会产生死信。
+
+
+消息超过TTL，即消息过期
+消息被nack或reject，且不予重新入队
+队列达到最大长度
+
+死信队列实战和应用死信队列的应用并不难，无非就是多定义了一个交换机、routin ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/RabbitMQ%E7%AC%94%E8%AE%B0/" title="RabbitMQ笔记"><img class="post-bg" src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/RabbitMQ%E7%AC%94%E8%AE%B0/" title="RabbitMQ笔记">RabbitMQ笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">消息队列1.1 MQ相关概念1.1.1 什么是MQMQ(message queue),从字面意思上看，本质是个队列，FIFO先入先出，只不过队列中存放的内容是message而已，还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ,不用依赖其他服务。
+1.1.2 为什么要用MQ
+流量消峰
+比如一个系统1s只能处理一万个下单请求，但在高峰时1s内有2万个下单请求，这时候系统就会崩溃，此时就需要将请求转给MQ，达到消峰的目的。
+缺点：请求到达MQ需要排队，导致用户在下单十几秒之后才收到下单成功的操作。性能差。
+
+
+应用解耦
+以电商应用为例，应用中有订单系统、库存系统、物流系统、支付系统。用户创建订单后，如果耦合调用库存系统、物流系统、支付系统，任何一个子系统出了故障，都会造成下单操作异常。当转变成基于消息队列的方式后，系统间调用的问题会减少很多，比如物流系统因为发生故障，需要几分钟来修复。在这几分钟的时间里，物流系统要处理的内存被缓存在消息队列中，用户的下单操作可以正常完成。当 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/07/02/Redis%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis 面试题"><img class="post-bg" src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis 面试题"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/07/02/Redis%20%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis 面试题">Redis 面试题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-02T07:40:33.000Z" title="发表于 2024-07-02 15:40:33">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="content">Redis 面试题基础1.什么是 Redis？Redis 一款基于内存的 k/v （键值对）的非关系型数据库（nosql）。
+2.Redis 能干什么？
+缓存
+计数器
+排行榜
+消息队列
+限流器
+分布式锁
+社交网络（点赞、关注、共同关注列表、推送、下拉刷新）
+
+3.Redis 有哪些数据结构？
+字符串（String）：缓存功能、计数、共享 Session、限速
+哈希（Hash）：缓存用户信息、对象
+列表（List）：消息队列、文章列表
+集合（Set）：标签、共同关注
+有序集合（ZSet）：排行榜
+HyperLogLog（基数统计）
+BitMap：签到
+GEO：地理位置信息
+
+4.Redis 为什么快？
+基于内存，内存的读取速度是磁盘的上千倍，这是 Redis 读写速度快的根本原因
+单线程模型：Redis 的命令执行是单线程的，因此在任何时候只有一个命令在执行，避免线程的切换和锁竞争带来的消耗
+IO 多路复用：一个线程可以同时监听多个 IO 操作，当有 IO 事件发生时，会通知线程并处理这个事件，从而实现同时处理多个 IO 操作的能力
+高效的数据结构：如 String、List、 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">雪荷</div><div class="author-info__description">热爱生活，热爱编程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM 面试题"></a><div class="content"><a class="title" href="/2024/09/22/JVM-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JVM 面试题">JVM 面试题</a><time datetime="2024-09-22T14:42:32.000Z" title="发表于 2024-09-22 22:42:32">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC 面试题"></a><div class="content"><a class="title" href="/2024/09/21/JUC-%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JUC 面试题">JUC 面试题</a><time datetime="2024-09-21T14:02:31.000Z" title="发表于 2024-09-21 22:02:31">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试狗 - interviewdog 项目笔记"></a><div class="content"><a class="title" href="/2024/09/06/%E9%9D%A2%E8%AF%95%E7%8B%97-interviewdog-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" title="面试狗 - interviewdog 项目笔记">面试狗 - interviewdog 项目笔记</a><time datetime="2024-09-06T15:49:00.000Z" title="发表于 2024-09-06 23:49:00">2024-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用"><img src="/img/post_1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redisson 详细使用"></a><div class="content"><a class="title" href="/2024/08/12/Redisson-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8/" title="Redisson 详细使用">Redisson 详细使用</a><time datetime="2024-08-12T15:06:31.000Z" title="发表于 2024-08-12 23:06:31">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？"><img src="/img/post_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手摸手教你前端和后端是如何实现导出 Excel 的？"></a><div class="content"><a class="title" href="/2024/07/29/%E6%89%8B%E6%91%B8%E6%89%8B%E6%95%99%E4%BD%A0%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%87%BA-Excel-%E7%9A%84%EF%BC%9F/" title="手摸手教你前端和后端是如何实现导出 Excel 的？">手摸手教你前端和后端是如何实现导出 Excel 的？</a><time datetime="2024-07-29T14:59:29.000Z" title="发表于 2024-07-29 22:59:29">2024-07-29</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java-%E9%AB%98%E9%98%B6/"><span class="card-category-list-name">Java 高阶</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"><span class="card-category-list-name">中间件</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95%E9%A2%98/"><span class="card-category-list-name">面试题</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">2</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/MyBatis/" style="font-size: 1.1em; color: #999">MyBatis</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/ElasticSearch/" style="font-size: 1.1em; color: #999">ElasticSearch</a> <a href="/tags/Redis/" style="font-size: 1.16em; color: #999b9e">Redis</a> <a href="/tags/Java/" style="font-size: 1.44em; color: #99a7ba">Java</a> <a href="/tags/%E9%97%B2%E6%B7%98/" style="font-size: 1.1em; color: #999">闲淘</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E7%8B%97/" style="font-size: 1.1em; color: #999">面试狗</a> <a href="/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/tags/Next-js/" style="font-size: 1.1em; color: #999">Next.js</a> <a href="/tags/MySQL/" style="font-size: 1.27em; color: #99a0a9">MySQL</a> <a href="/tags/%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86/" style="font-size: 1.44em; color: #99a7ba">拓展知识</a> <a href="/tags/API-%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">API 平台</a> <a href="/tags/%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2/" style="font-size: 1.1em; color: #999">聚合搜索</a> <a href="/tags/EasyExcel/" style="font-size: 1.21em; color: #999ea4">EasyExcel</a> <a href="/tags/JUC/" style="font-size: 1.1em; color: #999">JUC</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 1.1em; color: #999">分布式</a> <a href="/tags/Oracle/" style="font-size: 1.16em; color: #999b9e">Oracle</a> <a href="/tags/homie-%E5%8C%B9%E9%85%8D/" style="font-size: 1.33em; color: #99a2af">homie 匹配</a> <a href="/tags/RabbitMQ/" style="font-size: 1.21em; color: #999ea4">RabbitMQ</a> <a href="/tags/React/" style="font-size: 1.16em; color: #999b9e">React</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 1.39em; color: #99a4b4">面试题</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 1.16em; color: #999b9e">面经</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">项目笔记</a> <a href="/tags/%E7%81%B5%E7%8A%80-BI/" style="font-size: 1.16em; color: #999b9e">灵犀 BI</a> <a href="/tags/OJ/" style="font-size: 1.1em; color: #999">OJ</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">36</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">40</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2024-12-13T13:49:21.634Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By 雪荷</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
